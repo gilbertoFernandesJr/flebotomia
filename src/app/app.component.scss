@@ -32,8 +32,8 @@ main{
     img {
       padding-top: 25px;
       opacity: .2;
-      transform: translateX(-300px);
-      animation-name: slid-x-left;
+      transform: translateY(-300px);
+      animation-name: slid-y-top;
       animation-duration: 1.6s;
       animation-fill-mode: forwards; /*Permanece no estado final da animação*/
       animation-timing-function: linear;
@@ -53,8 +53,8 @@ main{
       color: var(--brown-strong);
 
       opacity: .2;
-      transform: translateX(300px);
-      animation-name: slid-x-right;
+      transform: translateY(-300px);
+      animation-name: slid-x-left;
       animation-duration: 1.6s;
       animation-fill-mode: forwards; /*Permanece no estado final da animação*/
       animation-timing-function: linear;
@@ -112,6 +112,30 @@ main{
 
   100% {
       transform: translateX(0px);
+      opacity: 1;
+  }
+}
+
+//Movimento vertical para baixo
+@keyframes slid-y-top {
+
+  25% {
+      transform: translateY(-150px);
+      opacity: .4;
+  }
+
+  50% {
+      transform: translateY(-100px);
+      opacity: .6;
+  }
+
+  75% {
+      transform: translateY(-50px);
+      opacity: .8;
+  }
+
+  100% {
+      transform: translateY(0px);
       opacity: 1;
   }
 }
