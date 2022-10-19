@@ -11,5 +11,77 @@
     <a href="#">Dra. Geovanna Samara</a>
     <a href="#">Dra. Bárbara Lula</a>
   </section>
-  <h3>Informações</h3>
+  <section class="info">
+    <h3>Informações</h3>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Aulas práticas e teóricas
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Técnicas de biossegurança</p>
+        <p>Anatomia dos principais membros</p>
+        <p>Punção à vácuo</p>
+        <p>Fases da análises clínicas</p>
+        <p>Transporte e armazenamento das amostras</p>
+        <p>200h de curso + estágio supervisionado</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Por que devo fazer o curso?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Para promover a aptidão para atuar em qualquer unidade
+          hospitalar ou laboratorial como Flebotomista formado e treinado, conhecendo as técnicas apropriadas e corretas para a realização dos exames laboratoriais, reduzindo assim os erros nos procedimentos técnicos esperados, visto que 50% dos erros acontecem na fase pré analítica.</p>
+        <p>Maiores chances de ingressar no mercado de trabalho pela falta de mão de obra especializada.</p>
+        <p>Ter segurança na execução das rotinas do ambiente laboratorial.</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Terei certificado de conclusão?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Sim, certificado válido em todo território brasileiro.</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Quando será as aulas?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Apartir do dia 30/10/2022</p>
+        <p>Todos os domingos das 08:00 até às 11:00</p>
+        <p>Com duração de 3 meses</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Onde será as aulas?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Colégio EREM Belo Jardim</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d806.2884744453949!2d-36.419862963199364!3d-8.326528169084192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a9c634f30177d3%3A0x37795b2a74260c44!2sEscola%20De%20Referencia%20Em%20Ensino%20Medio%20De%20Belo%20Jardim!5e0!3m2!1spt-BR!2sbr!4v1666190433099!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
 </main>
