@@ -76,10 +76,21 @@ main{
 
       mat-expansion-panel {
         margin-bottom: 5px;
+        background: var(--secondary-color);
+
+        p {
+          color: var(--brown-strong);
+        }
+
+        iframe {
+          margin: auto;
+          width: 100%;
+          height: 300px;
+        }
       }
       
       mat-panel-title {
-        color: var(--brown-strong);
+        color: white;
       }
     }
 
