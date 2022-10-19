@@ -98,6 +98,14 @@ main{
   }
 }
 
+//Arrumando bug do material no telas de celulares
+@media (hover: none){
+  .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+    background: var(--secondary-color);
+  } 
+}
+
+
 //Movimento horizontal para esquerda
 @keyframes slid-x-left {
 
