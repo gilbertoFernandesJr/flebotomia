@@ -191,13 +191,12 @@ main{
     background-color: var(--brown-strong);
 
     .logo {
-      position: relative;
+      display: flex;
+      justify-content: right;
       width: 48%;
       min-height: 100px;
 
       img {
-        position: absolute;
-        right: 10px;
         width: 100px;
       }
     }
