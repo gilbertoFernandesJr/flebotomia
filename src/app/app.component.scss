@@ -129,6 +129,102 @@ main{
       }
     } 
   }
+
+  section.zone-finish {
+    background: var(--brown-strong);
+    margin-bottom: -2px;
+    
+    a {
+      text-decoration: none;
+    }
+
+    .developer {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.25);
+      margin-bottom: -3px !important;
+    }
+  }
+
+  section#payment {
+    padding: 10px;
+    background: var(--brown-strong);
+
+    h2.pay {
+      padding: 10px;
+      font-size: 2rem;
+      text-align: center;
+      color: var(--primary-color);
+    }
+
+    .payment {
+      display: flex;
+      justify-content: space-around;
+
+      .card-pay {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 150px;
+        min-height: 150px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
+        background: var(--primary-color);
+        color: var(--brown-strong);
+
+        p {
+          width: 100%;
+          font-size: 1.5rem;
+          padding: 10px;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
+          background: var(--brown-strong);
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  section#contacts {
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
+    background-color: var(--brown-strong);
+
+    .logo {
+      position: relative;
+      width: 48%;
+      min-height: 100px;
+
+      img {
+        position: absolute;
+        right: 10px;
+        width: 100px;
+      }
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 48%;
+      min-height: 100px;
+      color: var(--primary-color);
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  .whatapp {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    img {
+      width: 75px;
+    }
+  }
 }
 
 //Arrumando bug do material no telas de celulares
