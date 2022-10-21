@@ -7,7 +7,7 @@ main{
     text-align: center;
     background: var(--secondary-color);
 
-    div.card {
+    div.card-heard {
       padding: 30px;
       min-width: 150px;
       border-radius: 10px;
@@ -113,27 +113,27 @@ main{
         padding: 20px;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-  
+
         h2 {
           color: var(--brown-strong);
         }
-  
+
         p {
           color: var(--primary-color);
         }
-  
+
         img {
           width: 200px;
           margin: auto;
         }
       }
-    } 
+    }
   }
 
   section.zone-finish {
     background: var(--brown-strong);
     margin-bottom: -2px;
-    
+
     a {
       text-decoration: none;
     }
