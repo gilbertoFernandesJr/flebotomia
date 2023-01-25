@@ -12,7 +12,6 @@ main{
   }
 
   .banner-main {
-    height: 280px;
     padding: 10px;
     text-align: center;
 
@@ -23,6 +22,13 @@ main{
       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.568);
       background-color: var(--primary-color);
       color: var(--white);
+
+      opacity: .2;
+      transform: translateY(-300px);
+      animation-name: slid-y-top;
+      animation-duration: 1.6s;
+      animation-fill-mode: forwards; /*Permanece no estado final da animação*/
+      animation-timing-function: linear;
 
       .inline {
         display: flex;
@@ -55,36 +61,6 @@ main{
         line-height: 1;
         margin: 0;
       }
-    }
-
-    img {
-      padding-top: 25px;
-      opacity: .2;
-      transform: translateY(-300px);
-      animation-name: slid-y-top;
-      animation-duration: 1.6s;
-      animation-fill-mode: forwards; /*Permanece no estado final da animação*/
-      animation-timing-function: linear;
-    }
-  }
-
-  .doctors {
-    padding: 20px;
-
-    a {
-      display: block;
-      padding: 5px;
-      text-decoration: none;
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--brown-strong);
-
-      opacity: .2;
-      transform: translateY(-300px);
-      animation-name: slid-x-left;
-      animation-duration: 1.6s;
-      animation-fill-mode: forwards; /*Permanece no estado final da animação*/
-      animation-timing-function: linear;
     }
   }
 
