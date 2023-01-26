@@ -68,7 +68,7 @@ main{
     padding: 30px;
     text-align: center;
     font-size: 2rem;
-    color: var(--brown-strong);
+    color: var(--gray);
   }
 
   section.info {
@@ -79,10 +79,10 @@ main{
 
       mat-expansion-panel {
         margin-bottom: 5px;
-        background: var(--secondary-color);
+        background: var(--primary-color);
 
         p {
-          color: var(--brown-strong);
+          color: var(--white);
         }
 
         iframe {
@@ -93,7 +93,7 @@ main{
       }
 
       mat-panel-title {
-        color: white;
+        color: var(--secondary-color);
       }
     }
   }
@@ -118,11 +118,11 @@ main{
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
 
         h2 {
-          color: var(--brown-strong);
+          color: var(--primary-color);
         }
 
         p {
-          color: var(--primary-color);
+          color: var(--gray);
         }
 
         img {
@@ -134,7 +134,7 @@ main{
   }
 
   section.zone-finish {
-    background: var(--brown-strong);
+    background: var(--primary-color);
     margin-bottom: -2px;
 
     a {
@@ -150,13 +150,13 @@ main{
 
   section#payment {
     padding: 10px;
-    background: var(--brown-strong);
+    background: var(--primary-color);
 
     h2.pay {
       padding: 10px;
       font-size: 2rem;
       text-align: center;
-      color: var(--primary-color);
+      color: var(--white);
     }
 
     .payment {
@@ -172,16 +172,16 @@ main{
         text-align: center;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-        background: var(--primary-color);
-        color: var(--brown-strong);
+        background: var(--white);
+        color: var(--primary-color);
 
         p {
           width: 100%;
           font-size: 1.5rem;
           padding: 10px;
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-          background: var(--brown-strong);
-          color: var(--primary-color);
+          background: var(--secondary-color);
+          color: var(--white);
         }
       }
     }
@@ -191,7 +191,7 @@ main{
     display: flex;
     justify-content: center;
     padding: 40px 10px;
-    background-color: var(--brown-strong);
+    background-color: var(--primary-color);
 
     .logo {
       display: flex;
@@ -210,7 +210,7 @@ main{
       justify-content: center;
       width: 48%;
       min-height: 100px;
-      color: var(--primary-color);
+      color: var(--white);
 
       a {
         text-decoration: none;
@@ -232,7 +232,7 @@ main{
 //Arrumando bug do material no telas de celulares
 @media (hover: none){
   .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
-    background: var(--secondary-color);
+    background: var(--primary-color);
   }
 }
 
