@@ -71,8 +71,15 @@ main{
     color: var(--gray);
   }
 
+  section.carousel-ces {
+    margin: auto;
+    max-width: 1000px;
+  }
+
   section.info {
+    max-width: 700px;
     padding: 10px;
+    margin: auto;
 
     mat-accordion {
       width: 100%;
