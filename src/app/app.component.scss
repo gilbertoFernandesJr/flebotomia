@@ -140,6 +140,38 @@ main{
     }
   }
 
+  section.students {
+
+    .cards-wrapper {
+      display: flex;
+      justify-content: center;
+
+      .card {
+        min-height: 450px;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
+        margin-bottom: 25px;
+        background-color: rgba(166, 206, 55, 0.4);
+        color: var(--primary-color);
+
+        .card-img-top {
+          width: 100px;
+          margin: auto;
+        }
+
+        h5 {
+          text-align: center;
+        }
+        p {
+          text-align: center;
+        }
+      }
+    }
+
+  }
+
+
   section.zone-finish {
     background: var(--primary-color);
     margin-bottom: -2px;
