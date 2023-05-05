@@ -208,6 +208,14 @@ main{
       padding: 1rem 0;
       text-align: center;
     }
+
+    .videos-wrap {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: rgba(166, 206, 55, 0.4);
+    }
   }
 
 
@@ -222,6 +230,7 @@ main{
     .developer {
       text-align: center;
       color: rgba(255, 255, 255, 0.25);
+      padding-bottom: 3px;
       margin-bottom: -3px !important;
     }
   }
