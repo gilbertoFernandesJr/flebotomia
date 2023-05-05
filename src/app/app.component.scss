@@ -207,6 +207,10 @@ main{
     .video {
       padding: 1rem 0;
       text-align: center;
+
+      video {
+        border-radius: 10px;
+      }
     }
 
     .videos-wrap {
