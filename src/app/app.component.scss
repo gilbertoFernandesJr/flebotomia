@@ -109,7 +109,7 @@ main{
             text-align: center;
             font-size: 1.1rem;
           }
-  
+
           iframe {
             margin: auto;
             width: 100%;
@@ -200,6 +200,14 @@ main{
       opacity: .2;
     }
 
+  }
+
+  section.videos {
+
+    .video {
+      padding: 1rem 0;
+      text-align: center;
+    }
   }
 
 
