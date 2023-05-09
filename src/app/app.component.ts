@@ -16,7 +16,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.showElementsToTop();
-    inject();
+    inject(); //Vercel Web Analytics
   }
 
   public showElementsToTop(){

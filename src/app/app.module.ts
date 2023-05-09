@@ -8,9 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Componets Material
 import { MatExpansionModule } from '@angular/material/expansion';
 
-//Vercel Analytics
-import { inject } from '@vercel/analytics';
-
 
 @NgModule({
   declarations: [
