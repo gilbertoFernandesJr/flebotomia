@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { inject } from '@vercel/analytics';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.showElementsToTop();
+    inject();
   }
 
   public showElementsToTop(){
