@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlebotomiaComponent implements OnInit {
 
-  title: string = 'flebotomia';
+  //title: string = 'flebotomia';
   panelOpenState: boolean = false;
   showElement: boolean = false;
 

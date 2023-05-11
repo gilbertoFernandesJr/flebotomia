@@ -5,23 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Componets Material
-import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './components/home/home.component';
-import { FlebotomiaComponent } from './components/courses/flebotomia/flebotomia.component';
+
+//Componets Material
+import { AppMaterialModule } from './shared/app-material/app-material.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    FlebotomiaComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatExpansionModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
