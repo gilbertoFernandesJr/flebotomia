@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Componets Material
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './components/home/home.component';
+import { FlebotomiaComponent } from './components/courses/flebotomia/flebotomia.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FlebotomiaComponent
   ],
   imports: [
     BrowserModule,
