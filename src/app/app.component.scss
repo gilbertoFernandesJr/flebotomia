@@ -264,6 +264,7 @@ main{
         justify-content: center;
         min-width: 150px;
         min-height: 150px;
+        margin-bottom: 12px;
         text-align: center;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
@@ -279,6 +280,45 @@ main{
           color: var(--white);
         }
       }
+    }
+
+    .pay-form {
+
+      .t-pay {
+        margin: 0px;
+        padding: 5px 0px;
+        font-size: 1.2rem;
+      }
+
+      .credit-cards {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        position: relative;
+
+        img {
+          width: 115px;
+          padding: 10px;
+        }
+
+        .master-card {
+          width: 140px;
+        }
+
+        .diners {
+          width: 130px;
+        }
+
+        .transp {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background-color: var(--primary-color);
+          opacity: .6;
+        }
+      }
+
+
     }
   }
 
