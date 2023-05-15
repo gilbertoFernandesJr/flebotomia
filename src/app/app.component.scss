@@ -317,8 +317,6 @@ main{
           opacity: .6;
         }
       }
-
-
     }
   }
 
@@ -346,10 +344,44 @@ main{
       width: 48%;
       min-height: 100px;
       color: var(--white);
+    }
+  }
 
-      a {
-        text-decoration: none;
-        color: var(--primary-color);
+  section.footer {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .ceslab-logo {
+      padding: 20px;
+      width: 230px;
+    }
+
+    .map-icon {
+      width: 30px;
+    }
+
+    .address {
+      margin-top: 5px;
+      text-align: center;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: var(--secondary-color);
+
+      p {
+        margin-bottom: 0px;
+        color: var(--white);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      .developer {
+        margin-top: 10px;
+        font-size: .6rem;
+        color: var(--gray);
       }
     }
   }
