@@ -143,6 +143,10 @@ main{
         padding: 20px;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
+        background: rgb(255,255,255);
+        background: linear-gradient(113deg, rgba(255,255,255,1) 81%, rgba(1,77,39,1) 90%, rgba(166,206,55,0.9304096638655462) 98%);
+        background-size: 110% 150%;
+        animation: bg-gradient 6s ease-in-out infinite;
 
         .geo {
           opacity: 0;
@@ -267,8 +271,11 @@ main{
         text-align: center;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-        background: var(--white);
         color: var(--primary-color);
+        background: rgb(255,255,255);
+        background: linear-gradient(113deg, rgba(255,255,255,1) 81%, rgba(1,77,39,1) 90%, rgba(166,206,55,0.9304096638655462) 98%);
+        background-size: 110% 150%;
+        animation: bg-gradient 6s ease-in-out infinite;
 
         p {
           width: 100%;
@@ -487,6 +494,20 @@ main{
   100% {
       transform: translateY(0px);
       opacity: 1;
+  }
+}
+
+@keyframes bg-gradient {
+  0% {
+      background-position: 20 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 20 50%;
   }
 }
 
