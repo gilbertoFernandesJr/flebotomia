@@ -10,12 +10,14 @@ import { inject } from '@vercel/analytics';
 export class AppComponent {
   title: string = 'flebotomia';
   panelOpenState: boolean = false;
-  showElement: boolean = false;
+  showElementGeo: boolean = false;
+  showElementRevel: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
     this.showElementsToTop();
+    this.fadeTextRevel();
     inject(); //Vercel Web Analytics
   }
 
@@ -24,12 +26,27 @@ export class AppComponent {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.showElement = true;
+          this.showElementGeo = true;
         }
       });
     }, {threshold: 1}); //Only show the element when all visible
 
     Array.from(document.querySelectorAll('.geo')).forEach(element => {
+      observer.observe(element);
+    });
+  }
+
+  public fadeTextRevel() {
+    //Fade elements text
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.showElementRevel = true;
+        }
+      });
+    }, {threshold: 1}); //Only show the element when all visible
+
+    Array.from(document.querySelectorAll('.show-revel')).forEach(element => {
       observer.observe(element);
     });
   }

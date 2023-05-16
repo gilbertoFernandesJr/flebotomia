@@ -146,7 +146,7 @@
 
     <div class="teachers-together" id="teacher-geovanna">
       <div class="card-teacher">
-        <img src="../assets/images/avatar-geovanna.png" alt="Dra. Geovanna" class="geo" [ngClass]="{'slide-top': showElement}">
+        <img src="../assets/images/avatar-geovanna.png" alt="Dra. Geovanna" class="geo" [ngClass]="{'slide-top': showElementGeo}">
         <h2>Dra. Geovanna Samara</h2>
         <strong>
           <p>Biomédica</p>
@@ -287,21 +287,27 @@
         </div>
       </div>
     </section>
-    <section id="contacts">
-      <div class="logo">
-        <a href="https://www.instagram.com/gsamara_/?igshid=YmMyMTA2M2Y%3D" target="_blank">
-          <img src="../assets/images/instagran-icon.png" alt="instagran">
-        </a>
-        <a href="https://api.whatsapp.com/send?phone=5581994283690" target="_blank">
-          <img src="../assets/images/whatsapp-icon.png" alt="whatsapp">
-        </a>
-      </div>
-      <div class="contact">
-        <p>Fale conosco e</p>
-        <p>faça sua matrícula</p>
-        <p>vagas limitadas</p>
-      </div>
-    </section>
+    <div class="show-revel">
+      <section id="text-revel">
+        <div [ngClass]="{'revel' : showElementRevel}">
+          <p *ngIf="showElementRevel">Fale conosco e</p>
+        </div>
+        <div [ngClass]="{'revel' : showElementRevel}">
+          <p *ngIf="showElementRevel">faça sua matrícula</p>
+        </div>
+        <div [ngClass]="{'revel' : showElementRevel}">
+          <p *ngIf="showElementRevel">vagas limitadas</p>
+        </div>
+        <div>
+          <a href="https://api.whatsapp.com/send?phone=5581994283690" target="_blank">
+            <img src="../assets/images/whatsapp-icon.png" alt="whatsapp">
+          </a>
+          <a href="https://www.instagram.com/gsamara_/?igshid=YmMyMTA2M2Y%3D" target="_blank">
+            <img src="../assets/images/instagran-icon.png" alt="instagran">
+          </a>
+        </div>
+      </section>
+    </div>
   </section>
 
   <section class="footer">
