@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './components/home/home.component';
+import { ErroComponent } from './components/erro/erro.component';
 
 //Componets Material
 import { AppMaterialModule } from './shared/app-material/app-material.module';
@@ -14,7 +15,8 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ErroComponent
   ],
   imports: [
     BrowserModule,

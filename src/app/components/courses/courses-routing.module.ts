@@ -5,7 +5,7 @@ import { FlebotomiaComponent } from './flebotomia/flebotomia.component';
 
 const routes: Routes = [
   {
-    path: '', component: CoursesComponent,
+    path: '', component: FlebotomiaComponent,
     children: [
       {path: 'flebotomia', component: FlebotomiaComponent}
     ]
