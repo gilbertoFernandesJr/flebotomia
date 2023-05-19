@@ -5,19 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HomeComponent } from './components/home/home.component';
+import { ErroComponent } from './components/erro/erro.component';
+
 //Componets Material
-import { MatExpansionModule } from '@angular/material/expansion';
+import { AppMaterialModule } from './shared/app-material/app-material.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ErroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatExpansionModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
