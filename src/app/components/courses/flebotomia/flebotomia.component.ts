@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlebotomiaComponent implements OnInit {
 
-  //title: string = 'flebotomia';
   panelOpenState: boolean = false;
-  showElement: boolean = false;
+  showElementGeo: boolean = false;
+  showElementRevel: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
     this.showElementsToTop();
+    this.fadeTextRevel();
   }
 
   public showElementsToTop(){
@@ -22,7 +23,7 @@ export class FlebotomiaComponent implements OnInit {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.showElement = true;
+          this.showElementGeo = true;
         }
       });
     }, {threshold: 1}); //Only show the element when all visible
@@ -32,4 +33,18 @@ export class FlebotomiaComponent implements OnInit {
     });
   }
 
+  public fadeTextRevel() {
+    //Fade elements text
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.showElementRevel = true;
+        }
+      });
+    }, {threshold: 1}); //Only show the element when all visible
+
+    Array.from(document.querySelectorAll('.show-revel')).forEach(element => {
+      observer.observe(element);
+    });
+  }
 }

@@ -24,10 +24,7 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-    background: rgb(255,255,255);
-    background: linear-gradient(113deg, rgba(255,255,255,1) 81%, rgba(1,77,39,1) 90%, rgba(166,206,55,0.9304096638655462) 98%);
-    background-size: 110% 150%;
-    animation: bg-gradient 6s ease-in-out infinite;
+
 
     img {
       width: 200px;
@@ -49,9 +46,13 @@ main {
       border-radius: 5px;
       text-decoration: none;
       color: var(--primary-color);
+      background: rgb(255,255,255);
+      background: linear-gradient(113deg, rgba(255,255,255,1) 81%, rgba(1,77,39,1) 90%, rgba(166,206,55,0.9304096638655462) 98%);
+      background-size: 110% 150%;
+      animation: bg-gradient 3s ease-in-out infinite;
 
       &:hover {
-        background-color: var(--primary-color);
+        background: var(--primary-color);
         color: var(--secondary-color);
       }
     }
@@ -149,5 +150,5 @@ footer {
       text-align: center;
     }
   }
-  
+
 }

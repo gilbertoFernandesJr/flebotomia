@@ -1,13 +1,17 @@
 main{
   height: 100vh;
 
-  .banner-ceslab {
-    max-width: 700px;
-    margin: auto;
-    padding: 1.5rem;
+  .header {
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 
-    img {
-      width: 100%;
+    .banner-ceslab {
+      max-width: 700px;
+      margin: auto;
+      padding: 1.5rem;
+
+      img {
+        width: 100%;
+      }
     }
   }
 
@@ -105,11 +109,6 @@ main{
             color: var(--secondary-color);
           }
 
-          .p-center {
-            text-align: center;
-            font-size: 1.1rem;
-          }
-
           iframe {
             margin: auto;
             width: 100%;
@@ -144,6 +143,10 @@ main{
         padding: 20px;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
+        background: rgb(255,255,255);
+        background: linear-gradient(113deg, rgba(255,255,255,1) 81%, rgba(1,77,39,1) 90%, rgba(166,206,55,0.9304096638655462) 98%);
+        background-size: 110% 150%;
+        animation: bg-gradient 6s ease-in-out infinite;
 
         .geo {
           opacity: 0;
@@ -264,11 +267,15 @@ main{
         justify-content: center;
         min-width: 150px;
         min-height: 150px;
+        margin-bottom: 12px;
         text-align: center;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-        background: var(--white);
         color: var(--primary-color);
+        background: rgb(255,255,255);
+        background: linear-gradient(113deg, rgba(255,255,255,1) 81%, rgba(1,77,39,1) 90%, rgba(166,206,55,0.9304096638655462) 98%);
+        background-size: 110% 150%;
+        animation: bg-gradient 6s ease-in-out infinite;
 
         p {
           width: 100%;
@@ -280,36 +287,117 @@ main{
         }
       }
     }
+
+    .pay-form {
+
+      .t-pay {
+        margin: 0px;
+        padding: 5px 0px;
+        font-size: 1.2rem;
+      }
+
+      .credit-cards {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        position: relative;
+
+        img {
+          width: 115px;
+          padding: 10px;
+        }
+
+        .master-card {
+          width: 140px;
+        }
+
+        .diners {
+          width: 130px;
+        }
+
+        .transp {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background-color: var(--primary-color);
+          opacity: .6;
+        }
+      }
+    }
   }
 
-  section#contacts {
-    display: flex;
-    justify-content: center;
+  section#text-revel {
     padding: 40px 10px;
-    background-color: var(--primary-color);
 
-    .logo {
-      display: flex;
-      justify-content: right;
-      width: 48%;
-      min-height: 100px;
+    .revel {
+      overflow: hidden;
+      position: relative;
 
-      img {
-        width: 100px;
+      &::after {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        animation: text-revel 2s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+        background-color: var(--secondary-color);
+      }
+
+      p {
+        font-size: 2rem;
+        line-height: 1;
+        opacity: 0;
+        animation: fade 1ms 1s forwards;
+        color: var(--white);
       }
     }
 
-    .contact {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 48%;
-      min-height: 100px;
-      color: var(--white);
+    div {
+      text-align: center;
 
-      a {
-        text-decoration: none;
-        color: var(--primary-color);
+      img {
+        width: 110px;
+      }
+    }
+  }
+
+  section.footer {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .logo-footer {
+      padding: 20px;
+      width: 200px;
+    }
+
+    .map-icon {
+      width: 30px;
+    }
+
+    .address {
+      margin-top: 5px;
+      text-align: center;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: var(--secondary-color);
+
+      p {
+        margin-bottom: 0px;
+        color: var(--white);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      .developer {
+        margin-top: 10px;
+        font-size: .6rem;
+        color: var(--gray);
       }
     }
   }
@@ -406,5 +494,34 @@ main{
   100% {
       transform: translateY(0px);
       opacity: 1;
+  }
+}
+
+@keyframes bg-gradient {
+  0% {
+      background-position: 20 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 20 50%;
+  }
+}
+
+@keyframes text-revel {
+  from {
+    transform: translateX(-101%);
+  }
+  to {
+    transform: translateX(101%);
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
   }
 }
