@@ -12,4 +12,8 @@ export class ErroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public toBack(): void {
+    history.back();
+  }
+
 }

@@ -1,0 +1,93 @@
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  padding: 10px;
+  border-top: solid .5px rgba(0, 0, 0, 0.15);
+  background: rgb(255,255,255);
+  background: linear-gradient(18deg, rgba(255,255,255,1) 0%, rgba(166,206,55,0.9304096638655462) 82%, rgba(1,77,39,1) 96%);
+
+  .icon-f {
+    width: 75px;
+  }
+
+  .logo-f {
+    padding: 25px;
+    min-width: 230px;
+
+    img {
+      width: 120px;
+    }
+  }
+
+  .row-f {
+    width: 200px;
+    height: 1px;
+    background-color: var(--secondary-color);
+  }
+
+  h3 {
+    margin: 0px;
+    padding: 10px 0px;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+
+  p {
+    margin: 0px;
+    font-weight: 600;
+    color: var(--gray);
+  }
+
+  .address-f {
+    min-width: 230px;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .contacts-f {
+    min-width: 230px;
+
+    .number-whats {
+
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .redes-sociais-f {
+    min-width: 230px;
+  }
+}
+
+@keyframes bg-gradient {
+  0% {
+      background-position: 20 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 20 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  footer {
+    background: rgb(255,255,255);
+    background: linear-gradient(18deg, rgba(255,255,255,1) 69%, rgba(166,206,55,0.8883928571428571) 93%, rgba(1,77,39,1) 100%);
+
+    .logo-f {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+}

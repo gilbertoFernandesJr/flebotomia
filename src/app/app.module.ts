@@ -10,13 +10,17 @@ import { ErroComponent } from './components/erro/erro.component';
 
 //Componets Material
 import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ErroComponent
+    ErroComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
