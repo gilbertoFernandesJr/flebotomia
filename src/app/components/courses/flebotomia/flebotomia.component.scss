@@ -168,6 +168,22 @@ main{
     }
   }
 
+  section#video-what-learn {
+    background-color: var(--primary-color);
+
+    h3 {
+      color: var(--white);
+    }
+
+    .video-single {
+      padding: 1rem 0;
+      text-align: center;
+      video {
+        border-radius: 10px;
+      }
+    }
+  }
+
   section.students {
 
     .carousel-indicators {
