@@ -374,6 +374,35 @@ main{
         color: var(--gray);
       }
     }
+
+    .social-media {
+      display: flex;
+    }
+
+    .info-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 35px 10px 0px 10px;
+
+
+      img {
+        width: 35px;
+      }
+
+      .content {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--secondary-color);
+
+        a {
+          text-decoration: none;
+          color: var(--white);
+        }
+      }
+    }
   }
 
   .whatapp {
