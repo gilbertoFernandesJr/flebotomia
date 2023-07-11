@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoursesComponent } from './courses.component';
 import { FlebotomiaComponent } from './flebotomia/flebotomia.component';
+import { DegreeComponent } from './degree/degree.component';
 
 const routes: Routes = [
   {
-    path: '', component: FlebotomiaComponent,
+    path: '',
     children: [
-      {path: 'flebotomia', component: FlebotomiaComponent}
+      {path: 'flebotomia', component: FlebotomiaComponent},
+      {path: 'degree/:code', component: DegreeComponent}
     ]
   },
 ];

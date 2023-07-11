@@ -5,17 +5,23 @@ import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses.component';
 import { FlebotomiaComponent } from './flebotomia/flebotomia.component';
 import { AppMaterialModule } from 'src/app/shared/app-material/app-material.module';
+import { DegreeComponent } from './degree/degree.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
     CoursesComponent,
-    FlebotomiaComponent
+    FlebotomiaComponent,
+    DegreeComponent
   ],
   imports: [
     CommonModule,
     CoursesRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    HttpClientModule,
+    SharedModule
   ]
 })
 export class CoursesModule { }

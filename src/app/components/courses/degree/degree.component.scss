@@ -1,0 +1,52 @@
+section {
+  padding: 15px;
+}
+
+.certification {
+  margin: 0px auto 20px auto;
+  max-width: 750px;
+  padding: 5px;
+  border: solid var(--secondary-color) 1px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(166, 206, 55, 0.3);
+  background-color: rgba(166, 206, 55, 0.3);
+  color: var(--primary-color);
+
+  h1 {
+    padding-top: 12px;
+    font-size: 1.8rem;
+    font-weight: bolder;
+    color: var(--secondary-color);
+  }
+
+  .name {
+    font-family: 'Ephesis', cursive;
+    font-size: 1.5rem;
+  }
+}
+
+.logo-course {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 300px;
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+
+/*animation float*/
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+
+  50% {
+    transform: translatey(20px);
+  }
+
+  100% {
+    transform: translatey(0px);
+  }
+}
