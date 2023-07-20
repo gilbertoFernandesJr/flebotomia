@@ -1,3 +1,5 @@
+@import "../../../config-scss/rem-calc.scss";
+
 section {
   padding: 15px;
 }
@@ -25,6 +27,42 @@ section {
     font-size: 1.5rem;
   }
 }
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: var(--error);
+    color: var(--white);
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-icon {
+    opacity: .5;
+  }
+
+  mat-error {
+    margin: -15px 0 20px 0;
+    padding-left: 10px;
+    width: 100%;
+    text-align: start;
+  }
+
+  button {
+    margin-bottom: 10px;
+    width: rem-calc(250);
+  }
+}
+
 
 .logo-course {
   display: flex;

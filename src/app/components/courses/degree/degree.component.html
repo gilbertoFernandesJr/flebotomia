@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="custom-loader" *ngIf ="!degree.studentDTO.name"></div>
+<div class="custom-loader" *ngIf ="!degree.studentDTO.name && !error"></div>
 <section>
   <div class="certification" *ngIf ="degree.studentDTO.name">
     <h1>CERTIFICADO</h1>
@@ -7,8 +7,30 @@
     <p class="name">{{degree.studentDTO.name}}</p>
     <p>portador(a) do CPF: {{degree.studentDTO.cpf}}, concluiu o curso de Flebotomia, com carga horária de 200 horas</p>
   </div>
+
+  <div class="error" *ngIf="error.message">
+    <div class="card">
+      <h1>Certificado não reconhecido</h1>
+      <p>Por favor, use seu código de validação.</p>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Código inscrito em seu certificado</mat-label>
+      <input
+        matInput
+        placeholder="Código de verificação"
+        matInput [formControl]="codeFormControl">
+      <mat-icon matSuffix>workspace_premium</mat-icon>
+    </mat-form-field>
+    <mat-error *ngIf="codeInvalid">
+      Código inválido, por favor verifique.
+    </mat-error>
+    <button mat-stroked-button color="primary" (click)="tryForInput()">Verificar</button>
+  </div>
+
   <div class="logo-course">
     <img src="./assets/images/logo-curso.png" alt="logo do curso">
   </div>
 </section>
+
+
 <app-footer></app-footer>
