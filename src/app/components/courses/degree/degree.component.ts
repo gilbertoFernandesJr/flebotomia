@@ -56,11 +56,11 @@ export class DegreeComponent implements OnInit {
 
   public tryForInput(): void {
     if (this.codeFormControl.valid) {
-      this.findByCode(this.codeFormControl.value);
-      this.codeInvalid = false;
       this.error = {
         message: ''
       };
+      this.codeInvalid = false;
+      this.findByCode(this.codeFormControl.value);
     } else {
       this.codeInvalid = true;
     }
