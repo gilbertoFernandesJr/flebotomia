@@ -10,10 +10,9 @@ import { ErroComponent } from './components/erro/erro.component';
 
 //Componets Material
 import { AppMaterialModule } from './shared/app-material/app-material.module';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({

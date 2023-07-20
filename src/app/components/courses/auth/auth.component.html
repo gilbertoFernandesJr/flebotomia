@@ -1,0 +1,35 @@
+<main>
+  <app-header></app-header>
+  <section>
+    <div class="card">
+      <img src="./assets/images/logo-course-flebotomia.png" alt="logo-curso">
+      <form class="form" [formGroup]="authForm" (ngSubmit)="submitForm()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            type="email"
+            required
+            formControlName="email">
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input
+            matInput
+            placeholder="Senha"
+            type="password"
+            formControlName="password">
+          <mat-icon matSuffix>password</mat-icon>
+          <mat-hint>error</mat-hint>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary">Entrar</button>
+
+      </form>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</main>

@@ -8,20 +8,25 @@ import { AppMaterialModule } from 'src/app/shared/app-material/app-material.modu
 import { DegreeComponent } from './degree/degree.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthComponent } from './auth/auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     CoursesComponent,
     FlebotomiaComponent,
-    DegreeComponent
+    DegreeComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,
     CoursesRoutingModule,
     AppMaterialModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CoursesModule { }
