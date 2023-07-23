@@ -1,7 +1,6 @@
-import { StudentDTO } from './../../../models/student';
 import { Degree } from './../../../models/degree';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute  } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DegreeService } from 'src/app/services/degree.service';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -26,7 +25,7 @@ export class DegreeComponent implements OnInit {
     message: ''
   };
 
-  codeFormControl = new FormControl('', [Validators.minLength(60)]);
+  codeFormControl = new FormControl('', [Validators.minLength(60), Validators.required]);
   codeInvalid: boolean = false;
 
   constructor(
