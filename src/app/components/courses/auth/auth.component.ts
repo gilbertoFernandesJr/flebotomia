@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, FormControl, UntypedFormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -10,12 +10,12 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class AuthComponent implements OnInit {
 
   /*Form*/
-  authForm: FormGroup = this.formBuilder.group({
+  authForm: UntypedFormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {

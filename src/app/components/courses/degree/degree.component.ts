@@ -2,7 +2,7 @@ import { Degree } from './../../../models/degree';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DegreeService } from 'src/app/services/degree.service';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-degree',
@@ -25,7 +25,7 @@ export class DegreeComponent implements OnInit {
     message: ''
   };
 
-  codeFormControl = new FormControl('', [Validators.minLength(60), Validators.required]);
+  codeFormControl = new UntypedFormControl('', [Validators.minLength(60), Validators.required]);
   codeInvalid: boolean = false;
 
   constructor(
