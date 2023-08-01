@@ -12,3 +12,13 @@ header {
     }
   }
 }
+
+@media (min-width: 500px) {
+  header {
+    height: 80px;
+  }
+
+  .banner-ceslab {
+    width: 260px;
+  }
+}
