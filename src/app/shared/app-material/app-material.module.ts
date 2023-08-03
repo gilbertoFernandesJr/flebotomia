@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatRippleModule
   ]
 })
 export class AppMaterialModule { }

@@ -6,6 +6,19 @@
     </div>
 
     <div class="separator"></div>
+
+    <a
+      routerLink="/start/settings"
+      [routerLinkActive]="['active']"
+      (click)="drawer.toggle(); changeIcon()">
+      <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+      <span>Configurações</span>
+    </a>
+
+    <a href="" >
+      <mat-icon aria-hidden="false" aria-label="dashboard" id="nav-logout">logout</mat-icon>
+      <span>Logout</span>
+    </a>
   </mat-drawer>
 
   <div class="sidenav-content">
@@ -14,6 +27,7 @@
         <mat-icon *ngIf="!menuOpen" >menu</mat-icon>
         <mat-icon *ngIf="menuOpen">close</mat-icon>
       </button>
+      <button mat-flat-button class="btn-user">Fernandes</button>
     </div>
     <router-outlet></router-outlet>
 
