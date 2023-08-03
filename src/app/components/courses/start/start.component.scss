@@ -1,8 +1,81 @@
-.container {
+@import '../../../config-scss/rem-calc.scss';
+
+mat-drawer-container {
+  padding: 0;
   height: 100vh;
 
   mat-drawer {
-    width: 200px;
-    background-color: var(--primary-color);
+    &.sidenav {
+      width: rem-calc(200);
+      background-color: var(--primary-color);
+
+      .separator {
+        margin: 15px auto;
+        height: 1px;
+        width: 80%;
+        background-color: var(--secondary-color);
+      }
+
+      .logo {
+        display: flex;
+        margin: 20px auto;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: var(--white);
+
+        img {
+          margin: auto;
+          width: rem-calc(120);
+        }
+      }
+    }
+  }
+
+  .sidenav-content {
+    .toolbar {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      height: rem-calc(70);
+      background-color: rgba(148,148,148,.13);
+
+      button {
+        &:focus {
+          outline: 0px;
+        }
+      }
+    }
+  }
+}
+
+
+/*FIX Para o tamanho total do conteudo do nav*/
+.container {
+  width: 100%;
+}
+
+
+@media (min-width: 1200px){
+  .container {
+      max-width: 100%;
+  }
+}
+
+@media (min-width: 992px){
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px){
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 576px){
+  .container {
+    max-width: 100%;
   }
 }

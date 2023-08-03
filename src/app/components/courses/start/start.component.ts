@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent {
+  menuOpen: boolean = false;
 
+
+  changeIcon(): void {
+    this.menuOpen = !this.menuOpen;
+  }
 }

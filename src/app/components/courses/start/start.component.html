@@ -1,7 +1,23 @@
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" opened>Drawer content</mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <!--Conteudo do nav-->
+    <div class="logo">
+      <img src="../../../../assets/images/simbolo-ceslab-8.png" alt="logo oito remedios">
+    </div>
+
+    <div class="separator"></div>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <div class="toolbar">
+      <button mat-icon-button color="primary" aria-label="menu" (click)="drawer.toggle();changeIcon();">
+        <mat-icon *ngIf="!menuOpen" >menu</mat-icon>
+        <mat-icon *ngIf="menuOpen">close</mat-icon>
+      </button>
+    </div>
     <router-outlet></router-outlet>
-  </mat-drawer-content>
+
+  </div>
+
 </mat-drawer-container>
 
