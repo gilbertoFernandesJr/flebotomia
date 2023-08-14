@@ -11,7 +11,8 @@
             placeholder="Email"
             type="email"
             required
-            formControlName="email">
+            formControlName="email"
+            [(ngModel)]="credenciais.email">
           <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
 
@@ -21,9 +22,10 @@
             matInput
             placeholder="Senha"
             type="password"
-            formControlName="password">
+            formControlName="password"
+            [(ngModel)]="credenciais.password">
           <mat-icon matSuffix>password</mat-icon>
-          <mat-hint>error</mat-hint>
+          <mat-hint *ngIf="isError">Usuário ou senha inválido</mat-hint>
         </mat-form-field>
 
         <button mat-flat-button color="primary">Entrar</button>

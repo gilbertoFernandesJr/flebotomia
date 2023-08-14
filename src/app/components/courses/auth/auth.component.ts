@@ -1,5 +1,8 @@
+import { Credenciais } from './../../../models/credenciais';
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, FormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -9,19 +12,40 @@ import {UntypedFormBuilder, FormControl, UntypedFormGroup, Validators} from '@an
 })
 export class AuthComponent implements OnInit {
 
+  public credenciais: Credenciais = {
+    email: "",
+    password: ""
+  };
+
   /*Form*/
-  authForm: UntypedFormGroup = this.formBuilder.group({
+  public authForm: UntypedFormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
-  constructor(private formBuilder: UntypedFormBuilder) {
-  }
+  public isError: boolean = false;
+
+  constructor(
+      private formBuilder: UntypedFormBuilder,
+      private service: AuthService,
+      private router: Router
+  ) {}
 
   ngOnInit(): void {
 
   }
 
-  submitForm() {}
+  submitForm() {
+    if(this.authForm.valid) {
+
+      this.service.authenticate(this.credenciais).subscribe({
+        next: (res) => {
+          this.service.successAuth(res.body);
+          this.router.navigate(['courses/start/all']);
+        },
+        error: (error) => this.isError = true
+      })
+    }
+  }
 
 }

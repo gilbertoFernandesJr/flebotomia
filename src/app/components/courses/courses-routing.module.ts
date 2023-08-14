@@ -4,6 +4,7 @@ import { FlebotomiaComponent } from './flebotomia/flebotomia.component';
 import { DegreeComponent } from './degree/degree.component';
 import { AuthComponent } from './auth/auth.component';
 import { CoursesComponent } from './courses.component';
+import { StartGuard } from 'src/app/guards/start.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +13,10 @@ const routes: Routes = [
       {path: 'auth', component: AuthComponent},
       {path: 'flebotomia', component: FlebotomiaComponent},
       {path: 'degree/:code', component: DegreeComponent},
-      {path: 'start', loadChildren: () => import('./start/start.module').then(m => m.StartModule)}
+      {
+        path: 'start',
+        loadChildren: () => import('./start/start.module').then(m => m.StartModule), canActivateChild: [StartGuard]
+      }
     ]
   },
 ];

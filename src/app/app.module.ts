@@ -12,7 +12,6 @@ import { ErroComponent } from './components/erro/erro.component';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
 
 
 @NgModule({

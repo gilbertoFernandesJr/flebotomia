@@ -10,6 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+
+// Get token and add all requests of the front to back
+// AuthService save the token no localStorage
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 
 @NgModule({
@@ -26,7 +33,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:8080", "ceslab-back-production.up.railway.app"]
+        // For default insert on the header the authorization by token
+      }
+    })
   ]
 })
-export class CoursesModule { }
+export class CoursesModule {}

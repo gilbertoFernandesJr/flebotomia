@@ -37,6 +37,7 @@ mat-drawer-container {
         margin-top: 25px;
         text-decoration: none;
         color: var(--white);
+        cursor: pointer;
 
         mat-icon {
           width: rem-calc(35);

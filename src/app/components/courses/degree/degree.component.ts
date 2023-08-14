@@ -49,7 +49,6 @@ export class DegreeComponent implements OnInit {
     this.route.params.subscribe(params => {
       code = params['code'];
     })
-    console.log("código: "+code);
     this.findByCode(code);
   }
 
