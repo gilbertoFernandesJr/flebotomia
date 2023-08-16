@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,12 +24,11 @@ export class AuthComponent implements OnInit {
     password: ['', Validators.required]
   });
 
-  public isError: boolean = false;
-
   constructor(
       private formBuilder: UntypedFormBuilder,
       private service: AuthService,
-      private router: Router
+      private router: Router,
+      private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +43,10 @@ export class AuthComponent implements OnInit {
           this.service.successAuth(res.body);
           this.router.navigate(['courses/start/all']);
         },
-        error: (error) => this.isError = true
+        error: (error) => {
+          this.toastr.error('Usuário ou senha inválido.');
+          console.log(error);
+        }
       })
     }
   }

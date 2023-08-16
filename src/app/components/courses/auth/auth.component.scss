@@ -5,6 +5,11 @@ main {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+
+  .ngx-toastr {
+    background: var(--error);
+  }
+
   section {
     margin: auto;
     .card {
