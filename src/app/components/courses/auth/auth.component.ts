@@ -38,9 +38,12 @@ export class AuthComponent implements OnInit {
   submitForm() {
     if(this.authForm.valid) {
 
+      this.credenciais.email = this.authForm.get(['email'])?.value;
+      this.credenciais.password = this.authForm.get(['password'])?.value;
+
       this.service.authenticate(this.credenciais).subscribe({
         next: (res) => {
-          this.service.successAuth(res.body);
+          this.service.successAuth(res.token);
           this.router.navigate(['courses/start/all']);
         },
         error: (error) => {
