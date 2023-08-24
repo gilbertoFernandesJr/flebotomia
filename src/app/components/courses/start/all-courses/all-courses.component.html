@@ -1,8 +1,12 @@
 <main>
   <h2>Cursos</h2>
   <div class="content">
-    <div class="card-course" matRipple>
-      <p>Flebotomia</p>
+    <div
+      *ngFor="let course of courses"
+      class="card-course"
+      matRipple
+      (click)="redirectToCourse(course.id, course.name)">
+      <p>{{course.name | uppercase}}</p>
     </div>
   </div>
 </main>

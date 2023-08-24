@@ -38,6 +38,7 @@ export class DegreeComponent implements OnInit {
   }
 
   private findByCode(code: string): void {
+    localStorage.clear();
     this.service.findByCode(code).subscribe({
       next: (res) => this.degree = res,
       error: (e) => this.error = e.error

@@ -1,0 +1,12 @@
+<main>
+  <h2>{{course.name | capitalize}}</h2>
+  <div class="content">
+    <div
+      *ngFor="let team of teams"
+      class="card-course"
+      [ngClass]="{'completed': team.completed}"
+      matRipple>
+      <p>{{team.name | uppercase}}</p>
+    </div>
+  </div>
+</main>

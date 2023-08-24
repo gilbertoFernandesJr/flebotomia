@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Course } from 'src/app/models/course';
 import { AllCoursesService } from 'src/app/services/all-courses.service';
 
 @Component({
@@ -8,12 +10,21 @@ import { AllCoursesService } from 'src/app/services/all-courses.service';
 })
 export class AllCoursesComponent {
 
-  constructor(private service: AllCoursesService) {}
+  courses: Course[] = [];
+
+  constructor(
+    private service: AllCoursesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.service.getCourses().subscribe({
-      next: (res) => console.log(res),
+      next: (res) => this.courses = res,
       error: (error) => console.log(error)
     })
+  }
+
+  public redirectToCourse(id: any, name: string): void {
+    this.router.navigate([`courses/start/teams/${name}/${id}`]);
   }
 }

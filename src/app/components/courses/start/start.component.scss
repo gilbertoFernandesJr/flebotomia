@@ -9,6 +9,10 @@ mat-drawer-container {
       width: rem-calc(200);
       background-color: var(--primary-color);
 
+      .active {
+        color: var(--light-green-color);
+      }
+
       .separator {
         margin: 15px auto;
         height: 1px;

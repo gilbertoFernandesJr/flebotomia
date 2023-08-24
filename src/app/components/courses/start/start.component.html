@@ -8,7 +8,17 @@
     <div class="separator"></div>
 
     <a
-      routerLink="/start/settings"
+      [routerLinkActive]="['active']"
+      routerLink="all"
+      (click)="drawer.toggle(); changeIcon()">
+      <mat-icon aria-hidden="false" aria-label="settings" class="material-symbols-outlined">
+        auto_stories
+      </mat-icon>
+      <span >Cursos</span>
+    </a>
+
+    <a
+      routerLink="/settings"
       [routerLinkActive]="['active']"
       (click)="drawer.toggle(); changeIcon()">
       <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>

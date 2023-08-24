@@ -30,5 +30,5 @@ $ceslab-theme: mat.define-light-theme((
 @import 'app/config-scss/reset.scss';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
 button:focus { outline: 0px; }
