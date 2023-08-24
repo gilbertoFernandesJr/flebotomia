@@ -24,7 +24,8 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
   exports: [
     HeaderComponent,
     FooterComponent,
-    FormsModule
+    FormsModule,
+    CapitalizePipe
   ]
 })
 export class SharedModule { }

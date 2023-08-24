@@ -5,7 +5,7 @@ import { StartRoutingModule } from './start-routing.module';
 import { AppMaterialModule } from 'src/app/shared/app-material/app-material.module';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { TeamsComponent } from './teams/teams.component';
-import { CapitalizePipe } from 'src/app/shared/pipes/capitalize.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -13,13 +13,13 @@ import { CapitalizePipe } from 'src/app/shared/pipes/capitalize.pipe';
   declarations: [
     StartComponent,
     AllCoursesComponent,
-    TeamsComponent,
-    CapitalizePipe
+    TeamsComponent
   ],
   imports: [
     CommonModule,
     StartRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class StartModule { }
