@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRippleModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    MatPaginatorModule
   ]
 })
 export class AppMaterialModule { }

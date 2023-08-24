@@ -5,6 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { PtBrMatPaginatorIntl } from './app-material/PtBrMatPaginatorIntl';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 
 
@@ -26,6 +28,8 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     FooterComponent,
     FormsModule,
     CapitalizePipe
-  ]
+  ],
+  // Traduzindo o Paginator
+  providers: [{provide: MatPaginatorIntl, useClass: PtBrMatPaginatorIntl}]
 })
 export class SharedModule { }

@@ -12,7 +12,8 @@ export class TeamService {
 
   OnInit() {}
 
-  public getTeans(): Observable<any> {
+  public getTeans(page?: number): Observable<any> {
+    if (page != 0) return this.http.get<any>(`${API_CONFIG.baseUrl}/teams?page=${page}`);
     return this.http.get<any>(`${API_CONFIG.baseUrl}/teams`);
   }
 }
