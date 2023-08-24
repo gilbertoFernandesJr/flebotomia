@@ -5,7 +5,8 @@
       *ngFor="let team of teams"
       class="card-course"
       [ngClass]="{'completed': team.completed}"
-      matRipple>
+      matRipple
+      (click)="openTeam(team.name, team.id)">
       <p>{{team.name | uppercase}}</p>
     </div>
     <mat-paginator #paginator

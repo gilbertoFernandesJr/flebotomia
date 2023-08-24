@@ -3,6 +3,7 @@ import { TeamService } from './../../../../services/team.service';
 import { Component } from '@angular/core';
 import { Course } from 'src/app/models/course';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teams',
@@ -15,10 +16,16 @@ export class TeamsComponent {
 
   teams: Team[] = [];
 
-  constructor(private service: TeamService){}
+  constructor(
+    private service: TeamService,
+    private router: Router){}
 
   ngOnInit(): void {
     this.getResponseBack(this.pageIndex);
+  }
+
+  openTeam(name: string, idTeam: number): void {
+    this.router.navigate([`courses/start/students/${name}/${idTeam}`]);
   }
 
   length = 0; // Come of the back, all elements on the DB

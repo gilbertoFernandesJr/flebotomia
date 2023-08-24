@@ -1,0 +1,18 @@
+@import '../../../../config-scss/rem-calc.scss';
+
+main {
+  padding: rem-calc(20);
+
+  h2 {
+    color: var(--primary-color);
+  }
+
+  mat-expansion-panel {
+    margin-bottom: 10px;
+
+    .mat-expansion-panel-header-description {
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+}
