@@ -34,4 +34,12 @@ export class StudentsComponent {
       error: (error) => console.log(error)
     })
   }
+
+  getRegistration(student: Student): any {
+    let valueReceived;
+    student.registrations?.forEach(r => {
+      if (r.team.id == this.idTeam) valueReceived = r.received;
+    });
+    return valueReceived;
+  }
 }

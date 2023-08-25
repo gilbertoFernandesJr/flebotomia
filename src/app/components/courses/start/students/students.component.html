@@ -11,14 +11,36 @@
             <mat-icon>account_circle</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-form-field appearance="fill">
-          <mat-label>First name</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Age</mat-label>
-          <input matInput type="number" min="1">
-        </mat-form-field>
+        <div class="datas">
+          <div class="data-basic">
+            <p>CPF:</p>
+            <span>
+              {{student.cpf}}
+            </span>
+          </div>
+          <div class="data-basic">
+            <p>Telefone:</p>
+            <span>
+              {{student.phone | phone}}
+            </span>
+          </div>
+          <div class="data-basic">
+            <p>Nascimento:</p>
+            <span>
+              {{student.dateBirth | date : 'dd/MM/yyyy'}}
+            </span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h3>Valores recebidos</h3>
+        <div class="datas">
+          <div class="data-basic">
+            <p>Matricula:</p>
+            <span>
+              {{ getRegistration(student) | currency }}
+            </span>
+          </div>
+        </div>
       </mat-expansion-panel>
     </div>
   </div>

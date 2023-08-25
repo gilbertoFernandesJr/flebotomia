@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { PtBrMatPaginatorIntl } from './app-material/PtBrMatPaginatorIntl';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { PhonePipe } from './pipes/phone.pipe';
 
 
 
@@ -14,7 +15,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    PhonePipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
     HeaderComponent,
     FooterComponent,
     FormsModule,
-    CapitalizePipe
+    CapitalizePipe,
+    PhonePipe
   ],
   // Traduzindo o Paginator
   providers: [{provide: MatPaginatorIntl, useClass: PtBrMatPaginatorIntl}]

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,12 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
+
+// config currency to R$
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(ptBr);
 
 
 @NgModule({
@@ -30,7 +36,9 @@ import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
     SharedModule
   ],
   providers: [
-    AuthInterceptorProvider
+    AuthInterceptorProvider,
+    {provide: LOCALE_ID, useValue: 'pt'},
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
   ],
   bootstrap: [AppComponent]
 })
