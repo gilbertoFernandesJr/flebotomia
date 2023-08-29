@@ -3,8 +3,29 @@
 main {
   padding: rem-calc(20);
 
-  h2 {
-    color: var(--primary-color);
+  .back-page {
+    margin-bottom: rem-calc(10);
+    color: var(--gray);
+  }
+
+  .header-team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 4px 2px 10px var(--secondary-color);
+    .name-team {
+      margin-left: rem-calc(20);
+      h2 {
+        margin: 0;
+        color: var(--primary-color);
+      }
+      p {
+        margin: 0;
+      }
+    }
   }
 
   mat-expansion-panel {
@@ -42,6 +63,11 @@ main {
       margin: 5px 0;
       height: 2px;
       background-color: var(--secondary-color);
+    }
+
+    .btn-edit-student {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }

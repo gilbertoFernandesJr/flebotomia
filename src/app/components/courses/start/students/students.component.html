@@ -1,5 +1,18 @@
 <main>
-  <h2>{{nameTeam | uppercase}}</h2>
+  <button mat-icon-button aria-label="voltar" class="back-page" (click)="back()">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+
+  <div class="header-team">
+    <div class="name-team">
+      <h2>Turma {{nameTeam | uppercase}}</h2>
+      <p>Quantidade de alunos: {{students.length}}</p>
+    </div>
+    <button mat-mini-fab color="primary" aria-label="Adicionar estudante">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </div>
+
   <div class="students">
     <div class="student" *ngFor="let student of students">
       <mat-expansion-panel>
@@ -8,7 +21,7 @@
             {{student.name}}
           </mat-panel-title>
           <mat-panel-description>
-            <mat-icon>account_circle</mat-icon>
+            <mat-icon color="primary">account_circle</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="datas">
@@ -40,6 +53,18 @@
               {{ getRegistration(student) | currency }}
             </span>
           </div>
+
+          <div
+            class="data-basic"
+            *ngFor="let payment of student.monthPayments; let i = index">
+            <p>Mensalidade ({{i+1}}):</p>
+            <span>
+              {{ payment.received | currency }}
+            </span>
+          </div>
+        </div>
+        <div class="btn-edit-student">
+          <button mat-stroked-button color="primary">Editar</button>
         </div>
       </mat-expansion-panel>
     </div>

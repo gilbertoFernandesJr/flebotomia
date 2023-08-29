@@ -42,4 +42,8 @@ export class StudentsComponent {
     });
     return valueReceived;
   }
+
+  back(): void {
+    history.back();
+  }
 }

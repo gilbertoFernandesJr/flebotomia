@@ -1,3 +1,4 @@
+import { MonthPayment } from "./month_payment";
 import { Registration } from "./registration";
 
 export interface Student {
@@ -6,5 +7,6 @@ export interface Student {
   phone?: string,
   dateBirth?: string,
   cpf: string,
-  registrations?: Registration[];
+  registrations?: Registration[],
+  monthPayments?: MonthPayment[]
 }
