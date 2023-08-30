@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -12,7 +12,8 @@ export class StudentsComponent {
 
   constructor(
     private service: StudentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   students: Student[] = [];
@@ -29,7 +30,6 @@ export class StudentsComponent {
     this.service.getStudentsByTeam(this.idTeam).subscribe({
       next: (res) => {
         this.students = res;
-        console.log(res);
       },
       error: (error) => console.log(error)
     })
@@ -41,6 +41,10 @@ export class StudentsComponent {
       if (r.team.id == this.idTeam) valueReceived = r.received;
     });
     return valueReceived;
+  }
+
+  editStudent(id: number): void {
+    this.router.navigate([`courses/start/students/${this.nameTeam}/${this.idTeam}/${id}`]);
   }
 
   back(): void {

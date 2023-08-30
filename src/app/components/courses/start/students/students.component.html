@@ -64,7 +64,9 @@
           </div>
         </div>
         <div class="btn-edit-student">
-          <button mat-stroked-button color="primary">Editar</button>
+          <button mat-stroked-button color="primary" (click)="editStudent(student.id)">
+            Editar
+          </button>
         </div>
       </mat-expansion-panel>
     </div>

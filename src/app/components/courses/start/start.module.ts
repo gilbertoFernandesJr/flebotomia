@@ -7,6 +7,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { TeamsComponent } from './teams/teams.component';
 import { StudentsComponent } from './students/students.component';
+import { StudentComponent } from './student/student.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -15,13 +17,15 @@ import { StudentsComponent } from './students/students.component';
     StartComponent,
     AllCoursesComponent,
     TeamsComponent,
-    StudentsComponent
+    StudentsComponent,
+    StudentComponent
   ],
   imports: [
     CommonModule,
     StartRoutingModule,
     AppMaterialModule,
-    SharedModule
+    SharedModule,
+    MatNativeDateModule
   ]
 })
 export class StartModule { }

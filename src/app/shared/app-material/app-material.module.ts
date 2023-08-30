@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRippleModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     MatSidenavModule,
     MatRippleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule
   ]
 })
 export class AppMaterialModule { }

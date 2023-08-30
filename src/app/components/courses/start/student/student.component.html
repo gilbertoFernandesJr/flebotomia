@@ -1,0 +1,75 @@
+<main>
+  <h2>Editar Aluno</h2>
+  <div class="basic-informations">
+    <h3>Informações</h3>
+    <p>
+      <mat-form-field appearance="outline" class="max-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome completo" [(ngModel)]="student.name">
+      </mat-form-field>
+    </p>
+    <div class="flex-wrap">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="Ex. 999.999.999-99" [(ngModel)]="student.cpf">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="(81) 99999-9999" [(ngModel)]="student.phone">
+        </mat-form-field>
+      </p>
+      <p><!--fill-->
+        <mat-form-field class="i-date" appearance="outline">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="student.dateBirth">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="divider"></div>
+    <h3>Matrícula</h3>
+    <div class="flex-wrap" *ngFor="let registration of student.registrations">
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input matInput placeholder="R$ 0,00" readonly="true" [value]="registration.price">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Desconto</mat-label>
+        <input matInput placeholder="R$ 0,00">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Recebido</mat-label>
+        <input matInput placeholder="R$ 0,00" [value]="registration.received">
+      </mat-form-field>
+    </div>
+
+    <div class="divider"></div>
+    <h3>Mensalidades</h3>
+    <div class="flex-wrap">
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input matInput placeholder="R$ 0,00">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Desconto</mat-label>
+        <input matInput placeholder="R$ 0,00">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Recebido</mat-label>
+        <input matInput placeholder="R$ 0,00">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="btns">
+    <button mat-button color="primary" (click)="back()">Cancelar</button>
+    <button mat-raised-button color="primary">Salvar</button>
+  </div>
+</main>
