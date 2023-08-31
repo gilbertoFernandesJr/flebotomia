@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthComponent implements OnInit {
 
+  submit: boolean = false;
+
   public credenciais: Credenciais = {
     email: "",
     password: ""
@@ -38,6 +40,8 @@ export class AuthComponent implements OnInit {
   submitForm() {
     if(this.authForm.valid) {
 
+      this.submit = true;
+
       this.credenciais.email = this.authForm.get(['email'])?.value;
       this.credenciais.password = this.authForm.get(['password'])?.value;
 
@@ -48,6 +52,7 @@ export class AuthComponent implements OnInit {
         },
         error: (error) => {
           this.toastr.error('Usuário ou senha inválido.');
+          this.submit = false;
           console.log(error);
         }
       })
