@@ -1,75 +1,143 @@
 <main>
-  <h2>Editar Aluno</h2>
-  <div class="basic-informations">
-    <h3>Informações</h3>
-    <p>
-      <mat-form-field appearance="outline" class="max-width">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Nome completo" [(ngModel)]="student.name">
-      </mat-form-field>
-    </p>
-    <div class="flex-wrap">
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>CPF</mat-label>
-          <input matInput placeholder="Ex. 999.999.999-99" [(ngModel)]="student.cpf">
+  <button
+    mat-icon-button aria-label="voltar" class="back-page"
+    (click)="back()">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+  <h2>Editar Aluno:  {{student.name}}</h2>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+    <mat-tab label="Dados Cadastrais">
+      <div class="basic-informations">
+        <mat-form-field appearance="outline" class="max-width">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome completo" [(ngModel)]="student.name">
         </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Telefone</mat-label>
-          <input matInput placeholder="(81) 99999-9999" [(ngModel)]="student.phone">
+        <div class="flex-wrap">
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="Ex. 999.999.999-99" [(ngModel)]="student.cpf">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="(81) 99999-9999" [(ngModel)]="student.phone">
+          </mat-form-field>
+          <mat-form-field class="i-date" appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="student.dateBirth">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="flex-end">
+          <button mat-raised-button color="primary" class="btn-update">
+            Atualizar
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Matrícula">
+     <div class="basic-informations">
+      <div class="flex-wrap" *ngFor="let registration of student.registrations">
+        <div class="part-money">
+          <div class="content-value-payment">
+            <h3 class="value-payment">Valor</h3>
+            <P class="value-payment">{{registration.price | currency}}</P>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Desconto</mat-label>
+            <input matInput placeholder="R$ 0,00" [value]="registration.discount"
+            [(ngModel)]="registrationReative.discount"
+            (input)="calcDebitMat()">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Total pago</mat-label>
+            <input matInput placeholder="R$ 0,00" [value]="registration.received"
+            [(ngModel)]="registrationReative.received"
+            (input)="calcDebitMat()">
+          </mat-form-field>
+
+          <p class="value-debit">Débito: {{registrationReative.debit | currency}}</p>
+        </div>
+
+        <div class="part-date">
+          <div class="content-date-payment">
+            <h3 class="date-payment">Vencimento</h3>
+            <p class="date-payment">04/09/2023</p>
+          </div>
+          <mat-form-field class="i-date" appearance="outline">
+            <mat-label>Data do Pagamento</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="flex-end">
+        <button mat-raised-button color="primary" class="btn-update">
+          Atualizar
+        </button>
+      </div>
+     </div>
+    </mat-tab>
+
+    <mat-tab label="Mensalidade">
+      <div class="basic-informations">
+
+        <mat-form-field appearance="outline" class="max-width">
+          <mat-label>Mensalidade</mat-label>
+          <mat-select [(value)]="selectedMonthPayment">
+            <mat-option [value]="i" *ngFor="let m of monthPaymentsReative; let i = index">
+              {{ i }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
-      </p>
-      <p><!--fill-->
-        <mat-form-field class="i-date" appearance="outline">
-          <mat-label>Data de Nascimento</mat-label>
-          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="student.dateBirth">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </p>
-    </div>
-    <div class="divider"></div>
-    <h3>Matrícula</h3>
-    <div class="flex-wrap" *ngFor="let registration of student.registrations">
-      <mat-form-field appearance="outline">
-        <mat-label>Valor</mat-label>
-        <input matInput placeholder="R$ 0,00" readonly="true" [value]="registration.price">
-      </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Desconto</mat-label>
-        <input matInput placeholder="R$ 0,00">
-      </mat-form-field>
+        <div *ngFor="let monthPayment of monthPaymentsReative; let i = index">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Recebido</mat-label>
-        <input matInput placeholder="R$ 0,00" [value]="registration.received">
-      </mat-form-field>
-    </div>
-
-    <div class="divider"></div>
-    <h3>Mensalidades</h3>
-    <div class="flex-wrap">
-      <mat-form-field appearance="outline">
-        <mat-label>Valor</mat-label>
-        <input matInput placeholder="R$ 0,00">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Desconto</mat-label>
-        <input matInput placeholder="R$ 0,00">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Recebido</mat-label>
-        <input matInput placeholder="R$ 0,00">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="btns">
-    <button mat-button color="primary" (click)="back()">Cancelar</button>
-    <button mat-raised-button color="primary">Salvar</button>
-  </div>
+          <div class="each-month flex-wrap" *ngIf="i == selectedMonthPayment">
+            <div class="part-money">
+              <div class="content-value-payment">
+                <h3 class="value-payment">Valor</h3>
+                <P class="value-payment">{{monthPayment.price | currency}}</P>
+              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>Desconto</mat-label>
+                <input matInput placeholder="R$ 0,00" [value]="monthPayment.discount"
+                [(ngModel)]="monthPaymentsReative[i].discount"
+                (input)="calcDebitMonthPayment(i)">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Total pago</mat-label>
+                <input matInput placeholder="R$ 0,00" [value]="monthPayment.received"
+                [(ngModel)]="monthPaymentsReative[i].received"
+                (input)="calcDebitMonthPayment(i)">
+              </mat-form-field>
+              <p class="value-debit">Débito: {{monthPaymentsReative[i].debit | currency}}</p>
+            </div>
+            <div class="part-date">
+              <div class="content-date-payment">
+                <h3 class="date-payment">Vencimento</h3>
+                <p class="date-payment">04/09/2023</p>
+              </div>
+              <mat-form-field class="i-date" appearance="outline">
+                <mat-label>Data do Pagamento</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="flex-end">
+          <button mat-raised-button color="primary" class="btn-update">
+            Atualizar
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </main>

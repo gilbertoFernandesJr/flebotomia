@@ -6,5 +6,7 @@ export interface MonthPayment {
   payday?: string
   price?: number,
   received?: number,
+  discount?: number,
+  debit?: number,
   team: Team
 }
