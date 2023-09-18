@@ -5,6 +5,8 @@ import { StudentService } from 'src/app/services/student.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MonthPayment } from 'src/app/models/month_payment';
 import { Registration } from 'src/app/models/registration';
+import { RegistrationService } from 'src/app/services/registration.service';
+import { RegistrationUpdate } from 'src/app/dto/registration-update';
 
 @Component({
   selector: 'app-student',
@@ -36,7 +38,8 @@ export class StudentComponent {
   constructor(
     private route: ActivatedRoute,
     private service: StudentService,
-    private formBuilder: UntypedFormBuilder
+    private formBuilder: UntypedFormBuilder,
+    private registrationSerive: RegistrationService
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
@@ -58,9 +61,7 @@ export class StudentComponent {
   numbersReatives(): void {
     //Calc debit of registration
     this.student.registrations?.forEach(r => {
-      this.registrationReative.price = r.price;
-      this.registrationReative.discount = r.discount
-      this.registrationReative.received = r.received;
+      this.registrationReative = r;
     });
     this.calcDebitMat();
 
@@ -85,7 +86,28 @@ export class StudentComponent {
     this.monthPaymentsReative[i].received!;
   }
 
-  updateStudent(): void {}
+  updateStudent(): void {
+    console.log(`Update student ${this.student.monthPayments}`);
+    this.service.update(this.student).subscribe({
+      next: res => alert('Estudante atualizado com sucesso!'),
+      error: error => console.log(error)
+    });
+  }
+
+  updateRegistration(): void {
+    const registrationDto: RegistrationUpdate = {
+      id: this.registrationReative.id,
+      price: this.registrationReative.price,
+      received: this.registrationReative.received,
+      payday: this.registrationReative.payday,
+      discount: this.registrationReative.discount,
+      paid: this.registrationReative.paid
+    }
+    this.registrationSerive.update(registrationDto).subscribe({
+      next: (res) => alert('Matrícula atualizada'),
+      error: (error) => console.log(error)
+    });
+  }
 
   back(): void {
     history.back();

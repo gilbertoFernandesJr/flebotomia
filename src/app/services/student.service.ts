@@ -20,4 +20,8 @@ export class StudentService {
   public findById(id: number): Observable<Student> {
     return this.http.get<Student>(`${API_CONFIG.baseUrl}/students/${id}`);
   }
+
+  public update(student: Student): Observable<Student> {
+    return this.http.put<Student>(`${API_CONFIG.baseUrl}/students`, student);
+  }
 }

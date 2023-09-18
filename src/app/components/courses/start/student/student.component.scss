@@ -71,6 +71,14 @@ main {
       font-weight: 400;
       color: var(--error);
     }
+
+    .danger-zone {
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid var(--error);
+      border-radius: 10px;
+      color: var(--error);
+    }
   }
 
   .flex-end {
@@ -79,8 +87,7 @@ main {
     align-items: center;
   }
 
-  .btn-update {
-    margin-left: rem-calc(20);
+  .btn-actions {
     width: rem-calc(150);
   }
 }
