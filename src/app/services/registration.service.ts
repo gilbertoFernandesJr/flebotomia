@@ -15,6 +15,7 @@ export class RegistrationService {
   OnInit() {}
 
   public update(registration: RegistrationUpdate): Observable<RegistrationUpdate> {
-    return this.http.put<RegistrationUpdate>(`${API_CONFIG.baseUrl}/registrations`, registration);
+    const id = registration.id;
+    return this.http.put<RegistrationUpdate>(`${API_CONFIG.baseUrl}/registrations/${id}`, registration);
   }
 }

@@ -22,6 +22,7 @@ export class StudentService {
   }
 
   public update(student: Student): Observable<Student> {
-    return this.http.put<Student>(`${API_CONFIG.baseUrl}/students`, student);
+    const id = student.id;
+    return this.http.put<Student>(`${API_CONFIG.baseUrl}/students/${id}`, student);
   }
 }
