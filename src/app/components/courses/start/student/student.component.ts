@@ -7,6 +7,8 @@ import { MonthPayment } from 'src/app/models/month_payment';
 import { Registration } from 'src/app/models/registration';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { RegistrationUpdate } from 'src/app/dto/registration-update';
+import { MonthPaymentUpdate } from 'src/app/dto/month-payment-update';
+import { MonthPaymentSerive } from 'src/app/services/month-payment.service';
 
 @Component({
   selector: 'app-student',
@@ -39,7 +41,8 @@ export class StudentComponent {
     private route: ActivatedRoute,
     private service: StudentService,
     private formBuilder: UntypedFormBuilder,
-    private registrationSerive: RegistrationService
+    private registrationSerive: RegistrationService,
+    private monthPaymentSerive: MonthPaymentSerive
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
@@ -107,6 +110,25 @@ export class StudentComponent {
       next: (res) => alert('Matrícula atualizada'),
       error: (error) => console.log(error)
     });
+  }
+
+  updateMonthPayment(): void {
+    var monthPayment = this.monthPaymentsReative[this.selectedMonthPayment];
+
+    const monthPaymentDto: MonthPaymentUpdate = {
+      id: monthPayment.id,
+      price: monthPayment.price,
+      received: monthPayment.received,
+      payday: monthPayment.payday,
+      discount: monthPayment.discount,
+      paid: monthPayment.paid
+    }
+
+    this.monthPaymentSerive.update(monthPaymentDto).subscribe({
+      next: res => alert("Matrícula atualizada com sucesso!"),
+      error: error => console.log(error)
+    });
+
   }
 
   back(): void {

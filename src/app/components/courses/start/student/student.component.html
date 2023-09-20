@@ -138,7 +138,9 @@
               </div>
               <mat-form-field class="i-date" appearance="outline">
                 <mat-label>Data do Pagamento</mat-label>
-                <input matInput [matDatepicker]="picker2">
+                <input matInput [matDatepicker]="picker2"
+                [value]="monthPayment.payday"
+                [(ngModel)]="monthPaymentsReative[i].payday">
                 <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
@@ -146,7 +148,8 @@
           </div>
         </div>
         <div class="flex-end">
-          <button mat-raised-button color="primary" class="btn-actions">
+          <button mat-raised-button color="primary" class="btn-actions"
+          (click)="updateMonthPayment()">
             Atualizar
           </button>
         </div>
