@@ -18,8 +18,11 @@ import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
-registerLocaleData(ptBr);
+//Mask
+import { NgxMaskModule } from 'ngx-mask'
 
+// GMT-0234 (Horário Padrão de Brasília) -02:34 utc
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -33,12 +36,13 @@ registerLocaleData(ptBr);
     BrowserAnimationsModule,
     AppMaterialModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     AuthInterceptorProvider,
     {provide: LOCALE_ID, useValue: 'pt'},
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'}
   ],
   bootstrap: [AppComponent]
 })

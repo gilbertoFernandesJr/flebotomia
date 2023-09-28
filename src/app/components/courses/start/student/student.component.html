@@ -9,32 +9,48 @@
 
     <mat-tab label="Dados Cadastrais">
       <div class="basic-informations">
-        <mat-form-field appearance="outline" class="max-width">
-          <mat-label>Nome</mat-label>
-          <input matInput placeholder="Nome completo" [(ngModel)]="student.name">
-        </mat-form-field>
-        <div class="flex-wrap">
-          <mat-form-field appearance="outline">
-            <mat-label>CPF</mat-label>
-            <input matInput placeholder="Ex. 999.999.999-99" [(ngModel)]="student.cpf">
+        <form [formGroup]="studentForm">
+          <mat-form-field appearance="outline" class="max-width">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Nome completo" formControlName="name">
           </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Telefone</mat-label>
-            <input matInput placeholder="(81) 99999-9999" [(ngModel)]="student.phone">
-          </mat-form-field>
-          <mat-form-field class="i-date" appearance="outline">
-            <mat-label>Data de Nascimento</mat-label>
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="student.dateBirth">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="flex-end">
-          <button mat-raised-button color="primary" class="btn-actions"
-          (click)="updateStudent()">
-            Atualizar
-          </button>
-        </div>
+
+          <div class="flex-wrap">
+            <mat-form-field appearance="outline">
+              <mat-label>CPF</mat-label>
+              <input matInput placeholder="Ex. 999.999.999-99"
+              formControlName="cpf"
+              mask="000.000.000-00">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Telefone</mat-label>
+              <input matInput placeholder="(81) 99999-9999"
+              formControlName="phone"
+              mask="(00) 00000-0000">
+            </mat-form-field>
+
+            <mat-form-field class="i-date" appearance="outline">
+                <mat-label>Data de Nascimento</mat-label>
+                <input matInput [matDatepicker]="dateBirth"
+                [min]="minDate" [max]="maxDate"
+                formControlName="dateBirth" readonly="true">
+                <mat-datepicker-toggle matIconSuffix [for]="dateBirth">
+                </mat-datepicker-toggle>
+                <mat-datepicker #dateBirth></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="flex-end">
+            <span *ngIf="studentUpdateHasError" class="form-error">
+              Preencha todos os campos obrigatórios *
+            </span>
+            <button mat-raised-button color="primary" class="btn-actions"
+            (click)="updateStudent()">
+              Atualizar
+            </button>
+          </div>
+        </form>
+
         <div class="danger-zone">
           <h3>Zona de perigo</h3>
           <button mat-stroked-button color="warn" class="btn-actions">
@@ -55,15 +71,17 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Desconto</mat-label>
-            <input matInput placeholder="R$ 0,00" [value]="registration.discount"
+            <input matInput placeholder="R$ 0,00"
             [(ngModel)]="registrationReative.discount"
+            mask="separator.2" thousandSeparator="." decimalMarker=","
             (input)="calcDebitMat()">
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Total pago</mat-label>
-            <input matInput placeholder="R$ 0,00" [value]="registration.received"
+            <input matInput placeholder="R$ 0,00"
             [(ngModel)]="registrationReative.received"
+            mask="separator.2" thousandSeparator="." decimalMarker=","
             (input)="calcDebitMat()">
           </mat-form-field>
 
@@ -115,16 +133,20 @@
                 <h3 class="value-payment">Valor</h3>
                 <P class="value-payment">{{monthPayment.price | currency}}</P>
               </div>
+
               <mat-form-field appearance="outline">
                 <mat-label>Desconto</mat-label>
-                <input matInput placeholder="R$ 0,00" [value]="monthPayment.discount"
+                <input matInput placeholder="R$ 0,00"
                 [(ngModel)]="monthPaymentsReative[i].discount"
+                mask="separator.2" thousandSeparator="." decimalMarker=","
                 (input)="calcDebitMonthPayment(i)">
               </mat-form-field>
+
               <mat-form-field appearance="outline">
                 <mat-label>Total pago</mat-label>
-                <input matInput placeholder="R$ 0,00" [value]="monthPayment.received"
+                <input matInput placeholder="R$ 0,00"
                 [(ngModel)]="monthPaymentsReative[i].received"
+                mask="separator.2" thousandSeparator="." decimalMarker=","
                 (input)="calcDebitMonthPayment(i)">
               </mat-form-field>
               <p class="value-debit">Débito: {{monthPaymentsReative[i].debit | currency}}</p>

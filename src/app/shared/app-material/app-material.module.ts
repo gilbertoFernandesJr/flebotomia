@@ -4,7 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatRippleModule,
     MatPaginatorModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatTabsModule,
     MatSelectModule
   ]

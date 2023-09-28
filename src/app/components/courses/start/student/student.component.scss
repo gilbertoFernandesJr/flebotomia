@@ -85,6 +85,11 @@ main {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    .form-error {
+      margin-right: 10px;
+      color: var(--error);
+    }
   }
 
   .btn-actions {

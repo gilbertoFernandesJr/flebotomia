@@ -9,6 +9,8 @@ import { RegistrationService } from 'src/app/services/registration.service';
 import { RegistrationUpdate } from 'src/app/dto/registration-update';
 import { MonthPaymentUpdate } from 'src/app/dto/month-payment-update';
 import { MonthPaymentSerive } from 'src/app/services/month-payment.service';
+import * as moment from 'moment-timezone';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student',
@@ -28,11 +30,13 @@ export class StudentComponent {
     {id: 0, paid: false, team: {id: 0, name: '', completed: false}};
 
   public studentForm: UntypedFormGroup = this.formBuilder.group({
-    nome: ['', [Validators.required, Validators.email]],
-    cpf: ['', Validators.required],
-    phone: ['', Validators.required],
-    bithDay: ['', Validators.required]
+    name: [this.student.name, [Validators.required]],
+    cpf: [this.student.cpf, [Validators.required]],
+    phone: [this.student.phone, [Validators.required]],
+    dateBirth: [this.student.dateBirth, [Validators.required]]
   });
+
+  studentUpdateHasError: boolean = false;
 
   minDate: Date;
   maxDate: Date;
@@ -42,12 +46,14 @@ export class StudentComponent {
     private service: StudentService,
     private formBuilder: UntypedFormBuilder,
     private registrationSerive: RegistrationService,
-    private monthPaymentSerive: MonthPaymentSerive
+    private monthPaymentSerive: MonthPaymentSerive,
+    private toastr: ToastrService
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
 
-    // Set the minimum to January 1st 60 years in the past and December 31st 16 years int the past
+    // Max year old of 60 years and minumum of 16 years old
+    // Used at date birth of student
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 60, 0, 1);
     this.maxDate = new Date(currentYear - 16, 11, 31);
@@ -57,11 +63,11 @@ export class StudentComponent {
     this.service.findById(id).subscribe({
       next: res => this.student = res,
       error: error => console.log(error),
-      complete: () => this.numbersReatives()
+      complete: () => this.startComponent()
     });
   }
 
-  numbersReatives(): void {
+  startComponent(): void {
     //Calc debit of registration
     this.student.registrations?.forEach(r => {
       this.registrationReative = r;
@@ -74,6 +80,19 @@ export class StudentComponent {
     this.student.monthPayments?.forEach(m => {
       this.calcDebitMonthPayment(i);
       i++;
+    });
+
+    // Attach student with the student form
+    this.attachStudentWithForm();
+
+  }
+
+  attachStudentWithForm(): void {
+    this.studentForm.setValue({
+      name: this.student.name,
+      cpf: this.student.cpf,
+      phone: this.student.phone,
+      dateBirth: moment(`${this.student.dateBirth}`).toDate() //Adjust UTC
     });
   }
 
@@ -90,11 +109,31 @@ export class StudentComponent {
   }
 
   updateStudent(): void {
-    console.log(`Update student ${this.student.monthPayments}`);
-    this.service.update(this.student).subscribe({
-      next: res => alert('Estudante atualizado com sucesso!'),
-      error: error => console.log(error)
-    });
+
+    if(this.studentForm.valid) {
+      this.student.name = this.studentForm.get(['name'])?.value;
+      this.student.cpf = this.studentForm.get(['cpf'])?.value;
+      this.student.phone = this.studentForm.get(['phone'])?.value;
+      this.student.dateBirth = this.studentForm.get(['dateBirth'])?.value;
+
+      this.service.update(this.student).subscribe({
+        next: res => {
+          this.student = res;
+          this.studentUpdateHasError = false;
+          this.toastr.success('Estudante atualizado');
+        },
+        error: error => {
+          console.log(error);
+          if (error.error.message == 'CPF already in use') {
+            this.toastr.error('CPF já em uso por outro aluno');
+          } else {
+            this.toastr.error('Ops.. Tivemos um erro, tente novamente mais tarde');
+          }
+        }
+      });
+    } else {
+      this.studentUpdateHasError = true;
+    }
   }
 
   updateRegistration(): void {

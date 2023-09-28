@@ -17,6 +17,7 @@ export class StartGuard implements CanActivateChild {
     if(this.authService.isAuthenticated()) {
       return true;
     }
+    this.authService.logout();
     this.router.navigate(['courses/auth']);
     return false;
   }
