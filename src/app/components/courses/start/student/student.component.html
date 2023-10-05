@@ -62,54 +62,57 @@
 
     <mat-tab label="Matrícula">
      <div class="basic-informations">
-      <div class="flex-wrap" *ngFor="let registration of student.registrations">
-        <div class="part-money">
-          <div class="content-value-payment">
-            <h3 class="value-payment">Valor</h3>
-            <P class="value-payment">{{registration.price | currency}}</P>
+
+      <form [formGroup]="registrationForm">
+        <div class="flex-wrap" *ngFor="let registration of student.registrations">
+          <div class="part-money">
+            <div class="content-value-payment">
+              <h3 class="value-payment">Valor</h3>
+              <P class="value-payment">{{registration.price | currency}}</P>
+            </div>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Desconto</mat-label>
+              <input matInput placeholder="R$ 0,00"
+              formControlName="discount"
+              mask="separator.2" thousandSeparator="." decimalMarker=","
+              (input)="calcDebitMat()">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Total pago</mat-label>
+              <input matInput placeholder="R$ 0,00"
+              formControlName="received"
+              mask="separator.2" thousandSeparator="." decimalMarker=","
+              (input)="calcDebitMat()">
+            </mat-form-field>
+
+            <p class="value-debit">Débito: {{registrationReative.debit | currency}}</p>
           </div>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Desconto</mat-label>
-            <input matInput placeholder="R$ 0,00"
-            [(ngModel)]="registrationReative.discount"
-            mask="separator.2" thousandSeparator="." decimalMarker=","
-            (input)="calcDebitMat()">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Total pago</mat-label>
-            <input matInput placeholder="R$ 0,00"
-            [(ngModel)]="registrationReative.received"
-            mask="separator.2" thousandSeparator="." decimalMarker=","
-            (input)="calcDebitMat()">
-          </mat-form-field>
-
-          <p class="value-debit">Débito: {{registrationReative.debit | currency}}</p>
-        </div>
-
-        <div class="part-date">
-          <div class="content-date-payment">
-            <h3 class="date-payment">Vencimento</h3>
-            <p class="date-payment">
-              {{registrationReative.payday! | dateDescribe:'dd/MM/yyyy'}}
-            </p>
+          <div class="part-date">
+            <div class="content-date-payment">
+              <h3 class="date-payment">Vencimento</h3>
+              <p class="date-payment">
+                {{registrationReative.dueDate! | dateDescribe:'dd/MM/yyyy'}}
+              </p>
+            </div>
+            <mat-form-field class="i-date" appearance="outline">
+              <mat-label>Data do Pagamento</mat-label>
+              <input matInput [matDatepicker]="picker2"
+                formControlName="payday">
+              <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
           </div>
-          <mat-form-field class="i-date" appearance="outline">
-            <mat-label>Data do Pagamento</mat-label>
-            <input matInput [matDatepicker]="picker2"
-              [(ngModel)]="registrationReative.payday">
-            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
         </div>
-      </div>
-      <div class="flex-end">
-        <button mat-raised-button color="primary" class="btn-actions"
-          (click)="updateRegistration()">
-          Atualizar
-        </button>
-      </div>
+        <div class="flex-end">
+          <button mat-raised-button color="primary" class="btn-actions"
+            (click)="updateRegistration()">
+            Atualizar
+          </button>
+        </div>
+      </form>
      </div>
     </mat-tab>
 

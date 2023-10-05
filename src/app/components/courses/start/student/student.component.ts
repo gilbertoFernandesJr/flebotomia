@@ -36,6 +36,12 @@ export class StudentComponent {
     dateBirth: [this.student.dateBirth, [Validators.required]]
   });
 
+  public registrationForm: UntypedFormGroup = this.formBuilder.group({
+    discount: ['', [Validators.min(0), Validators.max(this.registrationReative.price!)]],
+    received: ['', [Validators.min(0), Validators.max(this.registrationReative.price!)]],
+    payday: [''],
+  });
+
   studentUpdateHasError: boolean = false;
 
   minDate: Date;
@@ -72,7 +78,11 @@ export class StudentComponent {
     this.student.registrations?.forEach(r => {
       this.registrationReative = r;
     });
+    // Attach Registration with the registration form
+    this.attachRegistrationWithForm();
+    this.addValidatorsRegistration();
     this.calcDebitMat();
+
 
     //Calc debit of monthpayments
     this.monthPaymentsReative = this.student.monthPayments!;
@@ -87,6 +97,19 @@ export class StudentComponent {
 
   }
 
+  addValidatorsRegistration(): void {
+    this.registrationForm.get('received')?.addValidators(Validators.max(this.registrationReative.price!));
+    this.registrationForm.get('discount')?.addValidators(Validators.max(this.registrationReative.price!));
+  }
+
+  attachRegistrationWithForm(): void {
+    this.registrationForm.setValue({
+      discount: this.registrationReative.discount,
+      received: this.registrationReative.received,
+      payday: moment(`${this.registrationReative.payday}`).toDate() //Adjust UTC
+    });
+  }
+
   attachStudentWithForm(): void {
     this.studentForm.setValue({
       name: this.student.name,
@@ -98,8 +121,8 @@ export class StudentComponent {
 
   calcDebitMat(): void {
     this.registrationReative.debit =
-      this.registrationReative.price! - this.registrationReative.discount!
-       - this.registrationReative.received!;
+      this.registrationReative.price! - this.registrationForm.get(['discount'])?.value
+       - this.registrationForm.get(['received'])?.value;
   }
 
   calcDebitMonthPayment(i: number): void {
@@ -137,18 +160,26 @@ export class StudentComponent {
   }
 
   updateRegistration(): void {
-    const registrationDto: RegistrationUpdate = {
-      id: this.registrationReative.id,
-      price: this.registrationReative.price,
-      received: this.registrationReative.received,
-      payday: this.registrationReative.payday,
-      discount: this.registrationReative.discount,
-      paid: this.registrationReative.paid
+    if (this.registrationForm.valid) {
+      const registrationDto: RegistrationUpdate = {
+        id: this.registrationReative.id,
+        price: this.registrationReative.price,
+        received: this.registrationForm.get(['received'])?.value,
+        payday: this.registrationForm.get(['payday'])?.value,
+        discount: this.registrationForm.get(['discount'])?.value,
+        paid: this.registrationReative.paid
+      }
+
+      this.registrationSerive.update(registrationDto).subscribe({
+        next: (res) => this.toastr.success('Matrícula atualizada.'),
+        error: (error) => {
+          this.toastr.error('Ops! tivemos alguns erro.');
+          console.log(error);
+        }
+      });
+    } else {
+      this.toastr.error('Campos inválidos.');
     }
-    this.registrationSerive.update(registrationDto).subscribe({
-      next: (res) => alert('Matrícula atualizada'),
-      error: (error) => console.log(error)
-    });
   }
 
   updateMonthPayment(): void {
