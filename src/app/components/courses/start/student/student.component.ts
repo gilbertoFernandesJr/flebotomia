@@ -87,8 +87,9 @@ export class StudentComponent {
     //Calc debit of monthpayments
     this.monthPaymentsReative = this.student.monthPayments!;
     let i = 0;
-    this.student.monthPayments?.forEach(m => {
+    this.monthPaymentsReative?.forEach(m => {
       this.calcDebitMonthPayment(i);
+      m.payday = m.payday != null ? moment(m.payday).toDate() : null; //Adjust UTC
       i++;
     });
 
@@ -160,13 +161,15 @@ export class StudentComponent {
   }
 
   updateRegistration(): void {
-    if (this.registrationForm.valid) {
+    if (this.registrationForm.valid && this.registrationReative.debit! >= 0) {
+      let received = this.registrationForm.get(['received'])?.value
+      let discount = this.registrationForm.get(['discount'])?.value
       const registrationDto: RegistrationUpdate = {
         id: this.registrationReative.id,
         price: this.registrationReative.price,
-        received: this.registrationForm.get(['received'])?.value,
+        received: received == '' ? 0 : received,
+        discount: discount == '' ? 0 : discount,
         payday: this.registrationForm.get(['payday'])?.value,
-        discount: this.registrationForm.get(['discount'])?.value,
         paid: this.registrationReative.paid
       }
 
@@ -185,20 +188,27 @@ export class StudentComponent {
   updateMonthPayment(): void {
     var monthPayment = this.monthPaymentsReative[this.selectedMonthPayment];
 
-    const monthPaymentDto: MonthPaymentUpdate = {
-      id: monthPayment.id,
-      price: monthPayment.price,
-      received: monthPayment.received,
-      payday: monthPayment.payday,
-      discount: monthPayment.discount,
-      paid: monthPayment.paid
+    if(monthPayment.discount! > monthPayment.price || monthPayment.received! > monthPayment.price) {
+      this.toastr.error('Campos inválidos.');
+
+    } else {
+      const monthPaymentDto: MonthPaymentUpdate = {
+        id: monthPayment.id,
+        price: monthPayment.price,
+        received: monthPayment.received == '' ? 0 : monthPayment.received,
+        discount: monthPayment.discount == '' ? 0 : monthPayment.discount,
+        payday: monthPayment.payday,
+        paid: monthPayment.paid
+      }
+
+      this.monthPaymentSerive.update(monthPaymentDto).subscribe({
+        next: res => this.toastr.success('Mensalidade atualizada'),
+        error: error => {
+          this.toastr.error('Ops! tivemos alguns erro.');
+          console.log(error);
+        }
+      });
     }
-
-    this.monthPaymentSerive.update(monthPaymentDto).subscribe({
-      next: res => alert("Matrícula atualizada com sucesso!"),
-      error: error => console.log(error)
-    });
-
   }
 
   back(): void {
