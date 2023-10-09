@@ -12,6 +12,6 @@ export class AppComponent {
   constructor() { }
 
   ngOnInit(): void {
-    // inject(); //Vercel Web Analytics
+    inject(); //Vercel Web Analytics
   }
 }
