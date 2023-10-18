@@ -9,6 +9,8 @@ import { PtBrMatPaginatorIntl } from './app-material/PtBrMatPaginatorIntl';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { PhonePipe } from './pipes/phone.pipe';
 import { DateDescribePipe } from './pipes/date-describe.pipe';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { AppMaterialModule } from './app-material/app-material.module';
 
 
 
@@ -18,7 +20,8 @@ import { DateDescribePipe } from './pipes/date-describe.pipe';
     FooterComponent,
     CapitalizePipe,
     PhonePipe,
-    DateDescribePipe
+    DateDescribePipe,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { DateDescribePipe } from './pipes/date-describe.pipe';
       progressBar: true,
       closeButton: true
     }),
+    AppMaterialModule
   ],
   exports: [
     HeaderComponent,

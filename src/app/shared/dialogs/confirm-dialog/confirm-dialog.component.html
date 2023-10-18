@@ -1,0 +1,9 @@
+<div class="content-all">
+  <div mat-dialog-content>
+    <p>{{ data }}</p>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" (click)="confirmation(false)">Não</button>
+    <button mat-stroked-button color="warn" (click)="confirmation(true)">Sim</button>
+  </div>
+</div>

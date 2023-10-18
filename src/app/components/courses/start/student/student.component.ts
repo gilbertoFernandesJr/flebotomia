@@ -11,6 +11,8 @@ import { MonthPaymentUpdate } from 'src/app/dto/month-payment-update';
 import { MonthPaymentSerive } from 'src/app/services/month-payment.service';
 import * as moment from 'moment-timezone';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-student',
@@ -55,7 +57,8 @@ export class StudentComponent {
     private formBuilder: UntypedFormBuilder,
     private registrationSerive: RegistrationService,
     private monthPaymentSerive: MonthPaymentSerive,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
@@ -215,18 +218,25 @@ export class StudentComponent {
   }
 
   public removeStudentOfTeam(): void {
-    this.route.params.subscribe(params => {
-      this.service.removeStudentOfTeam(this.student.id, params["idTeam"]).subscribe({
-        next: res => {
-          this.toastr.info('Aluno removido');
-          this.back();
-        },
-        error: error => {
-          this.toastr.error('Ops! tivemos alguns erro.');
-          console.log(error);
-          this.back();
-        }
-      });
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: 'Essa ação excluirá  também matricula e mensalidades referentes a essa turma, não podendo ser desfeita. Tem certeza que deseja remover esse aluno?'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.route.params.subscribe(params => {
+          this.service.removeStudentOfTeam(this.student.id, params["idTeam"]).subscribe({
+            next: res => {
+              this.toastr.info('Aluno removido');
+              this.back();
+            },
+            error: error => {
+              this.toastr.error('Ops! tivemos alguns erro.');
+              console.log(error);
+              this.back();
+            }
+          });
+        });
+      }
     });
   }
 
