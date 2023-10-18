@@ -24,6 +24,8 @@ export class StudentComponent {
     cpf: ''
   }
 
+  nameTeam: string = '';
+
   monthPaymentsReative: MonthPayment[] = [];
   selectedMonthPayment: number = 0;
   registrationReative: Registration =
@@ -57,6 +59,7 @@ export class StudentComponent {
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
+    this.route.params.subscribe(params => this.nameTeam = params['nameTeam']);
 
     // Max year old of 60 years and minumum of 16 years old
     // Used at date birth of student
@@ -209,6 +212,22 @@ export class StudentComponent {
         }
       });
     }
+  }
+
+  public removeStudentOfTeam(): void {
+    this.route.params.subscribe(params => {
+      this.service.removeStudentOfTeam(this.student.id, params["idTeam"]).subscribe({
+        next: res => {
+          this.toastr.info('Aluno removido');
+          this.back();
+        },
+        error: error => {
+          this.toastr.error('Ops! tivemos alguns erro.');
+          console.log(error);
+          this.back();
+        }
+      });
+    });
   }
 
   back(): void {

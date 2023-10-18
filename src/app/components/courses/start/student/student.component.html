@@ -4,6 +4,7 @@
     (click)="back()">
     <mat-icon>keyboard_return</mat-icon>
   </button>
+  <h2>Turma: {{nameTeam | uppercase}}</h2>
   <h2>Editar Aluno:  {{student.name}}</h2>
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
 
@@ -53,8 +54,9 @@
 
         <div class="danger-zone">
           <h3>Zona de perigo</h3>
-          <button mat-stroked-button color="warn" class="btn-actions">
-            Deletar Aluno
+          <button mat-stroked-button color="warn" class="btn-actions btn-danger-student"
+          (click)="removeStudentOfTeam()">
+            Remover Aluno da Turma
           </button>
         </div>
       </div>

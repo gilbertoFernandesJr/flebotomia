@@ -25,4 +25,8 @@ export class StudentService {
     const id = student.id;
     return this.http.put<Student>(`${API_CONFIG.baseUrl}/students/${id}`, student);
   }
+
+  public removeStudentOfTeam(studentId: number, teamId: number): Observable<any> {
+    return this.http.delete(`${API_CONFIG.baseUrl}/students/${studentId}/team/${teamId}`);
+  }
 }

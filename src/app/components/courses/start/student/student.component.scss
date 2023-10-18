@@ -78,6 +78,10 @@ main {
       border: 1px solid var(--error);
       border-radius: 10px;
       color: var(--error);
+
+      .btn-danger-student {
+        width: 230px;
+      }
     }
   }
 
