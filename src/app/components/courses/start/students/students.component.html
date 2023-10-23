@@ -8,7 +8,8 @@
       <h2>Turma {{nameTeam | uppercase}}</h2>
       <p>Quantidade de alunos: {{students.length}}</p>
     </div>
-    <button mat-mini-fab color="primary" aria-label="Adicionar estudante">
+    <button mat-mini-fab color="primary" aria-label="Adicionar estudante"
+    (click)="addStudent()">
       <mat-icon>person_add</mat-icon>
     </button>
   </div>
@@ -28,7 +29,7 @@
           <div class="data-basic">
             <p>CPF:</p>
             <span>
-              {{student.cpf}}
+              {{student.cpf | cpfCnpj}}
             </span>
           </div>
           <div class="data-basic">

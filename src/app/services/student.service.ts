@@ -21,9 +21,17 @@ export class StudentService {
     return this.http.get<Student>(`${API_CONFIG.baseUrl}/students/${id}`);
   }
 
+  public findByCpf(cpf: string): Observable<Student> {
+    return this.http.get<Student>(`${API_CONFIG.baseUrl}/students/cpf/${cpf}`);
+  }
+
   public update(student: Student): Observable<Student> {
     const id = student.id;
     return this.http.put<Student>(`${API_CONFIG.baseUrl}/students/${id}`, student);
+  }
+
+  public addStudentOfTeam(student: Student, teamId: number): Observable<any> {
+    return this.http.post(`${API_CONFIG.baseUrl}/students/team/${teamId}`, student);
   }
 
   public removeStudentOfTeam(studentId: number, teamId: number): Observable<any> {

@@ -10,6 +10,7 @@ import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './student/student.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddStudentTeamDialogComponent } from './dialogs/add-student-team-dialog/add-student-team-dialog.component';
 
 
 
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AllCoursesComponent,
     TeamsComponent,
     StudentsComponent,
-    StudentComponent
+    StudentComponent,
+    AddStudentTeamDialogComponent
   ],
   imports: [
     CommonModule,

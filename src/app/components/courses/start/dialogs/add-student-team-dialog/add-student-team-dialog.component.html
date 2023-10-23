@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Adicionar Aluno</h1>
+<div mat-dialog-content>
+  <p>Dados pessoais</p>
+  <button mat-icon-button aria-label="voltar" class="btn-show-cpf" (click)="backCpf()" *ngIf="!showCpf">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+  <form [formGroup]="studentForm">
+    <div class="valid-cpf" *ngIf="showCpf">
+      <mat-form-field appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="999.999.999-99" mask="000.000.000-00"
+        formControlName="cpf">
+      </mat-form-field>
+      <div mat-dialog-actions align="start">
+        <button mat-stroked-button (click)="cancel()">Cancelar</button>
+        <button mat-flat-button color="primary" (click)="validateCpf()">Próximo</button>
+      </div>
+    </div>
+    <div *ngIf="!showCpf">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome completo"
+        formControlName="name" [readonly]="readOnlyStudent">
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline" class="i-margin-r">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="(99) 99999-9999" mask="(00) 00000-0000"
+          formControlName="phone" [readonly]="readOnlyStudent">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput [matDatepicker]="dateBirth"
+          [min]="minDate" [max]="maxDate"
+          formControlName="dateBirth"
+          readonly="true">
+          <mat-datepicker-toggle matIconSuffix [for]="dateBirth"
+          [disabled]="readOnlyStudent">
+          </mat-datepicker-toggle>
+          <mat-datepicker #dateBirth></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <p class="warn" *ngIf="hasError">Atenção aos campos obrigatórios</p>
+</div>
+<div mat-dialog-actions align="end" *ngIf="!showCpf">
+  <button mat-stroked-button (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">Salvar</button>
+</div>

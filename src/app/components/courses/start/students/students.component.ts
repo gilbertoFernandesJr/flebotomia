@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
+import { AddStudentTeamDialogComponent } from '../dialogs/add-student-team-dialog/add-student-team-dialog.component';
 
 @Component({
   selector: 'app-students',
@@ -13,7 +15,8 @@ export class StudentsComponent {
   constructor(
     private service: StudentService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   students: Student[] = [];
@@ -45,6 +48,16 @@ export class StudentsComponent {
 
   editStudent(id: number): void {
     this.router.navigate([`courses/start/students/${this.nameTeam}/${this.idTeam}/${id}`]);
+  }
+
+  addStudent(): void {
+    const dialogRef = this.dialog.open(AddStudentTeamDialogComponent, {
+      data: this.idTeam,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) this.students.push(result);
+    });
   }
 
   back(): void {
