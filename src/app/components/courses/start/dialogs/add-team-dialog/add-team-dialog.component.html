@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Adicionar Turma</h1>
+<div mat-dialog-content>
+  <p>Informações Gerais</p>
+  <button mat-icon-button aria-label="voltar" class="btn-show-cpf" (click)="backChoseName()" *ngIf="!showNameTeam">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+  <p class="name-team" *ngIf="!showNameTeam">{{ teamCreate.name | uppercase}}</p>
+  <form [formGroup]="teamForm">
+    <div class="name" *ngIf="showNameTeam">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="CTFXXXX"
+        formControlName="name">
+      </mat-form-field>
+      <div mat-dialog-actions align="start">
+        <button mat-stroked-button (click)="cancel()">Cancelar</button>
+        <button mat-flat-button color="primary" (click)="validateName()">Próximo</button>
+      </div>
+    </div>
+    <div *ngIf="!showNameTeam">
+      <mat-form-field appearance="outline" class="i-margin-r">
+        <mat-label>Data de Início</mat-label>
+        <input matInput [matDatepicker]="start"
+        formControlName="dateStart"
+        placeholder="Click no ícone ->"
+        readonly="true">
+        <mat-datepicker-toggle matIconSuffix [for]="start">
+        </mat-datepicker-toggle>
+        <mat-datepicker #start></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="i-margin-r">
+        <mat-label>Preço da matricula</mat-label>
+        <input matInput
+        placeholder="R$ 0,00"
+        formControlName="priceReg"
+        mask="separator.2" thousandSeparator="." decimalMarker=",">
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline" class="i-margin-r">
+          <mat-label>Primeira mensalidade</mat-label>
+          <input matInput [matDatepicker]="firstMon"
+          formControlName="firstMonth"
+          placeholder="Click no ícone ->"
+          readonly="true">
+          <mat-datepicker-toggle matIconSuffix [for]="firstMon">
+          </mat-datepicker-toggle>
+          <mat-datepicker #firstMon></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="i-margin-r">
+          <mat-label>Quantas mensalidades terá</mat-label>
+          <input matInput
+          placeholder="0"
+          mask="separator.0"
+          formControlName="quantityMon">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="i-margin-r">
+          <mat-label>Preço das mensalidades</mat-label>
+          <input matInput
+          placeholder="R$ 0,00"
+          mask="separator.2" thousandSeparator="." decimalMarker=","
+          formControlName="priceMon">
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+  <p class="warn" *ngIf="hasError">Atenção aos campos obrigatórios *</p>
+</div>
+<div mat-dialog-actions align="end" *ngIf="!showNameTeam">
+  <button mat-stroked-button (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">Salvar</button>
+</div>

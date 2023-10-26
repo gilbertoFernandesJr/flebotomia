@@ -1,4 +1,4 @@
-import { Team } from "./team"
+import { Team } from "./team/team"
 
 export interface MonthPayment {
   id: number,

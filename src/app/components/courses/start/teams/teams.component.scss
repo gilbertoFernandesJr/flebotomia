@@ -3,9 +3,15 @@
 main {
   padding: rem-calc(20);
 
-  h2 {
-    color: var(--primary-color);
+  .header {
+    display: flex;
+    justify-content: space-between;
+    
+    h2 {
+      color: var(--primary-color);
+    }
   }
+
 
   .card-course {
     display: flex;

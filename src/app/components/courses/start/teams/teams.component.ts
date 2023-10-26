@@ -1,9 +1,11 @@
-import { Team } from 'src/app/models/team';
+import { Team } from 'src/app/models/team/team';
 import { TeamService } from './../../../../services/team.service';
 import { Component } from '@angular/core';
 import { Course } from 'src/app/models/course';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTeamDialogComponent } from '../dialogs/add-team-dialog/add-team-dialog.component';
 
 @Component({
   selector: 'app-teams',
@@ -18,10 +20,19 @@ export class TeamsComponent {
 
   constructor(
     private service: TeamService,
-    private router: Router){}
+    private router: Router,
+    private dialog: MatDialog
+  ){}
 
   ngOnInit(): void {
     this.getResponseBack(this.pageIndex);
+  }
+
+  addTeam(): void {
+    const dialogRef = this.dialog.open(AddTeamDialogComponent, {data: this.course.id});
+    dialogRef.afterClosed().subscribe({
+      next: result => {if (result) this.teams.unshift(result)}
+    });
   }
 
   openTeam(name: string, idTeam: number): void {
@@ -52,7 +63,6 @@ export class TeamsComponent {
         this.teams = res.content;
         this.course = res.content[0].courseDTO;
         this.length = res.totalElements;
-        console.log(res);
       },
       error: (error) => console.log(error)
     });

@@ -1,5 +1,10 @@
 <main>
-  <h2>{{course.name | capitalize}}</h2>
+  <div class="header">
+    <h2>{{course.name | capitalize}}</h2>
+    <button mat-mini-fab color="primary" aria-label="Adicionar Turma" (click)="addTeam()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
   <div class="content">
     <div
       *ngFor="let team of teams"
