@@ -34,6 +34,7 @@ export class AddTeamDialogComponent {
 
   hasError: boolean = false;
   showNameTeam: boolean = true;
+  submit: boolean = false;
 
   constructor(
     private service: TeamService,
@@ -72,12 +73,18 @@ export class AddTeamDialogComponent {
 
   save(): void {
     if(this.teamForm.valid) {
-      this.joinFormWithTeam();
-      console.log(JSON.stringify(this.teamCreate));
+      this.submit = true;
       this.hasError = false;
+      this.joinFormWithTeam();
       this.service.createTeam(this.teamCreate).subscribe({
-        next: res => this.dialogRef.close(res),
-        error: error => this.toast.error('Ops.. tivemos um erro inesperado')
+        next: res => {
+          this.toast.success('Turma adicionada');
+          this.dialogRef.close(res);
+        },
+        error: error => {
+          this.toast.error('Ops.. tivemos um erro inesperado');
+          this.dialogRef.close(false);
+        }
       });
     }else {
       this.hasError = true;

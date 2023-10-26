@@ -68,5 +68,7 @@
 </div>
 <div mat-dialog-actions align="end" *ngIf="!showNameTeam">
   <button mat-stroked-button (click)="cancel()">Cancelar</button>
-  <button mat-flat-button color="primary" (click)="save()">Salvar</button>
+  <button mat-flat-button color="primary" (click)="save()" [disabled]="submit">
+    Salvar
+  </button>
 </div>
