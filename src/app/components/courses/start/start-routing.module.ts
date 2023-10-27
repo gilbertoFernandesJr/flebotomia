@@ -5,6 +5,7 @@ import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { TeamsComponent } from './teams/teams.component';
 import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './student/student.component';
+import { TeamComponent } from './team/team.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
       {
         path: 'all',
         component: AllCoursesComponent, title: 'Cursos'
+      },
+      {
+        path: 'teams/:id',
+        component: TeamComponent, title: 'Turma'
       },
       {
         path: 'teams/:name/:id',

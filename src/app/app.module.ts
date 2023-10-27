@@ -19,7 +19,7 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
 //Mask
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
 
 // GMT-0234 (Horário Padrão de Brasília) -02:34 utc
 registerLocaleData(ptBr);

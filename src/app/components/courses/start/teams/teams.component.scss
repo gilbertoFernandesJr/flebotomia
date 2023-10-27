@@ -6,48 +6,72 @@ main {
   .header {
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
+    margin-bottom: rem-calc(15);
+
     h2 {
+      margin: 0;
       color: var(--primary-color);
     }
   }
 
-
-  .card-course {
+  .line-team {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: rem-calc(15);
-    padding: rem-calc(5);
-    width: 100%;
-    min-height: rem-calc(75);
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
-    background: var(--secondary-color);
-    color: var(--primary-color);
 
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    .card-course {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: rem-calc(15);
+      padding: rem-calc(5);
+      width: 95%;
+      min-height: rem-calc(75);
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
 
-    -webkit-user-drag: none;
-    -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
 
-    p {
-      margin: 0;
-      font-family: system-ui;
-      font-size: 1.2rem;
-      font-weight: 600;
+      -webkit-user-drag: none;
+      -webkit-tap-highlight-color: transparent;
+
+      p {
+        margin: 0;
+        font-family: system-ui;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+      }
     }
 
-    &:hover {
-      background: var(--primary-color);
-      color: var(--secondary-color);
+    .completed {
+      background-color: rgba(166, 206, 54, 0.2);
     }
-  }
 
-  .completed {
-    background-color: rgba(166, 206, 54, 0.2);
+    .btn-edit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: rem-calc(10);
+      margin-bottom: rem-calc(15);
+      padding: rem-calc(5);
+      min-height: rem-calc(75);
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+      background-color: #94949440;
+      button {
+        background-color: var(--gray);
+      }
+    }
   }
 }

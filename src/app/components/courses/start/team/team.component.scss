@@ -1,0 +1,27 @@
+@import '../../../../config-scss/rem-calc.scss';
+
+main {
+  padding: rem-calc(20);
+
+  h2 {
+    margin: 0;
+    color: var(--primary-color);
+  }
+
+  .form-edit {
+    margin-top: rem-calc(16);
+    padding: rem-calc(16);
+    border-radius: 10px;
+    background-color: var(--light-gray);
+    box-shadow: 5px 5px 5px #0000002b;
+
+    .i-name {
+      width: 100%;
+    }
+
+    .space-between {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

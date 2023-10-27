@@ -1,18 +1,26 @@
 <main>
   <div class="header">
     <h2>{{course.name | capitalize}}</h2>
-    <button mat-mini-fab color="primary" aria-label="Adicionar Turma" (click)="addTeam()">
+    <button mat-mini-fab color="primary" aria-label="Adicionar Turma" (click)="addTeam()"
+    title="Adicionar Turma">
       <mat-icon>add_circle</mat-icon>
     </button>
   </div>
   <div class="content">
-    <div
-      *ngFor="let team of teams"
+    <div class="line-team" *ngFor="let team of teams">
+      <div
       class="card-course"
       [ngClass]="{'completed': team.completed}"
       matRipple
       (click)="openTeam(team.name, team.id)">
-      <p>{{team.name | uppercase}}</p>
+        <p>{{team.name | uppercase}}</p>
+      </div>
+      <div class="btn-edit">
+        <button mat-mini-fab [ariaLabel]="'Edite a turma ' + team.name"
+        [title]="team.name + ' edite'" (click)="editTeam(team.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
     </div>
     <mat-paginator #paginator
                (page)="handlePageEvent($event)"

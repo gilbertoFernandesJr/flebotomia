@@ -1,0 +1,27 @@
+<main>
+  <h2>Editar turma {{nameTeamFixed}}</h2>
+  <button
+    mat-icon-button aria-label="voltar" class="back-page"
+    (click)="back()">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+  <div class="form-edit">
+    <form [formGroup]="teamForm">
+      <mat-form-field appearance="outline" class="i-name">
+        <mat-label>Nome da turma</mat-label>
+        <input matInput placeholder="Nome da turma" formControlName="name">
+      </mat-form-field>
+      <div class="space-between">
+        <mat-slide-toggle color="primary" formControlName="completed">
+          Concluída
+        </mat-slide-toggle>
+        <button mat-flat-button color="primary"
+        [disabled]="teamForm.invalid"
+        (click)="save()">
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</main>
+

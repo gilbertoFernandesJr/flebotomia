@@ -39,6 +39,10 @@ export class TeamsComponent {
     this.router.navigate([`courses/start/students/${name}/${idTeam}`]);
   }
 
+  editTeam(id: number): void {
+    this.router.navigate([`courses/start/teams/${id}`]);
+  }
+
   length = 0; // Come of the back, all elements on the DB
   pageSize = 6; // All elements for page
   pageIndex = 0; // Page
