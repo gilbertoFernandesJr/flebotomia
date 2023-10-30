@@ -26,6 +26,11 @@ main {
         margin: 0;
       }
     }
+
+    .btn-edit {
+      margin-right: rem-calc(10);
+      background: var(--gray);
+    }
   }
 
   mat-expansion-panel {

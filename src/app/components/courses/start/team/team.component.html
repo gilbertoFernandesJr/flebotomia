@@ -17,11 +17,19 @@
         </mat-slide-toggle>
         <button mat-flat-button color="primary"
         [disabled]="teamForm.invalid"
-        (click)="save()">
-          Salvar
+        (click)="update()">
+          Atualizar
         </button>
       </div>
     </form>
+  </div>
+  <div class="zona-danger">
+    <div class="align-items">
+      <mat-icon aria-hidden="false" aria-label="Zona de perigo" fontIcon="warning" color="warn">
+      </mat-icon>
+      <p>Zona de perigo</p>
+    </div>
+    <button mat-stroked-button color="warn" (click)="delete()">Deletar Turma</button>
   </div>
 </main>
 

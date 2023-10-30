@@ -60,6 +60,10 @@ export class StudentsComponent {
     });
   }
 
+  goEditStudent(): void {
+    this.router.navigate([`/courses/start/teams/${this.idTeam}`]);
+  }
+
   back(): void {
     history.back();
   }

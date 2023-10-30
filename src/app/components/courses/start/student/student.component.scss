@@ -79,6 +79,16 @@ main {
       border-radius: 10px;
       color: var(--error);
 
+      .align-items {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        p {
+          margin: 0 10px;
+        }
+      }
+
       .btn-danger-student {
         width: 230px;
       }

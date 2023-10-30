@@ -53,7 +53,11 @@
         </form>
 
         <div class="danger-zone">
-          <h3>Zona de perigo</h3>
+          <div class="align-items">
+            <mat-icon aria-hidden="false" aria-label="Zona de perigo" fontIcon="warning" color="warn">
+            </mat-icon>
+            <p>Zona de perigo</p>
+          </div>
           <button mat-stroked-button color="warn" class="btn-actions btn-danger-student"
           (click)="removeStudentOfTeam()">
             Remover Aluno da Turma

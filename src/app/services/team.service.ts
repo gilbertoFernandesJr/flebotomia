@@ -27,12 +27,16 @@ export class TeamService {
     return this.http.get<Team>(`${API_CONFIG.baseUrl}/teams/name/${name}`);
   }
 
-  public findById(id: number): Observable<Team> {
-    return this.http.get<Team>(`${API_CONFIG.baseUrl}/teams/${id}`);
+  public findById(id: number): Observable<any> {
+    return this.http.get<any>(`${API_CONFIG.baseUrl}/teams/${id}`);
   }
 
   public update(team: Team): Observable<Team> {
     return this.http.put<Team>(`${API_CONFIG.baseUrl}/teams/${team.id}`, team);
+  }
+
+  public delete(id: number): Observable<any> {
+    return this.http.delete(`${API_CONFIG.baseUrl}/teams/${id}`);
   }
 
 }

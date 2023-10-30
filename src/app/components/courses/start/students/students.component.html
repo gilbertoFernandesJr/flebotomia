@@ -8,10 +8,16 @@
       <h2>Turma {{nameTeam | uppercase}}</h2>
       <p>Quantidade de alunos: {{students.length}}</p>
     </div>
-    <button mat-mini-fab color="primary" aria-label="Adicionar estudante"
-    (click)="addStudent()">
-      <mat-icon>person_add</mat-icon>
-    </button>
+    <div>
+      <button mat-mini-fab aria-label="Editar turma"
+      (click)="goEditStudent()" class="btn-edit" title="Editar turma">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" aria-label="Adicionar Aluno"
+      (click)="addStudent()" title="Adicionar Aluno">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
   </div>
 
   <div class="students">

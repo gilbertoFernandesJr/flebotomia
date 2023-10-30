@@ -24,4 +24,22 @@ main {
       justify-content: space-between;
     }
   }
+
+  .zona-danger {
+    margin-top: 20px;
+    padding: rem-calc(16);
+    border-radius: 10px;
+    border: solid 1px var(--error);
+    color: var(--error);
+
+    .align-items {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+      p {
+        margin: 0 10px;
+      }
+    }
+  }
 }
