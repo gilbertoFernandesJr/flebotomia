@@ -1,0 +1,44 @@
+<main>
+  <h2>Editar usuário</h2>
+  <div class="content-form">
+    <form [formGroup]="userForm">
+      <div>
+        <mat-form-field appearance="outline" class="i-mr i-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="nome@email.com" type="email"
+          formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="i-mr i-width">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome do usuário"
+          formControlName="name">
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="i-mr i-width">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Senha" formControlName="password"
+        [type]="showPassword ? 'text' : 'password'">
+        <mat-icon matSuffix (click)="changeVisibilityPassword()">
+          {{ showPassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </mat-form-field>
+      <p *ngIf="!updatePassword" class="p-updatePass" (click)="showUpdatePass()">
+        Atualizar senha
+      </p>
+      <div *ngIf="updatePassword">
+        <mat-form-field appearance="outline" class="i-mr i-width">
+          <mat-label>Nova Senha</mat-label>
+          <input matInput placeholder="Nova Senha" formControlName="newPassword"
+          [type]="showPassword ? 'text' : 'password'">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="i-mr i-width">
+          <mat-label>Confirma Nova Senha</mat-label>
+          <input matInput placeholder="Confirmação da nova Senha" formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'">
+        </mat-form-field>
+      </div>
+      <div class="justify-end">
+        <button mat-flat-button color="primary" (click)="update()">Atualizar</button>
+      </div>
+    </form>
+  </div>
+</main>

@@ -18,7 +18,7 @@
     </a>
 
     <a
-      routerLink="/settings"
+      routerLink="/courses/start/settings"
       [routerLinkActive]="['active']"
       (click)="drawer.toggle(); changeIcon()">
       <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
@@ -37,7 +37,9 @@
         <mat-icon *ngIf="!menuOpen" >menu</mat-icon>
         <mat-icon *ngIf="menuOpen">close</mat-icon>
       </button>
-      <button mat-flat-button class="btn-user">Fernandes</button>
+      <button mat-flat-button class="btn-user" (click)="goSettings()">
+        {{user.name | capitalize}}
+      </button>
     </div>
     <router-outlet>
       <div class="white-cover" *ngIf="menuOpen"></div>

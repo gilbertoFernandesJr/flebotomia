@@ -1,0 +1,65 @@
+@import '../../../../config-scss/rem-calc.scss';
+
+main {
+  padding: rem-calc(20);
+
+  h2 {
+    margin: 0;
+    color: var(--primary-color);
+  }
+
+  .content-form {
+    display: flex;
+    justify-content: center;
+
+    form {
+      margin-top: rem-calc(16);
+      padding: rem-calc(16);
+      border-radius: 10px;
+      max-width: rem-calc(650);
+      background-color: var(--light-gray);
+      box-shadow: 5px 5px 5px #0000002b;
+
+      mat-icon {
+        opacity: .7;
+        cursor: pointer;
+      }
+
+      .i-width {
+        min-width: rem-calc(250);
+      }
+
+      .i-mr {
+        margin-right: rem-calc(10);
+      }
+
+      .p-updatePass {
+        cursor: pointer;
+        color: var(--light-blue);
+      }
+
+      .justify-end {
+        display: flex;
+        justify-content: end;
+      }
+    }
+  }
+
+  .zona-danger {
+    margin-top: 20px;
+    padding: rem-calc(16);
+    border-radius: 10px;
+    border: solid 1px var(--error);
+    color: var(--error);
+
+    .align-items {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+      p {
+        margin: 0 10px;
+      }
+    }
+  }
+}

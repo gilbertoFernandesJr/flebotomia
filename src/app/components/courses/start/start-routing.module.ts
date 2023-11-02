@@ -6,6 +6,7 @@ import { TeamsComponent } from './teams/teams.component';
 import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './student/student.component';
 import { TeamComponent } from './team/team.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'students/:nameTeam/:idTeam/:idStudent',
         component: StudentComponent, title: 'Aluno'
+      },
+      {
+        path: 'settings',
+        component: UserComponent, title: 'Usuário'
       }
     ]
   },

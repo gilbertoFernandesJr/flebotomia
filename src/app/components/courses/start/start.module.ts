@@ -13,6 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddStudentTeamDialogComponent } from './dialogs/add-student-team-dialog/add-student-team-dialog.component';
 import { AddTeamDialogComponent } from './dialogs/add-team-dialog/add-team-dialog.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -25,7 +26,8 @@ import { AddTeamDialogComponent } from './dialogs/add-team-dialog/add-team-dialo
     StudentsComponent,
     StudentComponent,
     AddStudentTeamDialogComponent,
-    AddTeamDialogComponent
+    AddTeamDialogComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
