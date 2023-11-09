@@ -119,6 +119,32 @@
           </button>
         </div>
       </form>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Comprovante de pagamento
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>payment</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="content-expansion-panel">
+          <div class="datas-voucher">
+            <h3>Comprovante de pagamento</h3>
+            <p>Olá, {{student.name}} aqui está seu comprovante de pagamento CESLAB:</p>
+            <p>Valor total: {{registrationReative.price | currency}}</p>
+            <p>Desconto: {{registrationReative.discount | currency}}</p>
+            <p>Valor Pago: {{registrationReative.received | currency}}</p>
+            <p>{{nameTeam}}</p>
+            <p>code xxxx</p>
+          </div>
+          <button mat-stroked-button color="primary"
+          (click)="sendPaymentVoucherRegistration()">
+            Enviar Comprovante
+          </button>
+        </div>
+      </mat-expansion-panel>
      </div>
     </mat-tab>
 
@@ -184,6 +210,38 @@
             Atualizar
           </button>
         </div>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Comprovante de pagamento
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>payment</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="content-expansion-panel">
+            <div class="datas-voucher">
+              <h3>Comprovante de pagamento</h3>
+              <p>Olá, {{student.name}} aqui está seu comprovante de pagamento CESLAB:</p>
+              <p>
+                Valor total: {{monthPaymentsReative[selectedMonthPayment].price | currency}}
+              </p>
+              <p>
+                Desconto: {{monthPaymentsResume[selectedMonthPayment].discount | currency}}
+              </p>
+              <p>
+                Valor Pago: {{monthPaymentsResume[selectedMonthPayment].received | currency}}
+              </p>
+              <p>{{nameTeam}}</p>
+              <p>code xxxx</p>
+            </div>
+            <button mat-stroked-button color="primary"
+            (click)="sendPaymentVoucherMonthPayment()">
+              Enviar Comprovante
+            </button>
+          </div>
+        </mat-expansion-panel>
       </div>
     </mat-tab>
   </mat-tab-group>

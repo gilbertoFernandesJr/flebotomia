@@ -8,11 +8,12 @@ import { Registration } from 'src/app/models/registration';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { RegistrationUpdate } from 'src/app/dto/registration-update';
 import { MonthPaymentUpdate } from 'src/app/dto/month-payment-update';
-import { MonthPaymentSerive } from 'src/app/services/month-payment.service';
+import { PaymentVoucherService } from './../../../../services/payment-voucher.service';
 import * as moment from 'moment-timezone';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { MonthPaymentService } from 'src/app/services/month-payment.service';
 
 @Component({
   selector: 'app-student',
@@ -28,6 +29,7 @@ export class StudentComponent {
 
   nameTeam: string = '';
 
+  monthPaymentsResume: {discount?: number, received?: number}[] = []
   monthPaymentsReative: MonthPayment[] = [];
   selectedMonthPayment: number = 0;
   registrationReative: Registration =
@@ -55,10 +57,11 @@ export class StudentComponent {
     private route: ActivatedRoute,
     private service: StudentService,
     private formBuilder: UntypedFormBuilder,
-    private registrationSerive: RegistrationService,
-    private monthPaymentSerive: MonthPaymentSerive,
+    private registrationService: RegistrationService,
+    private monthPaymentService: MonthPaymentService,
     private toastr: ToastrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private paymentVoucherService: PaymentVoucherService
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
@@ -97,6 +100,8 @@ export class StudentComponent {
       this.calcDebitMonthPayment(i);
       m.payday = m.payday != null ? moment(m.payday).toDate() : null; //Adjust UTC
       i++;
+      //Show in the month voucher
+      this.monthPaymentsResume.push({discount: m.discount, received: m.received});
     });
 
     // Attach student with the student form
@@ -179,8 +184,12 @@ export class StudentComponent {
         paid: this.registrationReative.paid
       }
 
-      this.registrationSerive.update(registrationDto).subscribe({
-        next: (res) => this.toastr.success('Matrícula atualizada.'),
+      this.registrationService.update(registrationDto).subscribe({
+        next: (res) => {
+          this.toastr.success('Matrícula atualizada.');
+          this.registrationReative.discount = res.discount;
+          this.registrationReative.received = res.received;
+        },
         error: (error) => {
           this.toastr.error('Ops! tivemos alguns erro.');
           console.log(error);
@@ -207,8 +216,13 @@ export class StudentComponent {
         paid: monthPayment.paid
       }
 
-      this.monthPaymentSerive.update(monthPaymentDto).subscribe({
-        next: res => this.toastr.success('Mensalidade atualizada'),
+      this.monthPaymentService.update(monthPaymentDto).subscribe({
+        next: res => {
+          this.toastr.success('Mensalidade atualizada');
+          // Only show in viwer
+          this.monthPaymentsResume[this.selectedMonthPayment].discount = res.discount;
+          this.monthPaymentsResume[this.selectedMonthPayment].received = res.received;
+        },
         error: error => {
           this.toastr.error('Ops! tivemos alguns erro.');
           console.log(error);
@@ -236,6 +250,27 @@ export class StudentComponent {
             }
           });
         });
+      }
+    });
+  }
+
+  sendPaymentVoucherRegistration(): void {
+    this.paymentVoucherService.createForRegistration(this.registrationReative.id).subscribe({
+      next: res => this.toastr.success('Comprovante enviado'),
+      error: error => {
+        this.toastr.error('Ops.. Tivemos algum erro');
+        console.log(error);
+      }
+    });
+  }
+
+  sendPaymentVoucherMonthPayment(): void {
+    var id = this.monthPaymentsReative[this.selectedMonthPayment].id;
+    this.paymentVoucherService.createForMonthPayment(id).subscribe({
+      next: res => this.toastr.success('Comprovante enviado'),
+      error: error => {
+        this.toastr.error('Ops.. Tivemos algum erro');
+        console.log(error);
       }
     });
   }

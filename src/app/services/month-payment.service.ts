@@ -7,7 +7,7 @@ import { MonthPaymentUpdate } from '../dto/month-payment-update';
 @Injectable({
   providedIn: 'root'
 })
-export class MonthPaymentSerive {
+export class MonthPaymentService {
 
   constructor(private http: HttpClient) {}
 
