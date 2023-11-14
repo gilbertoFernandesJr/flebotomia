@@ -21,8 +21,10 @@
   </div>
 
   <div class="students">
-    <div class="student" *ngFor="let student of students">
-      <mat-expansion-panel>
+    <div class="student"
+    [ngClass]="{'in-debt': student.inDebt}"
+    *ngFor="let student of students">
+      <mat-expansion-panel >
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{student.name}}
@@ -76,6 +78,10 @@
           </button>
         </div>
       </mat-expansion-panel>
+      <div class="icon-status">
+        <mat-icon *ngIf="!student.inDebt" class="icon-ok">check_circle</mat-icon>
+        <mat-icon *ngIf="student.inDebt" class="icon-warn">warning</mat-icon>
+      </div>
     </div>
   </div>
 </main>

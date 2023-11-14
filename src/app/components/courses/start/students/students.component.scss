@@ -33,46 +33,74 @@ main {
     }
   }
 
-  mat-expansion-panel {
+  .in-debt {
+    background: var(--light-yellow) !important;
+  }
+
+  .student {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
+    border-radius: 5px;
+    background: var(--primary-color);
 
-    .mat-expansion-panel-header-description {
-      justify-content: flex-end;
-      align-items: center;
-      max-width: 30px;
-    }
-
-    .datas {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      .data-basic {
-        display: flex;
+    mat-expansion-panel {
+      width: 95%;
+      .mat-expansion-panel-header-description {
+        justify-content: flex-end;
         align-items: center;
-        margin-bottom: rem-calc(5);
-        padding-right: rem-calc(15);
+        max-width: 30px;
+      }
 
-        p {
-          margin: 0 5px 0 0;
+      .datas {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        .data-basic {
+          display: flex;
+          align-items: center;
+          margin-bottom: rem-calc(5);
+          padding-right: rem-calc(15);
+
+          p {
+            margin: 0 5px 0 0;
+          }
+
         }
+      }
 
+      h3 {
+        margin: 10px 0;
+        color: var(--primary-color);
+      }
+
+      .divider {
+        margin: 5px 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+      }
+
+      .btn-edit-student {
+        display: flex;
+        justify-content: flex-end;
       }
     }
 
-    h3 {
-      margin: 10px 0;
-      color: var(--primary-color);
+    .icon-ok {
+      margin-right: 7px;
+      color: var(--secondary-color);
     }
 
-    .divider {
-      margin: 5px 0;
-      height: 2px;
-      background-color: var(--secondary-color);
+    .icon-warn {
+      margin-right: 7px;
+      color: var(--gray);
     }
+  }
+}
 
-    .btn-edit-student {
-      display: flex;
-      justify-content: flex-end;
-    }
+@media (max-width: 500px) {
+  mat-expansion-panel {
+    width: 90% !important;
   }
 }

@@ -49,6 +49,7 @@ export class StudentComponent {
   });
 
   studentUpdateHasError: boolean = false;
+  voucherSending: boolean = false;
 
   minDate: Date;
   maxDate: Date;
@@ -255,23 +256,54 @@ export class StudentComponent {
   }
 
   sendPaymentVoucherRegistration(): void {
+    this.voucherSending = true;
     this.paymentVoucherService.createForRegistration(this.registrationReative.id).subscribe({
       next: res => this.toastr.success('Comprovante enviado'),
       error: error => {
         this.toastr.error('Ops.. Tivemos algum erro');
         console.log(error);
-      }
+      },
+      complete: () => this.voucherSending = false
     });
   }
 
   sendPaymentVoucherMonthPayment(): void {
+    this.voucherSending = true;
     var id = this.monthPaymentsReative[this.selectedMonthPayment].id;
     this.paymentVoucherService.createForMonthPayment(id).subscribe({
       next: res => this.toastr.success('Comprovante enviado'),
       error: error => {
         this.toastr.error('Ops.. Tivemos algum erro');
         console.log(error);
-      }
+      },
+      complete: () => this.voucherSending = false
+    });
+  }
+
+  pdfPaymentVoucherRegistration(): void {
+    this.voucherSending = true;
+    this.paymentVoucherService.printPdfForRegistration(this.registrationReative.id).subscribe({
+      next: res => {
+        let blob: Blob = res.body as Blob;
+        let url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error: error => console.log(error),
+      complete: () => this.voucherSending = false
+    });
+  }
+
+  pdfPaymentVoucherMonthPayment(): void {
+    this.voucherSending = true;
+    var id = this.monthPaymentsReative[this.selectedMonthPayment].id;
+    this.paymentVoucherService.printPdfForMonthPayment(id).subscribe({
+      next: res => {
+        let blob: Blob = res.body as Blob;
+        let url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error: error => console.log(error),
+      complete: () => this.voucherSending = false
     });
   }
 

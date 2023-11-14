@@ -27,4 +27,12 @@ export class PaymentVoucherService {
     });
   }
 
+  public printPdfForRegistration(registrationId: number): Observable<any> {
+    return this.http.get(`${API_CONFIG.baseUrl}/paymentVoucher/registration/${registrationId}/pdf`, {observe: 'response', responseType: 'blob'});
+  }
+
+  public printPdfForMonthPayment(monthPaymentId: number): Observable<any> {
+    return this.http.get(`${API_CONFIG.baseUrl}/paymentVoucher/monthPayment/${monthPaymentId}/pdf`, {observe: 'response', responseType: 'blob'});
+  }
+
 }

@@ -34,8 +34,20 @@ export class StudentsComponent {
       next: (res) => {
         this.students = res;
       },
-      error: (error) => console.log(error)
-    })
+      error: (error) => console.log(error),
+      complete: () => this.studentsInDebt()
+    });
+  }
+
+  studentsInDebt(): void {
+    this.students.forEach(student => {
+      let today = new Date();
+      let dueDate = new Date();
+      student.monthPayments?.forEach(m => {
+        dueDate = new Date(m.dueDate);
+        if(dueDate.getTime() < today.getTime() && !m.paid) student.inDebt = true;
+      });
+    });
   }
 
   getRegistration(student: Student): any {

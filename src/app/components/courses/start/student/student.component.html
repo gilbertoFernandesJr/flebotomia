@@ -139,10 +139,20 @@
             <p>{{nameTeam}}</p>
             <p>code xxxx</p>
           </div>
-          <button mat-stroked-button color="primary"
-          (click)="sendPaymentVoucherRegistration()">
-            Enviar Comprovante
-          </button>
+          <div class="container-btns-voucher">
+            <div *ngIf ="voucherSending" class="custom-loader"></div>
+            <div *ngIf ="!voucherSending" class="btns-voucher">
+              <button mat-flat-button class="btn-download"
+              (click)="pdfPaymentVoucherRegistration()">
+                Baixar Comprovante
+              </button>
+              <button mat-stroked-button class="btn-send-sms"
+              (click)="sendPaymentVoucherRegistration()">
+                Enviar Comprovante SMS
+              </button>
+            </div>
+          </div>
+
         </div>
       </mat-expansion-panel>
      </div>
@@ -236,10 +246,19 @@
               <p>{{nameTeam}}</p>
               <p>code xxxx</p>
             </div>
-            <button mat-stroked-button color="primary"
-            (click)="sendPaymentVoucherMonthPayment()">
-              Enviar Comprovante
-            </button>
+            <div class="container-btns-voucher">
+              <div *ngIf ="voucherSending" class="custom-loader"></div>
+              <div *ngIf ="!voucherSending" class="btns-voucher">
+                <button mat-flat-button class="btn-download"
+                (click)="pdfPaymentVoucherMonthPayment()">
+                  Baixar Comprovante
+                </button>
+                <button mat-stroked-button class="btn-send-sms"
+                (click)="sendPaymentVoucherMonthPayment()">
+                  Enviar Comprovante SMS
+                </button>
+              </div>
+            </div>
           </div>
         </mat-expansion-panel>
       </div>
