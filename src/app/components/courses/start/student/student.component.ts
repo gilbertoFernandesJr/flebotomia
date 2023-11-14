@@ -293,6 +293,7 @@ export class StudentComponent {
     });
   }
 
+  //Print pdf or dowload after open
   pdfPaymentVoucherMonthPayment(): void {
     this.voucherSending = true;
     var id = this.monthPaymentsReative[this.selectedMonthPayment].id;
@@ -301,6 +302,26 @@ export class StudentComponent {
         let blob: Blob = res.body as Blob;
         let url = window.URL.createObjectURL(blob);
         window.open(url);
+      },
+      error: error => console.log(error),
+      complete: () => this.voucherSending = false
+    });
+  }
+
+  //Not use, only example
+  pdfPaymentVoucherMonthPaymentDownload(): void {
+    this.voucherSending = true;
+    var id = this.monthPaymentsReative[this.selectedMonthPayment].id;
+    this.paymentVoucherService.printPdfForMonthPayment(id).subscribe({
+      next: res => {
+        let blob: Blob = res.body as Blob;
+        let url = window.URL.createObjectURL(blob);
+
+        //Download
+        let a = document.createElement('a');
+        a.download = 'comprovante-de-pagamento-ceslab';
+        a.href = url;
+        a.click();
       },
       error: error => console.log(error),
       complete: () => this.voucherSending = false
