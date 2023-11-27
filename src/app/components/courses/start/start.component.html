@@ -18,6 +18,14 @@
     </a>
 
     <a
+      routerLink="/courses/start/analytical"
+      [routerLinkActive]="['active']"
+      (click)="drawer.toggle(); changeIcon()">
+      <mat-icon aria-hidden="false" aria-label="finance">equalizer</mat-icon>
+      <span>Análise</span>
+    </a>
+
+    <a
       routerLink="/courses/start/settings"
       [routerLinkActive]="['active']"
       (click)="drawer.toggle(); changeIcon()">

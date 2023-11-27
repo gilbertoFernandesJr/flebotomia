@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddStudentTeamDialogComponent } from './dialogs/add-student-team-dialog/add-student-team-dialog.component';
 import { AddTeamDialogComponent } from './dialogs/add-team-dialog/add-team-dialog.component';
 import { UserComponent } from './user/user.component';
+import { AnalyticalComponent } from './analytical/analytical.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -27,7 +29,8 @@ import { UserComponent } from './user/user.component';
     StudentComponent,
     AddStudentTeamDialogComponent,
     AddTeamDialogComponent,
-    UserComponent
+    UserComponent,
+    AnalyticalComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,8 @@ import { UserComponent } from './user/user.component';
     SharedModule,
     NgxMaskModule.forChild(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule
   ]
 })
 export class StartModule { }

@@ -7,6 +7,7 @@ import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './student/student.component';
 import { TeamComponent } from './team/team.component';
 import { UserComponent } from './user/user.component';
+import { AnalyticalComponent } from './analytical/analytical.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'settings',
         component: UserComponent, title: 'Usuário'
+      },
+      {
+        path: 'analytical',
+        component: AnalyticalComponent, title: 'Análise Financeira'
       }
     ]
   },

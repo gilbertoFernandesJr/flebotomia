@@ -1,0 +1,20 @@
+<main>
+  <h2>Análise Financeira</h2>
+  <div class="custom-loader" *ngIf ="!datasCompleted"></div>
+  <div class="chart" *ngIf ="datasCompleted">
+    <h3>Faturamento anual</h3>
+    <ngx-charts-bar-vertical
+      [view]="view"
+      scheme="nightLights"
+      [results]="months"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+</main>
