@@ -1,20 +1,43 @@
 <main>
   <h2>Análise Financeira</h2>
-  <div class="custom-loader" *ngIf ="!datasCompleted"></div>
-  <div class="chart" *ngIf ="datasCompleted">
-    <h3>Faturamento anual</h3>
-    <ngx-charts-bar-vertical
-      [view]="view"
-      scheme="nightLights"
-      [results]="months"
-      [gradient]="gradient"
-      [xAxis]="showXAxis"
-      [yAxis]="showYAxis"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel"
-      (select)="onSelect($event)">
-    </ngx-charts-bar-vertical>
+  <div class="header-year">
+    <div class="group-name-number">
+      <p>Anual: </p>
+      <p class="h-number">{{calcMoneyYear() | currency}}</p>
+    </div>
+    <div class="group-name-number">
+      <p>Média Mensal: </p>
+      <p class="h-number">{{calcAvgYear() | currency}}</p>
+    </div>
   </div>
+  <div class="custom-loader" *ngIf ="!datasCompleted"></div>
+  <div class="content-chart" *ngIf ="datasCompleted">
+    <h3>Faturamento anual</h3>
+    <div class="charts">
+      <ngx-charts-bar-vertical
+        [view]="viewBar"
+        scheme="nightLights"
+        [results]="months"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel">
+      </ngx-charts-bar-vertical>
+
+      <ngx-charts-pie-chart
+      [view]="viewPie"
+      scheme="ocean"
+      [results]="division"
+      [gradient]="gradient"
+      [labels]="showLabels"
+      [doughnut]=true
+      >
+      </ngx-charts-pie-chart>
+    </div>
+
+  </div>
+
 </main>

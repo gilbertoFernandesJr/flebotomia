@@ -7,9 +7,44 @@ main {
     color: var(--primary-color);
   }
 
-  .chart {
-    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal quando o conteúdo excede a largura da div */
-    height: rem-calc(600);
+  .header-year {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 4px 2px 10px var(--secondary-color);
+
+    .group-name-number {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      width: 250px;
+      p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: lighter;
+        color: var(--primary-color);
+      }
+
+      .h-number {
+        margin: 0 10px;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--gray);
+      }
+    }
+  }
+
+  .content-chart {
+    .charts {
+      display: flex;
+      flex-wrap: wrap;
+      ngx-charts-bar-vertical, ngx-charts-pie-chart{
+        //Adiciona uma barra de rolagem horizontal quando o conteúdo excede a largura da div
+        overflow-x: auto;
+      }
+    }
   }
 
   /*Loader*/
