@@ -26,6 +26,14 @@
     </a>
 
     <a
+      routerLink="/courses/start/expense"
+      [routerLinkActive]="['active']"
+      (click)="drawer.toggle(); changeIcon()">
+      <mat-icon aria-hidden="false" aria-label="finance">credit_card</mat-icon>
+      <span>Despesas</span>
+    </a>
+
+    <a
       routerLink="/courses/start/settings"
       [routerLinkActive]="['active']"
       (click)="drawer.toggle(); changeIcon()">

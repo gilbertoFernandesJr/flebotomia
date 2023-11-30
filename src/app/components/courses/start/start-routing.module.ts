@@ -8,6 +8,7 @@ import { StudentComponent } from './student/student.component';
 import { TeamComponent } from './team/team.component';
 import { UserComponent } from './user/user.component';
 import { AnalyticalComponent } from './analytical/analytical.component';
+import { ExpenseComponent } from './expense/expense.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'analytical',
         component: AnalyticalComponent, title: 'Análise Financeira'
+      },
+      {
+        path: 'expense',
+        component: ExpenseComponent, title: 'Despesas do Curso'
       }
     ]
   },

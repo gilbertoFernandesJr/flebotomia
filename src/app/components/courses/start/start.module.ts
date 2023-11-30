@@ -16,6 +16,7 @@ import { AddTeamDialogComponent } from './dialogs/add-team-dialog/add-team-dialo
 import { UserComponent } from './user/user.component';
 import { AnalyticalComponent } from './analytical/analytical.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ExpenseComponent } from './expense/expense.component';
 
 
 
@@ -30,7 +31,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AddStudentTeamDialogComponent,
     AddTeamDialogComponent,
     UserComponent,
-    AnalyticalComponent
+    AnalyticalComponent,
+    ExpenseComponent
   ],
   imports: [
     CommonModule,

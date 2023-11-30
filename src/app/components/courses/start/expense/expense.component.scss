@@ -1,0 +1,63 @@
+@import '../../../../config-scss/rem-calc.scss';
+
+main {
+  padding: rem-calc(20);
+
+  h2 {
+    color: var(--primary-color);
+  }
+
+  .header-search {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: rem-calc(20);
+    padding: 15px 15px 0 15px;
+    border-radius: 5px;
+    box-shadow: 4px 2px 10px var(--secondary-color);
+
+    mat-form-field {
+      margin-right: 10px;
+    }
+
+    button {
+      margin-bottom: rem-calc(15);
+    }
+  }
+
+  .warning-date {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid var(--warning-orange);
+    border-radius: 5px;
+    color: var(--warning-orange);
+    mat-icon {
+      margin-right: 5px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+
+  .content-table {
+    width: 100%; /* Ou a largura desejada para a div */
+    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal quando o conteúdo excede a largura da div */
+    white-space: nowrap; /* Impede que o conteúdo seja quebrado em várias linhas */
+    overflow-wrap: normal; /* Impede que o conteúdo seja quebrado em várias linhas (para navegadores mais antigos) */
+  }
+
+  .btn-edit {
+    background: var(--light-gray);
+    color: var(--gray);
+    margin-right: rem-calc(5);
+  }
+}
+
+@media (max-width: 500px) {
+  table {
+    min-width: 500px;
+  }
+}

@@ -1,0 +1,76 @@
+<main>
+  <h2>Despesas</h2>
+  <div class="header-search">
+    <div class="fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Curso</mat-label>
+        <mat-select [(ngModel)]="selectedCourse" name="course">
+          <mat-option value = 0>
+            Todos
+          </mat-option>
+          <mat-option *ngFor="let course of courses" [value]="course.id">
+            {{course.name | capitalize}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data Início</mat-label>
+        <input matInput [matDatepicker]="start" [(ngModel)]="dateStart" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="start"></mat-datepicker-toggle>
+        <mat-datepicker #start></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data Final</mat-label>
+        <input matInput [matDatepicker]="end" [(ngModel)]="dateEnd" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="end"></mat-datepicker-toggle>
+        <mat-datepicker #end></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="search()">Filtrar</button>
+  </div>
+  <div class="warning-date" *ngIf="!isDateEndMoreThanDateStart()">
+    <mat-icon aria-hidden="false" aria-label="Atenção" fontIcon="warning">
+    </mat-icon>
+    <p>Atenção data inicial maior que a data final, por favor inverta as datas</p>
+  </div>
+  <div class="content-table">
+    <table mat-table [dataSource]="expenses" class="mat-elevation-z8">
+
+      <!-- Emissão Column -->
+      <ng-container matColumnDef="emission">
+        <th mat-header-cell *matHeaderCellDef> Emissão </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.emission | dateDescribe: 'dd/MM/yyyy'}}
+        </td>
+      </ng-container>
+
+      <!-- Descrição Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Valor Column -->
+      <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef> Valor </th>
+        <td mat-cell *matCellDef="let element"> {{element.cost | currency}} </td>
+      </ng-container>
+
+      <!-- Edite Column -->
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef> Edite </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-mini-fab aria-label="edite" class="btn-edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" aria-label="delete">
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</main>
