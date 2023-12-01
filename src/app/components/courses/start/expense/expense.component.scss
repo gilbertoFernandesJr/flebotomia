@@ -3,9 +3,18 @@
 main {
   padding: rem-calc(20);
 
-  h2 {
-    color: var(--primary-color);
+  .header {
+    display: flex;
+    justify-content: space-between;
+    h2 {
+      color: var(--primary-color);
+    }
+    button {
+      background-color: var(--warning-orange);
+      color: var(--white);
+    }
   }
+
 
   .header-search {
     display: flex;
@@ -47,6 +56,14 @@ main {
     overflow-x: auto; /* Adiciona uma barra de rolagem horizontal quando o conteúdo excede a largura da div */
     white-space: nowrap; /* Impede que o conteúdo seja quebrado em várias linhas */
     overflow-wrap: normal; /* Impede que o conteúdo seja quebrado em várias linhas (para navegadores mais antigos) */
+
+    .border-left {
+      border-left: 3px solid var(--warning-orange) !important;
+    }
+
+    .not-wrap {
+      white-space: nowrap;
+    }
   }
 
   .btn-edit {

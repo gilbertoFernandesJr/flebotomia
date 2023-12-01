@@ -3,6 +3,8 @@ import { Course } from 'src/app/models/course';
 import { Expense } from 'src/app/models/expense';
 import { AllCoursesService } from 'src/app/services/all-courses.service';
 import { ExpenseService } from 'src/app/services/expense.service';
+import { AddExpenseDialogComponent } from '../dialogs/add-expense-dialog/add-expense-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-expense',
@@ -21,7 +23,11 @@ export class ExpenseComponent {
   expenses: Expense[] = [];
   displayedColumns: string[] = ['emission', 'description', 'cost', 'buttons'];
 
-  constructor(private service: ExpenseService, private courseService: AllCoursesService) {
+  constructor(
+    private service: ExpenseService,
+    private courseService: AllCoursesService,
+    private dialog: MatDialog
+  ) {
     this.service.findBySearch().subscribe({
       next: res => this.expenses = res,
       error: error => console.log(error),
@@ -62,6 +68,17 @@ export class ExpenseComponent {
   private getDateTodayMinusOneMonth(): any {
     const monthBack = this.moment().subtract(1, 'months').format('YYYY-MM-DD') + 'T12:00:00Z';
     return new Date(monthBack);
+  }
+
+  addExpense(): void {
+    const dialogRef = this.dialog.open(AddExpenseDialogComponent, {data: this.selectedCourse});
+    dialogRef.afterClosed().subscribe({
+      next: result => {
+        if (result) {
+          this.search()
+        }
+      }
+    });
   }
 
 }
