@@ -69,7 +69,8 @@
           <button mat-mini-fab aria-label="edite" class="btn-edit">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-mini-fab color="warn" aria-label="delete">
+          <button mat-mini-fab color="warn" aria-label="delete"
+          (click)="showConfirmationDelete(element.id)">
             <mat-icon>delete_sweep</mat-icon>
           </button>
         </td>

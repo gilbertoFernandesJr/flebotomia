@@ -17,6 +17,10 @@ export class ExpenseService {
     return this.http.post(`${API_CONFIG.baseUrl}/expense`, expense);
   }
 
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${API_CONFIG.baseUrl}/expense/${id}`);
+  }
+
   findBySearch(dateStart?: string, dateEnd?: string, courseId?: number) : Observable<any> {
     return this.http.get(`${API_CONFIG.baseUrl}/expense/search?course=${courseId != 0 && courseId ? courseId : ''}&start=${dateStart? dateStart: this.getDateTodayMinusOneMonth()}&end=${dateEnd? dateEnd: this.getDateToday()}`);
   }

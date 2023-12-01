@@ -5,6 +5,8 @@ import { AllCoursesService } from 'src/app/services/all-courses.service';
 import { ExpenseService } from 'src/app/services/expense.service';
 import { AddExpenseDialogComponent } from '../dialogs/add-expense-dialog/add-expense-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-expense',
@@ -26,7 +28,8 @@ export class ExpenseComponent {
   constructor(
     private service: ExpenseService,
     private courseService: AllCoursesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toast: ToastrService
   ) {
     this.service.findBySearch().subscribe({
       next: res => this.expenses = res,
@@ -73,11 +76,28 @@ export class ExpenseComponent {
   addExpense(): void {
     const dialogRef = this.dialog.open(AddExpenseDialogComponent, {data: this.selectedCourse});
     dialogRef.afterClosed().subscribe({
-      next: result => {
-        if (result) {
-          this.search()
-        }
+      next: result => { if (result) this.search() }
+    });
+  }
+
+  private deleteExpense(id: number): void {
+    this.service.delete(id).subscribe({
+      next: res => {
+        this.search();
+        this.toast.info('Despesa Deletada');
+      },
+      error: error => {
+        this.toast.error('Ops.. Tivemos algum problema');
+        console.log(error);
       }
+    });
+  }
+
+  showConfirmationDelete(id: number): void {
+    const txtConfirmation = 'Essa ação não poderá ser desfeita. Deseje realmente excluír essa despesa?'
+    const dialogConfirmation = this.dialog.open(ConfirmDialogComponent, {data: txtConfirmation});
+    dialogConfirmation.afterClosed().subscribe({
+      next: result => { if (result) this.deleteExpense(id); }
     });
   }
 
