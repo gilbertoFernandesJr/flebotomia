@@ -18,6 +18,7 @@ import { AnalyticalComponent } from './analytical/analytical.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ExpenseComponent } from './expense/expense.component';
 import { AddExpenseDialogComponent } from './dialogs/add-expense-dialog/add-expense-dialog.component';
+import { UpdateExpenseDialogComponent } from './dialogs/update-expense-dialog/add-expense-dialog.component';
 
 
 
@@ -34,7 +35,8 @@ import { AddExpenseDialogComponent } from './dialogs/add-expense-dialog/add-expe
     UserComponent,
     AnalyticalComponent,
     ExpenseComponent,
-    AddExpenseDialogComponent
+    AddExpenseDialogComponent,
+    UpdateExpenseDialogComponent
   ],
   imports: [
     CommonModule,

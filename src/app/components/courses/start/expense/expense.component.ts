@@ -7,6 +7,7 @@ import { AddExpenseDialogComponent } from '../dialogs/add-expense-dialog/add-exp
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { ToastrService } from 'ngx-toastr';
+import { UpdateExpenseDialogComponent } from '../dialogs/update-expense-dialog/add-expense-dialog.component';
 
 @Component({
   selector: 'app-expense',
@@ -99,6 +100,10 @@ export class ExpenseComponent {
     dialogConfirmation.afterClosed().subscribe({
       next: result => { if (result) this.deleteExpense(id); }
     });
+  }
+
+  update(expenseUpdate: Expense): void {
+    this.dialog.open(UpdateExpenseDialogComponent, {data: expenseUpdate});
   }
 
 }

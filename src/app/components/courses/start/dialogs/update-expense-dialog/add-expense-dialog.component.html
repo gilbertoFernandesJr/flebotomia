@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Atualizar Despesa</h1>
+<div mat-dialog-content>
+  <form [formGroup]="expenseForm">
+    <mat-form-field appearance="outline" class="i-margin-right">
+      <mat-label>Curso</mat-label>
+      <mat-select formControlName="courseId" name="course">
+        <mat-option *ngFor="let course of courses" [value]="course.id">
+          {{course.name | capitalize}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Valor</mat-label>
+      <input matInput placeholder="R$ 0,00"
+      formControlName="cost"
+      mask="separator.2" thousandSeparator="." decimalMarker=",">
+    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline" class="width-full">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput placeholder="Máximo de 200 caracteres" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+  <p *ngIf="anyfildEmpty" class="p-warn">Atenção campos obrigatórios</p>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="submit()">
+    Atualizar
+  </button>
+</div>
