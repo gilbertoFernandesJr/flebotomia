@@ -93,8 +93,8 @@ export class ExpenseComponent {
     });
   }
 
-  showConfirmationDelete(id: number): void {
-    const txtConfirmation = 'Essa ação não poderá ser desfeita. Deseje realmente excluír essa despesa?'
+  showConfirmationDelete(id: number, description: string): void {
+    const txtConfirmation =`Descrição da despesa: (${description}). \n Essa ação não poderá ser desfeita. Deseja realmente excluír essa despesa?`;
     const dialogConfirmation = this.dialog.open(ConfirmDialogComponent, {data: txtConfirmation});
     dialogConfirmation.afterClosed().subscribe({
       next: result => { if (result) this.deleteExpense(id); }
