@@ -39,6 +39,9 @@
     </mat-icon>
     <p>Atenção data inicial maior que a data final, por favor inverta as datas</p>
   </div>
+  <div class="total-cost">
+    <p>Total das despesas do período: <span>{{totalCost() | currency}}</span></p>
+  </div>
   <div class="content-table">
     <table mat-table [dataSource]="expenses" class="mat-elevation-z8">
 

@@ -74,6 +74,12 @@ export class ExpenseComponent {
     return new Date(monthBack);
   }
 
+  totalCost(): number {
+    let total: number = 0;
+    this.expenses.forEach( e => total += e.cost!);
+    return total;
+  }
+
   addExpense(): void {
     const dialogRef = this.dialog.open(AddExpenseDialogComponent, {data: this.selectedCourse});
     dialogRef.afterClosed().subscribe({
