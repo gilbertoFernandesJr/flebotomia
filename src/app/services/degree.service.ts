@@ -14,4 +14,12 @@ export class DegreeService {
   findByCode(code : string) : Observable<Degree> {
     return this.http.get<Degree>(`${API_CONFIG.baseUrl}/degree/${code}`);
   }
+
+  findByStudentAndTeam(studentId : number, teamId: number) : Observable<Degree> {
+    return this.http.get<Degree>(`${API_CONFIG.baseUrl}/degree/student/${studentId}/team/${teamId}`);
+  }
+
+  create(degreeCreate : {studentId: number, teamId: number}) : Observable<Degree> {
+    return this.http.post<Degree>(`${API_CONFIG.baseUrl}/degree`, degreeCreate);
+  }
 }

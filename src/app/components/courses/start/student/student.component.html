@@ -4,7 +4,7 @@
     (click)="back()">
     <mat-icon>keyboard_return</mat-icon>
   </button>
-  <h2>Turma: {{nameTeam | uppercase}}</h2>
+  <h2>Turma: {{team.name | uppercase}}</h2>
   <h2>Editar Aluno:  {{student.name}}</h2>
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
 
@@ -136,7 +136,7 @@
             <p>Valor total: {{registrationReative.price | currency}}</p>
             <p>Desconto: {{registrationReative.discount | currency}}</p>
             <p>Valor Pago: {{registrationReative.received | currency}}</p>
-            <p>{{nameTeam}}</p>
+            <p>{{team.name}}</p>
             <p>code xxxx</p>
           </div>
           <div class="container-btns-voucher">
@@ -243,7 +243,7 @@
               <p>
                 Valor Pago: {{monthPaymentsResume[selectedMonthPayment].received | currency}}
               </p>
-              <p>{{nameTeam}}</p>
+              <p>{{team.name}}</p>
               <p>code xxxx</p>
             </div>
             <div class="container-btns-voucher">
@@ -263,5 +263,27 @@
         </mat-expansion-panel>
       </div>
     </mat-tab>
+
+    <mat-tab label="Certificado">
+      <div class="basic-informations">
+        <mat-form-field appearance="outline" class="max-width">
+          <mat-label>Código do certificado</mat-label>
+          <input matInput placeholder="CTF****" [(ngModel)]="degreeCode" readonly>
+        </mat-form-field>
+        <p *ngIf="degreeGenerationDate != null">Gerado em: {{degreeGenerationDate}}</p>
+        <p class="error" *ngIf="studentWithDebit">
+          Aluno em débito, antes de gerar o certificado quitar todos os débitos.
+        </p>
+        <div class="btns-degree">
+          <button mat-raised-button color="primary" (click)="createDegree()" *ngIf="!degreeCode">
+              Gerar certificado
+          </button>
+          <a mat-raised-button *ngIf="degreeCode" class="btn-degree" href="https://ceslab.com.br/courses/degree/{{degreeCode}}" target="_blank">
+            Visualizar certificado
+          </a>
+        </div>
+      </div>
+    </mat-tab>
+
   </mat-tab-group>
 </main>

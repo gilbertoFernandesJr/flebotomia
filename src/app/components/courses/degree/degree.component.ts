@@ -14,7 +14,7 @@ export class DegreeComponent implements OnInit {
   degree: Degree = {
     id: '',
     code: '',
-    dateGeneration: '',
+    generationDate: '',
     studentDTO: {
       name: '',
       cpf: ''

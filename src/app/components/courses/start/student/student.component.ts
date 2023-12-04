@@ -1,3 +1,4 @@
+import { DegreeService } from 'src/app/services/degree.service';
 import { Student } from 'src/app/models/student';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
@@ -14,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MonthPaymentService } from 'src/app/services/month-payment.service';
+import { Team } from 'src/app/models/team/team';
 
 @Component({
   selector: 'app-student',
@@ -27,7 +29,11 @@ export class StudentComponent {
     cpf: ''
   }
 
-  nameTeam: string = '';
+  team: Team = {id: 0, name:'', completed: false};
+
+  degreeCode: string = '';
+  degreeGenerationDate: any = null;
+  studentWithDebit: boolean = false;
 
   monthPaymentsResume: {discount?: number, received?: number}[] = []
   monthPaymentsReative: MonthPayment[] = [];
@@ -62,11 +68,13 @@ export class StudentComponent {
     private monthPaymentService: MonthPaymentService,
     private toastr: ToastrService,
     public dialog: MatDialog,
-    private paymentVoucherService: PaymentVoucherService
+    private paymentVoucherService: PaymentVoucherService,
+    private degreeService: DegreeService
   ){
 
     this.route.params.subscribe(params => this.getStudent(params["idStudent"]));
-    this.route.params.subscribe(params => this.nameTeam = params['nameTeam']);
+    this.route.params.subscribe(params => this.team.name = params['nameTeam']);
+    this.route.params.subscribe(params => this.team.id = params['idTeam']);
 
     // Max year old of 60 years and minumum of 16 years old
     // Used at date birth of student
@@ -107,6 +115,9 @@ export class StudentComponent {
 
     // Attach student with the student form
     this.attachStudentWithForm();
+
+    //FindDegreeIfhave
+    this.findDegree();
 
   }
 
@@ -326,6 +337,33 @@ export class StudentComponent {
       error: error => console.log(error),
       complete: () => this.voucherSending = false
     });
+  }
+
+  findDegree(): void {
+    this.degreeService.findByStudentAndTeam(this.student.id, this.team.id).subscribe({
+      next: res => {
+        if (res != null) {
+          this.degreeCode = res.code;
+          this.degreeGenerationDate = moment(res.generationDate).format('DD/MM/YYYY');
+        }
+      }
+    });
+  }
+
+  createDegree(): void {
+    if (!this.degreeCode) {
+      this.degreeService.create({studentId: this.student.id, teamId: this.team.id}).subscribe({
+        next: res => {
+          this.degreeCode = res.code;
+          this.degreeGenerationDate = moment(res.generationDate).format('DD/MM/YYYY');
+          this.studentWithDebit = false;
+        },
+        error: error => {
+          if (error.error.message == 'Student with debit') this.studentWithDebit = true;
+          console.log(error);
+        }
+      });
+    }
   }
 
   back(): void {
