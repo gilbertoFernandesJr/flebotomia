@@ -4,7 +4,7 @@ import { StartComponent } from './start.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { TeamsComponent } from './teams/teams.component';
 import { StudentsByTeamComponent } from './studentsByTeam/students-by-team.component';
-import { StudentComponent } from './student/student.component';
+import { StudentByTeamComponent } from './studentByTeam/student-by-team.component';
 import { TeamComponent } from './team/team.component';
 import { UserComponent } from './user/user.component';
 import { AnalyticalComponent } from './analytical/analytical.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
       },
       {
         path: 'students/:nameTeam/:idTeam/:idStudent',
-        component: StudentComponent, title: 'Aluno'
+        component: StudentByTeamComponent, title: 'Aluno'
       },
       {
         path: 'settings',

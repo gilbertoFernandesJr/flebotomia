@@ -20,6 +20,7 @@
     <a
       routerLink="/courses/start/students"
       [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact: true}"
       (click)="drawer.toggle(); changeIcon()">
       <mat-icon aria-hidden="false" aria-label="finance">groups</mat-icon>
       <span>Alunos</span>

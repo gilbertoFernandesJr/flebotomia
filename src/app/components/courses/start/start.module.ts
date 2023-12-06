@@ -8,7 +8,7 @@ import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamComponent } from './team/team.component';
 import { StudentsByTeamComponent } from './studentsByTeam/students-by-team.component';
-import { StudentComponent } from './student/student.component';
+import { StudentByTeamComponent } from './studentByTeam/student-by-team.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddStudentTeamDialogComponent } from './dialogs/add-student-team-dialog/add-student-team-dialog.component';
@@ -30,7 +30,7 @@ import { StudentsComponent } from './students/students.component';
     TeamsComponent,
     TeamComponent,
     StudentsByTeamComponent,
-    StudentComponent,
+    StudentByTeamComponent,
     AddStudentTeamDialogComponent,
     AddTeamDialogComponent,
     UserComponent,

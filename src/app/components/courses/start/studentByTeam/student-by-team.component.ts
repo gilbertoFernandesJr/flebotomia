@@ -9,7 +9,7 @@ import { Registration } from 'src/app/models/registration';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { RegistrationUpdate } from 'src/app/dto/registration-update';
 import { MonthPaymentUpdate } from 'src/app/dto/month-payment-update';
-import { PaymentVoucherService } from './../../../../services/payment-voucher.service';
+import { PaymentVoucherService } from '../../../../services/payment-voucher.service';
 import * as moment from 'moment-timezone';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,10 +19,10 @@ import { Team } from 'src/app/models/team/team';
 
 @Component({
   selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.scss']
+  templateUrl: './student-by-team.component.html',
+  styleUrls: ['./student-by-team.component.scss']
 })
-export class StudentComponent {
+export class StudentByTeamComponent {
 
   student: Student = {
     name: '',
