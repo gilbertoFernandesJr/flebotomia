@@ -1,14 +1,25 @@
 <main>
-  <h2>Alunos</h2>
-  <div class="header-search">
-    <mat-form-field appearance="outline">
-      <mat-label>Pesquisar por nome do aluno</mat-label>
-      <input matInput type="text" [(ngModel)]="searchByName" (keyup.enter)="search()">
-      <button matSuffix mat-icon-button aria-label="Pesquisar" (click)="search()">
-        <mat-icon>search</mat-icon>
+  <button mat-icon-button aria-label="voltar" class="back-page" (click)="back()">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+
+  <div class="header-team">
+    <div class="name-team">
+      <h2>Turma {{nameTeam | uppercase}}</h2>
+      <p>Quantidade de alunos: {{students.length}}</p>
+    </div>
+    <div>
+      <button mat-mini-fab aria-label="Editar turma"
+      (click)="goEditStudent()" class="btn-edit" title="Editar turma">
+        <mat-icon>edit</mat-icon>
       </button>
-    </mat-form-field>
+      <button mat-mini-fab color="primary" aria-label="Adicionar Aluno"
+      (click)="addStudent()" title="Adicionar Aluno">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
   </div>
+
   <div class="students">
     <div class="student"
     [ngClass]="{'in-debt': student.inDebt}"
@@ -42,6 +53,25 @@
             </span>
           </div>
         </div>
+        <div class="divider"></div>
+        <h3>Valores recebidos</h3>
+        <div class="datas">
+          <div class="data-basic">
+            <p>Matricula:</p>
+            <span>
+              {{ getRegistration(student) | currency }}
+            </span>
+          </div>
+
+          <div
+            class="data-basic"
+            *ngFor="let payment of student.monthPayments; let i = index">
+            <p>Mensalidade ({{i+1}}):</p>
+            <span>
+              {{ payment.received | currency }}
+            </span>
+          </div>
+        </div>
         <div class="btn-edit-student">
           <button mat-stroked-button color="primary" (click)="editStudent(student.id)">
             Editar
@@ -54,15 +84,4 @@
       </div>
     </div>
   </div>
-
-  <mat-paginator #paginator
-               (page)="handlePageEvent($event)"
-               [length]="length"
-               [pageSize]="pageSize"
-               [showFirstLastButtons]="showFirstLastButtons"
-               [hidePageSize]="hidePageSize"
-               [pageIndex]="pageIndex"
-               aria-label="paginação da página"
-              >
-    </mat-paginator>
 </main>

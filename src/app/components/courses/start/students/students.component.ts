@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from 'src/app/models/student';
+import { Component } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service';
-import { AddStudentTeamDialogComponent } from '../dialogs/add-student-team-dialog/add-student-team-dialog.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-students',
@@ -12,29 +10,35 @@ import { AddStudentTeamDialogComponent } from '../dialogs/add-student-team-dialo
 })
 export class StudentsComponent {
 
-  constructor(
-    private service: StudentService,
-    private route: ActivatedRoute,
-    private router: Router,
-    public dialog: MatDialog
-  ) {}
-
   students: Student[] = [];
-  idTeam: number = 0;
-  nameTeam: string = '';
+  searchByName: string = '';
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => this.nameTeam = params['nameTeam']);
-    this.route.params.subscribe(params => this.idTeam = params['idTeam']);
-    this.getStudents();
+  //Pagination
+  length = 0; // Come of the back, all elements on the DB
+  pageSize = 10; // All elements for page
+  pageIndex = 0; // Page
+
+  hidePageSize = false;
+  showFirstLastButtons = true;
+
+  constructor(private service: StudentService) {
+    this.findStudents(this.pageIndex);
   }
 
-  getStudents(): void {
-    this.service.getStudentsByTeam(this.idTeam).subscribe({
-      next: (res) => {
-        this.students = res;
+  handlePageEvent(e: PageEvent) {
+    this.pageIndex = e.pageIndex;
+    this.findStudents(this.pageIndex);
+  }
+
+  findStudents(page: number): void {
+    this.service.findAll(page, this.searchByName).subscribe({
+      next: res => {
+        this.students = res.content;
+        this.length = res.totalElements;
+        // this.pageSize = res.numberOfElements;
+        this.pageIndex = res.number;
       },
-      error: (error) => console.log(error),
+      error: error => console.log(error),
       complete: () => this.studentsInDebt()
     });
   }
@@ -50,33 +54,11 @@ export class StudentsComponent {
     });
   }
 
-  getRegistration(student: Student): any {
-    let valueReceived;
-    student.registrations?.forEach(r => {
-      if (r.team.id == this.idTeam) valueReceived = r.received;
-    });
-    return valueReceived;
-  }
-
   editStudent(id: number): void {
-    this.router.navigate([`courses/start/students/${this.nameTeam}/${this.idTeam}/${id}`]);
+
   }
 
-  addStudent(): void {
-    const dialogRef = this.dialog.open(AddStudentTeamDialogComponent, {
-      data: this.idTeam,
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) this.students.push(result);
-    });
-  }
-
-  goEditStudent(): void {
-    this.router.navigate([`/courses/start/teams/${this.idTeam}`]);
-  }
-
-  back(): void {
-    history.back();
+  search(): void {
+    this.findStudents(0);
   }
 }

@@ -13,6 +13,10 @@ export class StudentService {
 
   OnInit() {}
 
+  public findAll(page: number, name?: string): Observable<any> {
+    return this.http.get(`${API_CONFIG.baseUrl}/students?page=${page}${name? '&name='+name : ''}`);
+  }
+
   public getStudentsByTeam(idTeam?: number): Observable<any> {
     return this.http.get<any>(`${API_CONFIG.baseUrl}/teams/${idTeam}/students`);
   }

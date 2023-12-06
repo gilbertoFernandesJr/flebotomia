@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { StartComponent } from './start.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { TeamsComponent } from './teams/teams.component';
-import { StudentsComponent } from './students/students.component';
+import { StudentsByTeamComponent } from './studentsByTeam/students-by-team.component';
 import { StudentComponent } from './student/student.component';
 import { TeamComponent } from './team/team.component';
 import { UserComponent } from './user/user.component';
 import { AnalyticalComponent } from './analytical/analytical.component';
 import { ExpenseComponent } from './expense/expense.component';
+import { StudentsComponent } from './students/students.component';
 
 const routes: Routes = [
   {
@@ -27,8 +28,12 @@ const routes: Routes = [
         component: TeamsComponent, title: 'Turmas'
       },
       {
-        path: 'students/:nameTeam/:idTeam',
+        path: 'students',
         component: StudentsComponent, title: 'Alunos'
+      },
+      {
+        path: 'students/:nameTeam/:idTeam',
+        component: StudentsByTeamComponent, title: 'Alunos'
       },
       {
         path: 'students/:nameTeam/:idTeam/:idStudent',

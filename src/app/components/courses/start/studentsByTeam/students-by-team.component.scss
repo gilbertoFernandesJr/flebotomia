@@ -3,12 +3,34 @@
 main {
   padding: rem-calc(20);
 
-  h2 {
-    color: var(--priamary-color);
+  .back-page {
+    margin-bottom: rem-calc(10);
+    color: var(--gray);
   }
 
-  mat-form-field {
-    min-width: 600px;
+  .header-team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 4px 2px 10px var(--secondary-color);
+    .name-team {
+      margin-left: rem-calc(20);
+      h2 {
+        margin: 0;
+        color: var(--primary-color);
+      }
+      p {
+        margin: 0;
+      }
+    }
+
+    .btn-edit {
+      margin-right: rem-calc(10);
+      background: var(--gray);
+    }
   }
 
   .in-debt {
@@ -53,6 +75,12 @@ main {
         color: var(--primary-color);
       }
 
+      .divider {
+        margin: 5px 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+      }
+
       .btn-edit-student {
         display: flex;
         justify-content: flex-end;
@@ -72,9 +100,6 @@ main {
 }
 
 @media (max-width: 500px) {
-  mat-form-field {
-    min-width: 300px !important;
-  }
   mat-expansion-panel {
     width: 90% !important;
   }

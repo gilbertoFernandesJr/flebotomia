@@ -12,7 +12,7 @@ export class PtBrMatPaginatorIntl extends MatPaginatorIntl {
 
   getAndInitTranslations() {
 
-      this.itemsPerPageLabel = "Qt. por página";
+      this.itemsPerPageLabel = "Qt. max por página";
       this.nextPageLabel = "Próxima";
       this.previousPageLabel = "Anterior";
       this.firstPageLabel = "Primeira Página";
