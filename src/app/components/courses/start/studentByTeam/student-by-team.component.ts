@@ -45,7 +45,8 @@ export class StudentByTeamComponent {
     name: [this.student.name, [Validators.required]],
     cpf: [this.student.cpf, [Validators.required]],
     phone: [this.student.phone, [Validators.required]],
-    dateBirth: [this.student.dateBirth, [Validators.required]]
+    dateBirth: [this.student.dateBirth, [Validators.required]],
+    observation: [this.student.observation, [Validators.maxLength(200)]]
   });
 
   public registrationForm: UntypedFormGroup = this.formBuilder.group({
@@ -139,6 +140,7 @@ export class StudentByTeamComponent {
       name: this.student.name,
       cpf: this.student.cpf,
       phone: this.student.phone,
+      observation: this.student.observation,
       dateBirth: moment(`${this.student.dateBirth}`).toDate() //Adjust UTC
     });
   }
@@ -155,13 +157,19 @@ export class StudentByTeamComponent {
     this.monthPaymentsReative[i].received!;
   }
 
+  joinFormWithStudent(): void {
+    this.student.name = this.studentForm.get(['name'])?.value;
+    this.student.cpf = this.studentForm.get(['cpf'])?.value;
+    this.student.phone = this.studentForm.get(['phone'])?.value;
+    this.student.dateBirth = this.studentForm.get(['dateBirth'])?.value;
+    this.student.observation = this.studentForm.get(['observation'])?.value;
+  }
+
   updateStudent(): void {
 
     if(this.studentForm.valid) {
-      this.student.name = this.studentForm.get(['name'])?.value;
-      this.student.cpf = this.studentForm.get(['cpf'])?.value;
-      this.student.phone = this.studentForm.get(['phone'])?.value;
-      this.student.dateBirth = this.studentForm.get(['dateBirth'])?.value;
+      
+      this.joinFormWithStudent();
 
       this.service.update(this.student).subscribe({
         next: res => {

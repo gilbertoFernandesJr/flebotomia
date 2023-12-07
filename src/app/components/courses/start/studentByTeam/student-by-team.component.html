@@ -41,6 +41,13 @@
             </mat-form-field>
           </div>
 
+          <mat-form-field appearance="outline" class="max-width">
+            <mat-label>Observações</mat-label>
+            <textarea matInput
+            placeholder="Máximo de 200 caracteres"
+            formControlName="observation"></textarea>
+          </mat-form-field>
+
           <div class="flex-end">
             <span *ngIf="studentUpdateHasError" class="form-error">
               Preencha todos os campos obrigatórios *
