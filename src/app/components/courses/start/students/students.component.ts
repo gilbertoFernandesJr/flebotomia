@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student';
 import { Component } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service';
@@ -21,7 +22,7 @@ export class StudentsComponent {
   hidePageSize = false;
   showFirstLastButtons = true;
 
-  constructor(private service: StudentService) {
+  constructor(private service: StudentService, private router: Router) {
     this.findStudents(this.pageIndex);
   }
 
@@ -55,7 +56,7 @@ export class StudentsComponent {
   }
 
   editStudent(id: number): void {
-
+    this.router.navigate([`courses/start/student/${id}`]);
   }
 
   search(): void {

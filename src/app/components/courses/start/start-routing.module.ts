@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { AnalyticalComponent } from './analytical/analytical.component';
 import { ExpenseComponent } from './expense/expense.component';
 import { StudentsComponent } from './students/students.component';
+import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'students',
         component: StudentsComponent, title: 'Alunos'
+      },
+      {
+        path: 'student/:id',
+        component: StudentComponent, title: 'Aluno'
       },
       {
         path: 'students/:nameTeam/:idTeam',

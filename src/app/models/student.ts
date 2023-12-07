@@ -9,5 +9,6 @@ export interface Student {
   cpf: string,
   registrations?: Registration[],
   monthPayments?: MonthPayment[],
-  inDebt?: boolean
+  inDebt?: boolean,
+  observation?: string
 }

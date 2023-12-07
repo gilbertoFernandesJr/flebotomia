@@ -1,0 +1,69 @@
+<main>
+  <h2>Aluno</h2>
+  <button
+    mat-icon-button aria-label="voltar" class="back-page"
+    (click)="back()">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+  <div class="basic-informations">
+    <form [formGroup]="studentForm">
+      <mat-form-field appearance="outline" class="max-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome completo" formControlName="name">
+      </mat-form-field>
+
+      <div class="flex-wrap">
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="Ex. 999.999.999-99"
+          formControlName="cpf"
+          mask="000.000.000-00">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="(81) 99999-9999"
+          formControlName="phone"
+          mask="(00) 00000-0000">
+        </mat-form-field>
+
+        <mat-form-field class="i-date" appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="dateBirth"
+            [min]="minDate" [max]="maxDate"
+            formControlName="dateBirth" readonly="true">
+            <mat-datepicker-toggle matIconSuffix [for]="dateBirth">
+            </mat-datepicker-toggle>
+            <mat-datepicker #dateBirth></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="max-width">
+        <mat-label>Observações</mat-label>
+        <textarea matInput
+        placeholder="Máximo de 200 caracteres"
+        formControlName="observation"></textarea>
+      </mat-form-field>
+
+      <div class="flex-end">
+        <span *ngIf="studentUpdateHasError" class="form-error">
+          Preencha todos os campos obrigatórios *
+        </span>
+        <button mat-raised-button color="primary" class="btn-actions"
+        (click)="updateStudent()">
+          Atualizar
+        </button>
+      </div>
+    </form>
+
+    <div class="danger-zone">
+      <div class="align-items">
+        <mat-icon aria-hidden="false" aria-label="Zona de perigo" fontIcon="warning" color="warn">
+        </mat-icon>
+        <p>Zona de perigo</p>
+      </div>
+      <button mat-stroked-button color="warn" class="btn-actions btn-danger-student"
+      (click)="deleteStudent()">
+        Deletar Aluno
+      </button>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,104 @@
+@import '../../../../config-scss/rem-calc.scss';
+
+main {
+  padding: rem-calc(20);
+
+  h2 {
+    margin: 0;
+    color: var(--primary-color);
+  }
+
+  .back-page {
+    margin-bottom: rem-calc(10);
+    color: var(--gray);
+  }
+
+  .max-width {
+    width: 100%;
+  }
+
+  .basic-informations {
+    margin: 0 auto;
+    padding: 15px;
+    max-width: rem-calc(800);
+    box-shadow: 3px 3px 5px var(--gray);
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color);
+
+    .flex-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .part-money {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-value-payment {
+      margin-bottom: 20px;
+      .value-payment {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--secondary-color);
+      }
+    }
+
+    .content-date-payment {
+      margin-bottom: 20px;
+      .date-payment {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--gray);
+      }
+    }
+
+    .value-debit {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--error);
+    }
+
+    .danger-zone {
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid var(--error);
+      border-radius: 10px;
+      color: var(--error);
+
+      .align-items {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        p {
+          margin: 0 10px;
+        }
+      }
+
+      .btn-danger-student {
+        width: 230px;
+      }
+    }
+  }
+
+  .flex-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: rem-calc(20);
+
+    .form-error {
+      margin-right: 10px;
+      color: var(--error);
+    }
+  }
+
+  .btn-actions {
+    width: rem-calc(150);
+  }
+}

@@ -20,6 +20,7 @@ import { ExpenseComponent } from './expense/expense.component';
 import { AddExpenseDialogComponent } from './dialogs/add-expense-dialog/add-expense-dialog.component';
 import { UpdateExpenseDialogComponent } from './dialogs/update-expense-dialog/add-expense-dialog.component';
 import { StudentsComponent } from './students/students.component';
+import { StudentComponent } from './student/student.component';
 
 
 
@@ -38,7 +39,8 @@ import { StudentsComponent } from './students/students.component';
     ExpenseComponent,
     AddExpenseDialogComponent,
     UpdateExpenseDialogComponent,
-    StudentsComponent
+    StudentsComponent,
+    StudentComponent
   ],
   imports: [
     CommonModule,
