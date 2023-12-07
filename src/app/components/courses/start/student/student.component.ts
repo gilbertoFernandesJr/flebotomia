@@ -73,12 +73,27 @@ export class StudentComponent {
   }
 
   updateStudent(): void {
-    this.joinFormWithStudent();
-    this.service.update(this.student).subscribe({
-      next: res => this.student = res,
-      error: error => console.log(error),
-      complete: () => this.toast.success('Aluno atualizado')
-    });
+    if(this.studentForm.valid) {
+      this.joinFormWithStudent();
+
+      this.service.update(this.student).subscribe({
+        next: res => {
+          this.student = res;
+          this.studentUpdateHasError = false;
+          this.toast.success('Aluno atualizado');
+        },
+        error: error => {
+          console.log(error);
+          if (error.error.message == 'CPF already in use') {
+            this.toast.error('CPF já em uso por outro aluno');
+          } else {
+            this.toast.error('Ops.. Tivemos um erro, tente novamente mais tarde');
+          }
+        }
+      });
+    } else {
+      this.studentUpdateHasError = true;
+    }
   }
 
   deleteStudent(): void {
