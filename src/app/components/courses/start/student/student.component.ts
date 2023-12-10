@@ -5,6 +5,8 @@ import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import * as moment from 'moment-timezone';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-student',
@@ -35,7 +37,8 @@ export class StudentComponent {
     private route: ActivatedRoute,
     private service: StudentService,
     private formBuilder: UntypedFormBuilder,
-    private toast: ToastrService
+    private toast: ToastrService,
+    public dialog: MatDialog,
   ) {
 
     this.route.params.subscribe(params => this.student.id = params['id']);
@@ -97,7 +100,30 @@ export class StudentComponent {
   }
 
   deleteStudent(): void {
-    console.log(this.student.id)
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: 'Tem certeza que deseja excluír defenitivamente esse aluno?'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.route.params.subscribe(() => {
+          this.service.delete(this.student.id).subscribe({
+            next: () => {
+              this.toast.info('Aluno removido');
+              this.back();
+            },
+            error: error => {
+              let e = error.error.message.substring(0, 25);
+              if (e == 'Student with relationship') {
+                let team = error.error.message.substring(29);
+                this.toast.error(`Aluno matriculado na turma ${team}, será necessário remove-lo primeiro.`);
+              } else {
+                this.toast.error('Ops! tivemos alguns erro.');
+              }
+              console.log(error);
+            }
+          });
+        });
+      }
+    });
   }
 
   back(): void {

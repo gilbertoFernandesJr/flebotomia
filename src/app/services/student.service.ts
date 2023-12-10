@@ -41,4 +41,8 @@ export class StudentService {
   public removeStudentOfTeam(studentId: number, teamId: number): Observable<any> {
     return this.http.delete(`${API_CONFIG.baseUrl}/students/${studentId}/team/${teamId}`);
   }
+
+  public delete(studentId: number): Observable<any> {
+    return this.http.delete(`${API_CONFIG.baseUrl}/students/${studentId}`);
+  }
 }
