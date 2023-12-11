@@ -15,6 +15,16 @@ main {
     background: var(--light-yellow) !important;
   }
 
+  .header-search {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    .btn-add {
+      margin-bottom: 22px;
+    }
+  }
+
   .student {
     display: flex;
     justify-content: space-between;

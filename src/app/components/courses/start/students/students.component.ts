@@ -3,6 +3,8 @@ import { Student } from 'src/app/models/student';
 import { Component } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { NewStudentDialogComponent } from '../dialogs/new-student/new-student-dialog.component';
 
 @Component({
   selector: 'app-students',
@@ -22,7 +24,11 @@ export class StudentsComponent {
   hidePageSize = false;
   showFirstLastButtons = true;
 
-  constructor(private service: StudentService, private router: Router) {
+  constructor(
+    private service: StudentService,
+    private router: Router,
+    public dialog: MatDialog
+    ) {
     this.findStudents(this.pageIndex);
   }
 
@@ -53,6 +59,10 @@ export class StudentsComponent {
         if(dueDate.getTime() < today.getTime() && !m.paid) student.inDebt = true;
       });
     });
+  }
+
+  createStudent(): void {
+    const dialogRef = this.dialog.open(NewStudentDialogComponent);
   }
 
   editStudent(id: number): void {

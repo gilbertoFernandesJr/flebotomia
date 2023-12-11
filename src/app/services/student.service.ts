@@ -34,6 +34,10 @@ export class StudentService {
     return this.http.put<Student>(`${API_CONFIG.baseUrl}/students/${id}`, student);
   }
 
+  public create(student: Student): Observable<Student> {
+    return this.http.post<Student>(`${API_CONFIG.baseUrl}/students`, student);
+  }
+
   public addStudentOfTeam(student: Student, teamId: number): Observable<any> {
     return this.http.post(`${API_CONFIG.baseUrl}/students/team/${teamId}`, student);
   }

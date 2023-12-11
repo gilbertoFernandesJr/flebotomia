@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Adicionar Aluno</h1>
+<div mat-dialog-content>
+  <p>Dados pessoais</p>
+  <form [formGroup]="studentForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome completo"
+      formControlName="name">
+    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline" class="i-margin-r">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="999.999.999-99" mask="000.000.000-00"
+        formControlName="cpf">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="i-margin-r">
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="(99) 99999-9999" mask="(00) 00000-0000"
+        formControlName="phone">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="dateBirth"
+        [min]="minDate" [max]="maxDate"
+        formControlName="dateBirth"
+        readonly="true">
+        <mat-datepicker-toggle matIconSuffix [for]="dateBirth">
+        </mat-datepicker-toggle>
+        <mat-datepicker #dateBirth></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+  <p class="warn" *ngIf="hasError">Atenção aos campos obrigatórios</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">Salvar</button>
+</div>
