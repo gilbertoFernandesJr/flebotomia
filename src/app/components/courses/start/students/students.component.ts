@@ -15,6 +15,7 @@ export class StudentsComponent {
 
   students: Student[] = [];
   searchByName: string = '';
+  inRequest: boolean = true;
 
   //Pagination
   length = 0; // Come of the back, all elements on the DB
@@ -46,7 +47,10 @@ export class StudentsComponent {
         this.pageIndex = res.number;
       },
       error: error => console.log(error),
-      complete: () => this.studentsInDebt()
+      complete: () => {
+        this.studentsInDebt()
+        this.inRequest = false;
+      }
     });
   }
 

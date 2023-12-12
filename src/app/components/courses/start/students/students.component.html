@@ -13,7 +13,7 @@
         <mat-icon>person_add</mat-icon>
       </button>
   </div>
-  <div *ngIf="students.length == 0">
+  <div *ngIf="students.length == 0 && !inRequest">
     <p>Nenhum Aluno encotrado</p>
   </div>
   <div class="students">
