@@ -1,5 +1,6 @@
 <main>
   <h2>Análise Financeira</h2>
+  <h3>Faturamento anual por mensalidades</h3>
   <div class="header-year">
     <div class="group-name-number">
       <p>Anual: </p>
@@ -12,7 +13,6 @@
   </div>
   <div class="custom-loader" *ngIf ="!datasCompleted"></div>
   <div class="content-chart" *ngIf ="datasCompleted">
-    <h3>Faturamento anual</h3>
     <div class="charts">
       <ngx-charts-bar-vertical
         [view]="viewBar"
@@ -29,8 +29,48 @@
 
       <ngx-charts-pie-chart
       [view]="viewPie"
-      scheme="ocean"
+      scheme="nightLights"
       [results]="division"
+      [gradient]="gradient"
+      [labels]="showLabels"
+      [doughnut]=true
+      >
+      </ngx-charts-pie-chart>
+    </div>
+
+  </div>
+
+  <h3>Faturamento anual por Matrículas</h3>
+  <div class="header-year header-year-registration">
+    <div class="group-name-number">
+      <p class="color-black">Anual: </p>
+      <p class="h-number">{{calcTotalRegistrations() | currency}}</p>
+    </div>
+    <div class="group-name-number">
+      <p class="color-black">Média Mensal: </p>
+      <p class="h-number">{{calcAvgRegistrationYear() | currency}}</p>
+    </div>
+  </div>
+
+  <div class="content-chart">
+    <div class="charts">
+      <ngx-charts-bar-vertical
+        [view]="viewBar"
+        scheme="aqua"
+        [results]="monthsRegistration"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel">
+      </ngx-charts-bar-vertical>
+
+      <ngx-charts-pie-chart
+      [view]="viewPie"
+      [customColors]="colorSchemePie"
+      [results]="divisionExpenses"
       [gradient]="gradient"
       [labels]="showLabels"
       [doughnut]=true

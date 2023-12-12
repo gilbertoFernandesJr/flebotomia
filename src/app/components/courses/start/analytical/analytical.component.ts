@@ -30,7 +30,21 @@ export class AnalyticalComponent {
   division: { name: string; value: number; }[] = [{name: '', value: 0}];
   viewPie: [number, number] = [400, 300];
 
+  // chart registration more expenses
+  monthsRegistration: [{name: string, value: number}] = [{name: '', value: 0}];
+  totalExpenses: number = 0;
+  divisionExpenses: { name: string; value: number; }[] = [{name: '', value: 0}];
+  colorSchemePie = [
+    {name: 'Custos', value: '#ffc107'}, {name: 'Lucro Matrículas', value: '#5aa9f9'}
+  ];
+
+
   constructor(private analyticService: AnalyticService) {
+    this.requestsBackEnd();
+    this.IsCellPhone();
+  }
+
+  requestsBackEnd(): void {
     this.analyticService.findProfitMonthPaymentByMonth().subscribe({
       next: res => {
         this.months = res;
@@ -39,7 +53,38 @@ export class AnalyticalComponent {
       error: error => console.log(error),
       complete: () => this.datasCompleted = true
     });
-    this.IsCellPhone();
+
+    this.analyticService.findProfitRegistrationByMonth().subscribe({
+      next: res => {
+        this.monthsRegistration = res;
+      },
+      error: error => console.log(error)
+    });
+
+    this.analyticService.findExpenseByYear().subscribe({
+      next: res => {
+        this.totalExpenses = res.value;
+        this.divisionExpenses = this.calcProfitBetweenRegistrationAndExpenses();
+      },
+      error: error => console.log(error)
+    });
+  }
+
+  calcProfitBetweenRegistrationAndExpenses(): { name: string; value: number; }[] {
+    return [
+      {name: 'Custos', value: this.totalExpenses},
+      {name: 'Lucro Matrículas', value: this.calcTotalRegistrations() - this.totalExpenses}
+    ];
+  }
+
+  calcTotalRegistrations(): number {
+    let total = 0;
+    this.monthsRegistration.forEach(r => total += r.value);
+    return total;
+  }
+
+  calcAvgRegistrationYear(): number {
+    return this.calcTotalRegistrations() / 12;
   }
 
   calcDivisionThirtyPercent(): { name: string; value: number; }[] {

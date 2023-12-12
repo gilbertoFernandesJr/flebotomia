@@ -36,6 +36,13 @@ main {
     }
   }
 
+  .header-year-registration {
+    box-shadow: 4px 2px 10px var(--light-blue) !important;
+    .color-black {
+      color: black !important;
+    }
+  }
+
   .content-chart {
     .charts {
       display: flex;

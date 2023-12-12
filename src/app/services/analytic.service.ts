@@ -12,6 +12,14 @@ export class AnalyticService {
   constructor(private http: HttpClient) { }
 
   findProfitMonthPaymentByMonth() : Observable<any> {
-    return this.http.get(`${API_CONFIG.baseUrl}/analytic/monthPayment/yeah`);
+    return this.http.get(`${API_CONFIG.baseUrl}/analytic/monthPayment/year`);
+  }
+
+  findProfitRegistrationByMonth() : Observable<any> {
+    return this.http.get(`${API_CONFIG.baseUrl}/analytic/registration/year`);
+  }
+
+  findExpenseByYear() : Observable<any> {
+    return this.http.get(`${API_CONFIG.baseUrl}/analytic/expense/year`);
   }
 }
