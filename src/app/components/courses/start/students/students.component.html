@@ -13,6 +13,9 @@
         <mat-icon>person_add</mat-icon>
       </button>
   </div>
+  <div *ngIf="students.length == 0">
+    <p>Nenhum Aluno encotrado</p>
+  </div>
   <div class="students">
     <div class="student"
     [ngClass]="{'in-debt': student.inDebt}"
