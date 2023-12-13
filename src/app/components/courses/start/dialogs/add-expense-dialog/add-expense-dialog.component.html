@@ -9,11 +9,20 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="i-margin-right">
       <mat-label>Valor</mat-label>
       <input matInput placeholder="R$ 0,00"
       formControlName="cost"
       mask="separator.2" thousandSeparator="." decimalMarker=",">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="dateCreate"
+      formControlName="emission"
+      readonly="true">
+      <mat-datepicker-toggle matIconSuffix [for]="dateCreate">
+      </mat-datepicker-toggle>
+      <mat-datepicker #dateCreate></mat-datepicker>
     </mat-form-field>
     <div>
       <mat-form-field appearance="outline" class="width-full">

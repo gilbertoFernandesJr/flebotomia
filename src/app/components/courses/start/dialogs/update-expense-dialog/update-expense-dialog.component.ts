@@ -6,11 +6,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Course } from 'src/app/models/course';
 import { AllCoursesService } from 'src/app/services/all-courses.service';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 
 @Component({
-  selector: 'app-add-expense-dialog',
-  templateUrl: './add-expense-dialog.component.html',
-  styleUrls: ['./add-expense-dialog.component.scss']
+  selector: 'app-update-expense-dialog',
+  templateUrl: './update-expense-dialog.component.html',
+  styleUrls: ['./update-expense-dialog.component.scss']
 })
 export class UpdateExpenseDialogComponent {
 
@@ -23,6 +24,7 @@ export class UpdateExpenseDialogComponent {
     courseId: ['', [Validators.required]],
     cost: ['', [Validators.required, Validators.min(0)]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
+    emission: ['', [Validators.required]],
   });
 
   constructor(
@@ -49,12 +51,14 @@ export class UpdateExpenseDialogComponent {
     this.expense.course = {id: this.expenseForm.get('courseId')?.value, name: ''};
     this.expense.cost = this.expenseForm.get('cost')?.value;
     this.expense.description = this.expenseForm.get('description')?.value;
+    this.expense.emission = this.expenseForm.get('emission')?.value;
   }
 
   joinExpenseWithForm(): void {
     this.expenseForm.get('courseId')?.setValue(this.expense.course?.id);
     this.expenseForm.get('cost')?.setValue(this.expense.cost);
     this.expenseForm.get('description')?.setValue(this.expense.description);
+    this.expenseForm.get('emission')?.setValue(moment(this.expense.emission).toDate());
   }
 
   cancel(): void {

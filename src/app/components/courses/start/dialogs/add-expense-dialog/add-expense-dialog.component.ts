@@ -24,6 +24,7 @@ export class AddExpenseDialogComponent {
     courseId: ['', [Validators.required]],
     cost: ['', [Validators.required, Validators.min(0)]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
+    emission: [''],
   });
 
   constructor(
@@ -49,6 +50,7 @@ export class AddExpenseDialogComponent {
     this.expense.course = {id: this.expenseForm.get('courseId')?.value, name: ''};
     this.expense.cost = this.expenseForm.get('cost')?.value;
     this.expense.description = this.expenseForm.get('description')?.value;
+    this.expense.emission = this.expenseForm.get('emission')?.value;
   }
 
   cancel(): void {
