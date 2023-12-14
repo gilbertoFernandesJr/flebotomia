@@ -114,13 +114,3 @@ mat-drawer-container {
     max-width: 100%;
   }
 }
-
-@media (max-width: 500px){
-  .white-cover {
-    position: absolute;
-    z-index: 99;
-    width: 100%;
-    height: 100%;
-    background-color: var(--white);
-  }
-}

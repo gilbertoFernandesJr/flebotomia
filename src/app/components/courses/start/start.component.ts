@@ -13,6 +13,8 @@ export class StartComponent {
 
   menuOpen: boolean = false;
   user: User = {id: 0, name: '', email: '', password: ''}
+  modeValueDrawer: any = 'side';
+  widthScreen: number = window.innerWidth;
 
   constructor(
     private authService: AuthService,
@@ -25,6 +27,7 @@ export class StartComponent {
       next: res => this.user = res,
       error: error => console.log(error)
     });
+    this.typeSidNavDrawer();
   }
 
   goSettings(): void {
@@ -32,7 +35,11 @@ export class StartComponent {
   }
 
   changeIcon(): void {
-    this.menuOpen = !this.menuOpen;
+    if (this.widthScreen > 550) this.menuOpen = !this.menuOpen;
+  }
+
+  typeSidNavDrawer(): void {
+    if (this.widthScreen < 550) this.modeValueDrawer = 'over';
   }
 
   logout(): void {

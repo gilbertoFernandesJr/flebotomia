@@ -1,5 +1,5 @@
 <mat-drawer-container class="container">
-  <mat-drawer #drawer class="sidenav" mode="side">
+  <mat-drawer #drawer class="sidenav" [mode]="modeValueDrawer">
     <!--Conteudo do nav-->
     <div class="logo">
       <img src="../../../../assets/images/simbolo-ceslab-8.png" alt="logo oito remedios">
@@ -67,7 +67,6 @@
       </button>
     </div>
     <router-outlet>
-      <div class="white-cover" *ngIf="menuOpen"></div>
     </router-outlet>
 
   </div>
