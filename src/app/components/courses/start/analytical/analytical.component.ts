@@ -40,11 +40,12 @@ export class AnalyticalComponent {
 
 
   constructor(private analyticService: AnalyticService) {
-    this.requestsBackEnd();
+    this.requestMonthPayments();
+    this.requestRegistrations();
     this.IsCellPhone();
   }
 
-  requestsBackEnd(): void {
+  requestMonthPayments(): void {
     this.analyticService.findProfitMonthPaymentByMonth().subscribe({
       next: res => {
         this.months = res;
@@ -53,14 +54,19 @@ export class AnalyticalComponent {
       error: error => console.log(error),
       complete: () => this.datasCompleted = true
     });
+  }
 
+  requestRegistrations(): void {
     this.analyticService.findProfitRegistrationByMonth().subscribe({
       next: res => {
         this.monthsRegistration = res;
       },
-      error: error => console.log(error)
+      error: error => console.log(error),
+      complete: () => this.requestExpenses()
     });
+  }
 
+  requestExpenses(): void {
     this.analyticService.findExpenseByYear().subscribe({
       next: res => {
         this.totalExpenses = res.value;
