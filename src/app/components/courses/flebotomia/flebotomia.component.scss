@@ -51,6 +51,72 @@ main{
     background-color: var(--white);
   }
 
+  #s-degree {
+    .degree {
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      .symbol-degree {
+        position: relative;
+        display: flex;
+        margin: 20px 0;
+        width: 350px;
+        height: 200px;
+        img {
+          width: 250px;
+          transform: rotate(-30deg);
+        }
+
+        .symbol {
+          position: absolute;
+          left: 0px;
+          opacity: .5;
+        }
+
+        .fake-degree {
+          position: absolute;
+          right: 0px;
+        }
+      }
+    }
+
+    .banner-auth {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+
+      .green-bar {
+        width: 300px;
+        height: 15px;
+        border-radius: 10px 0 0 10px;
+        background-color: var(--primary-color);
+      }
+
+      .sentence {
+        padding: 20px;
+        width: 300px;
+        border-radius: 10px 0 0 10px;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        p {
+          font-size: 1.8rem;
+          font-weight: lighter;
+        }
+        .align-end {
+          display: flex;
+          justify-content: end;
+          mat-icon {
+            height: 40px;
+            width: 40px;
+            font-size: 2rem;
+          }
+        }
+
+      }
+    }
+  }
 
   h3 {
     padding: 30px;
