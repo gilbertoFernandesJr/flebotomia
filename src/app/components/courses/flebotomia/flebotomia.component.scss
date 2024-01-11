@@ -16,26 +16,47 @@ main{
   }
 
   .banner-main {
-    padding: 10px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden; //Oculta caso o child seja maior
+    box-shadow: inset -12px 15px 24px #312f2fb8;
+    background-color: var(--primary-color);
 
     .logo-course {
+      animation: float 6s ease-in-out infinite;
       img {
-        max-width: 365px;
+        max-width: 270px;
+      }
+    }
+
+    .geo {
+      position: relative;
+      border: 6px solid white;
+      border-radius: 50px;
+      box-shadow: 5px 5px 5px var(--secondary-color);
+      height: 380px;
+      width: 235px;
+      img {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        max-width: 250px;
       }
     }
   }
+
+  .wave {
+    background-color: var(--white);
+  }
+
 
   h3 {
     padding: 30px;
     text-align: center;
     font-size: 2rem;
     color: var(--gray);
-  }
-
-  section.carousel-ces {
-    margin: auto;
-    max-width: 1000px;
   }
 
   section.info {
@@ -448,6 +469,22 @@ main{
 @media (hover: none){
   .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
     background: var(--primary-color);
+  }
+}
+
+
+//up and down slower
+@keyframes float {
+  0% {
+    transform: translatey(-10px);
+  }
+
+  50% {
+    transform: translatey(10px);
+  }
+
+  100% {
+    transform: translatey(-10px);
   }
 }
 
