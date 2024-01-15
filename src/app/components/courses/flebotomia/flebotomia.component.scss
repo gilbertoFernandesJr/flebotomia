@@ -51,6 +51,10 @@ main{
     background-color: var(--white);
   }
 
+  .wave-green {
+    background-color: var(--primary-color);
+  }
+
   #s-degree {
     .degree {
       position: relative;
@@ -225,6 +229,31 @@ main{
       text-align: center;
       video {
         border-radius: 10px;
+      }
+    }
+
+    .container-checkes {
+      display: flex;
+      justify-content: center;
+      .checkes {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 500px;
+        .check-subject {
+          margin: 10px;
+          display: flex;
+          align-items: center;
+          border: 1px solid;
+          padding: 5px;
+          border-radius: 10px;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+          color: var(--secondary-color);
+        }
+        p {
+          margin: 0 0 0 7px;
+          color: var(--white);
+        }
       }
     }
   }
