@@ -129,6 +129,10 @@ main{
     color: var(--gray);
   }
 
+  .primary-color {
+    color: var(--primary-color);
+  }
+
   section.info {
     max-width: 700px;
     padding: 10px;
@@ -217,19 +221,19 @@ main{
     }
   }
 
+  .video-single {
+    padding: 1rem 0;
+    text-align: center;
+    video {
+      border-radius: 10px;
+    }
+  }
+
   section#video-what-learn {
     background-color: var(--primary-color);
 
     h3 {
       color: var(--white);
-    }
-
-    .video-single {
-      padding: 1rem 0;
-      text-align: center;
-      video {
-        border-radius: 10px;
-      }
     }
 
     .container-checkes {
@@ -274,8 +278,9 @@ main{
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
         margin-bottom: 25px;
-        background-color: rgba(166, 206, 55, 0.4);
-        color: var(--primary-color);
+        background: rgb(15,0,36);
+        background: linear-gradient(90deg, rgba(15,0,36,1) 0%, rgba(135,52,212,1) 47%, rgba(218,0,255,1) 100%);
+        color: var(--white);
 
         .card-img-top {
           width: 100px;
@@ -297,10 +302,28 @@ main{
       opacity: .2;
     }
 
+    .students-depoiments {
+      background: rgb(15,0,36);
+      background: linear-gradient(90deg, rgba(15,0,36,1) 0%, rgba(135,52,212,1) 47%, rgba(218,0,255,1) 100%);
+    }
+
   }
 
   section.videos {
-
+    background-color: rgba(166, 206, 55, 0.4);
+    .p-method-learn {
+      margin: auto;
+      padding: 10px;
+      max-width: 270px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--secondary-color);
+      background-color: var(--primary-color);
+      color: var(--white);
+      p {
+        text-align: center;
+      }
+    }
     .video {
       padding: 1rem 0;
       text-align: center;
@@ -315,7 +338,6 @@ main{
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
-      background-color: rgba(166, 206, 55, 0.4);
     }
   }
 
