@@ -63,6 +63,14 @@ main {
         color: var(--primary-color);
       }
 
+      .teams-student {
+        margin: 10px 0;
+        padding: 10px;
+        max-width: 300px;
+        border: .8px solid var(--light-green-color);
+        border-radius: 10px;
+      }
+
       .btn-edit-student {
         display: flex;
         justify-content: flex-end;

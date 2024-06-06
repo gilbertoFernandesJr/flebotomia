@@ -49,9 +49,18 @@
             </span>
           </div>
         </div>
+        <div class="teams-student">
+          <p>Turmas do aluno</p>
+          <div class="btn-student-team" *ngFor="let registration of student.registrations">
+            <button mat-stroked-button color="primary"
+            (click)="NavigateForStudentTeam(student.id, registration.team.name, registration.team.id)">
+              {{registration.team.name}}
+            </button>
+          </div>
+        </div>
         <div class="btn-edit-student">
-          <button mat-stroked-button color="primary" (click)="editStudent(student.id)">
-            Editar
+          <button mat-flat-button color="primary" (click)="editStudent(student.id)">
+            Editar aluno
           </button>
         </div>
       </mat-expansion-panel>

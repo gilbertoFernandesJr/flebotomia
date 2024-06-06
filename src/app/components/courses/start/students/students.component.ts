@@ -69,6 +69,10 @@ export class StudentsComponent {
     const dialogRef = this.dialog.open(NewStudentDialogComponent);
   }
 
+  NavigateForStudentTeam(idStudent: number, teamName: string, idTeam: number) {
+    this.router.navigate([`courses/start/students/${teamName}/${idTeam}/${idStudent}`]);
+  }
+
   editStudent(id: number): void {
     this.router.navigate([`courses/start/student/${id}`]);
   }
