@@ -95,7 +95,7 @@ export class StudentByTeamComponent {
   startComponent(): void {
     //Calc debit of registration
     this.student.registrations?.forEach(r => {
-      this.registrationReative = r;
+      if (r.team.id == this.team.id) this.registrationReative = r;
     });
     // Attach Registration with the registration form
     this.attachRegistrationWithForm();
@@ -104,7 +104,7 @@ export class StudentByTeamComponent {
 
 
     //Calc debit of monthpayments
-    this.monthPaymentsReative = this.student.monthPayments!;
+    this.monthPaymentsReative = this.getMonthPaymentByTeam();
     let i = 0;
     this.monthPaymentsReative?.forEach(m => {
       this.calcDebitMonthPayment(i);
@@ -120,6 +120,22 @@ export class StudentByTeamComponent {
     //FindDegreeIfhave
     this.findDegree();
 
+  }
+
+  getRegistrationByTeam(): Registration {
+    let registration: Registration = {id: 0, paid: false, team: {id: 0, name: '', completed : false}};
+    this.student.registrations?.forEach(r => {
+      if (r.team.id == this.team.id) registration = r;
+    });
+    return registration;
+  }
+
+  getMonthPaymentByTeam(): MonthPayment[] {
+    let monthpayment: MonthPayment[] = [];
+    this.student.monthPayments?.forEach(m => {
+      if(m.team.id == this.team.id) monthpayment.push(m);
+    })
+    return monthpayment;
   }
 
   addValidatorsRegistration(): void {
@@ -168,7 +184,7 @@ export class StudentByTeamComponent {
   updateStudent(): void {
 
     if(this.studentForm.valid) {
-      
+
       this.joinFormWithStudent();
 
       this.service.update(this.student).subscribe({

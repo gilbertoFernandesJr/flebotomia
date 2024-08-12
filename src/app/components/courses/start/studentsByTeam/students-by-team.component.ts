@@ -33,20 +33,10 @@ export class StudentsByTeamComponent {
     this.service.getStudentsByTeam(this.idTeam).subscribe({
       next: (res) => {
         this.students = res;
+        console.log(res);
       },
       error: (error) => console.log(error),
       complete: () => this.studentsInDebt()
-    });
-  }
-
-  studentsInDebt(): void {
-    this.students.forEach(student => {
-      let today = new Date();
-      let dueDate = new Date();
-      student.monthPayments?.forEach(m => {
-        dueDate = new Date(m.dueDate);
-        if(dueDate.getTime() < today.getTime() && !m.paid) student.inDebt = true;
-      });
     });
   }
 
@@ -56,6 +46,25 @@ export class StudentsByTeamComponent {
       if (r.team.id == this.idTeam) valueReceived = r.received;
     });
     return valueReceived;
+  }
+
+  getMonthPayments(student: Student): any[] {
+    let monthPaymentsByTeam : any[] = [];
+    student.monthPayments?.forEach(m => {
+      if (m.team.id == this.idTeam) monthPaymentsByTeam.push(m);
+    });
+    return monthPaymentsByTeam;
+  }
+
+  studentsInDebt(): void {
+    this.students.forEach(student => {
+      let today = new Date();
+      let dueDate = new Date();
+      this.getMonthPayments(student).forEach(m => {
+        dueDate = new Date(m.dueDate);
+        if(dueDate.getTime() < today.getTime() && !m.paid) student.inDebt = true;
+      });
+    });
   }
 
   editStudent(id: number): void {

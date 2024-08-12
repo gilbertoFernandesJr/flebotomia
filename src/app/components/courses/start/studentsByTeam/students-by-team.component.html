@@ -65,7 +65,7 @@
 
           <div
             class="data-basic"
-            *ngFor="let payment of student.monthPayments; let i = index">
+            *ngFor="let payment of getMonthPayments(student); let i = index">
             <p>Mensalidade ({{i+1}}):</p>
             <span>
               {{ payment.received | currency }}

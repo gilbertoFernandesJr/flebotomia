@@ -77,11 +77,11 @@
      <div class="basic-informations">
 
       <form [formGroup]="registrationForm">
-        <div class="flex-wrap" *ngFor="let registration of student.registrations">
+        <div class="flex-wrap">
           <div class="part-money">
             <div class="content-value-payment">
               <h3 class="value-payment">Valor</h3>
-              <P class="value-payment">{{registration.price | currency}}</P>
+              <P class="value-payment">{{getRegistrationByTeam().price | currency}}</P>
             </div>
 
             <mat-form-field appearance="outline">
