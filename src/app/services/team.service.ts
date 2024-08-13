@@ -14,9 +14,10 @@ export class TeamService {
 
   OnInit() {}
 
-  public getTeans(page?: number): Observable<any> {
-    if (page != 0) return this.http.get<any>(`${API_CONFIG.baseUrl}/teams?page=${page}`);
-    return this.http.get<any>(`${API_CONFIG.baseUrl}/teams`);
+  public getTeams(page?: number, idCourse?: number): Observable<any> {
+    if (page != 0) return this.http.get<any>(`${API_CONFIG.baseUrl}/teams?page=${page}&courseid=${idCourse}`);
+    console.log(idCourse);
+    return this.http.get<any>(`${API_CONFIG.baseUrl}/teams?courseid=${idCourse}`);
   }
 
   public createTeam(team: TeamCreate): Observable<any> {

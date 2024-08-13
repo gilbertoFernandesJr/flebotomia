@@ -25,7 +25,7 @@ const routes: Routes = [
         component: TeamComponent, title: 'Turma'
       },
       {
-        path: 'teams/:name/:id',
+        path: 'teams/:name/:idCourse',
         component: TeamsComponent, title: 'Turmas'
       },
       {
