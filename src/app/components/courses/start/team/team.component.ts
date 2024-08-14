@@ -7,6 +7,7 @@ import { Course } from 'src/app/models/course';
 import { Team } from 'src/app/models/team/team';
 import { TeamService } from 'src/app/services/team.service';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-team',
@@ -22,7 +23,8 @@ export class TeamComponent {
 
   teamForm: UntypedFormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
-    completed: ['']
+    completed: [''],
+    endDate: ['']
   });
 
   constructor(
@@ -50,11 +52,13 @@ export class TeamComponent {
   joinTeamWithForm(): void {
     this.teamForm.get('name')?.setValue(this.team.name);
     this.teamForm.get('completed')?.setValue(this.team.completed);
+    this.teamForm.get('endDate')?.setValue(moment(`${this.team.endDate}`).toDate()); //Adjust UTC
   }
 
   joinFormWithTeam(): void {
     this.team.name = this.teamForm.get('name')?.value;
     this.team.completed = this.teamForm.get('completed')?.value;
+    this.team.endDate = this.teamForm.get('endDate')?.value;
   }
 
   update(): void {

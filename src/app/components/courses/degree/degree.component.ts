@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DegreeService } from 'src/app/services/degree.service';
 import { UntypedFormControl, Validators } from '@angular/forms';
+import { Course } from 'src/app/models/course';
 
 @Component({
   selector: 'app-degree',
@@ -18,7 +19,14 @@ export class DegreeComponent implements OnInit {
     studentDTO: {
       name: '',
       cpf: ''
-    }
+    },
+    teamDTO: {id: 0, name: '', completed: false}
+  }
+
+  course: Course = {
+    id: 0,
+    name: '',
+    hours: 0
   }
 
   error: any = {
@@ -40,7 +48,11 @@ export class DegreeComponent implements OnInit {
   private findByCode(code: string): void {
     localStorage.clear();
     this.service.findByCode(code).subscribe({
-      next: (res) => this.degree = res,
+      next: (res) => {
+        this.degree = res;
+        this.course.name = res.teamDTO?.courseDTO!.name!;
+        this.course.hours = res.teamDTO?.courseDTO!.hours!;
+      },
       error: (e) => this.error = e.error
     });
   }

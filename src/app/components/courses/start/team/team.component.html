@@ -11,6 +11,12 @@
         <mat-label>Nome da turma</mat-label>
         <input matInput placeholder="Nome da turma" formControlName="name">
       </mat-form-field>
+      <mat-form-field class="i-date" appearance="outline">
+        <mat-label>Data de Encerramento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="endDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
       <div class="space-between">
         <mat-slide-toggle color="primary" formControlName="completed">
           Concluída

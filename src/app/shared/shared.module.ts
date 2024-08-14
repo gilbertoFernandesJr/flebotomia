@@ -12,6 +12,7 @@ import { DateDescribePipe } from './pipes/date-describe.pipe';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
+import { CpfLGPDPipe } from './pipes/cpf-lgpd-pipe';
 
 
 
@@ -23,7 +24,8 @@ import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
     PhonePipe,
     DateDescribePipe,
     ConfirmDialogComponent,
-    CpfCnpjPipe
+    CpfCnpjPipe,
+    CpfLGPDPipe
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
     CapitalizePipe,
     PhonePipe,
     DateDescribePipe,
-    CpfCnpjPipe
+    CpfCnpjPipe,
+    CpfLGPDPipe
   ],
   // Traduzindo o Paginator
   providers: [

@@ -5,7 +5,8 @@
     <h1>CERTIFICADO</h1>
     <P>O centro Especializado em Sáude Laboratorial (CESLAB), CNPJ 49.387.859/0001 certifica que;</P>
     <p class="name">{{degree.studentDTO.name}}</p>
-    <p>portador(a) do CPF: {{degree.studentDTO.cpf | cpfCnpj}}, concluiu o curso de Flebotomia, com carga horária de 200 horas</p>
+    <p>portador(a) do CPF: {{degree.studentDTO.cpf | cpfLGPD}}, concluiu o curso de {{course.name | capitalize}}, com carga horária de {{course.hours}} horas</p>
+    <p *ngIf="degree.teamDTO?.endDate">em {{degree.teamDTO?.endDate | date: 'dd MMMM yyyy'}}</p>
   </div>
 
   <div class="error" *ngIf="error.message">
@@ -14,7 +15,7 @@
       <p>Por favor, use seu código de validação.</p>
     </div>
     <mat-form-field appearance="outline">
-      <mat-label>Código inscrito em seu certificado</mat-label>
+      <mat-label>Código escrito em seu certificado</mat-label>
       <input
         matInput
         placeholder="Código de verificação"
