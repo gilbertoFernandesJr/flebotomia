@@ -11,7 +11,7 @@ export class FlebotomiaComponent implements OnInit {
   showElementGeo: boolean = false;
   showElementRevel: boolean = false;
 
-  openRegistration: boolean = true;
+  openRegistration: boolean = false;
 
   constructor() { }
 
