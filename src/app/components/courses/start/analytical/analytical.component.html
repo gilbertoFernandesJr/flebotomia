@@ -80,4 +80,42 @@
 
   </div>
 
+  <div class="content-chart">
+    <h3>Histórico completo</h3>
+      <div class="header-year header-year-total">
+        <div class="group-name-number color-primary">
+          <p>Mensalidades: </p>
+          <p class="h-number color-primary">{{calcLineChart('Mensalidades') | currency}}</p>
+      </div>
+
+      <div class="group-name-number color-primary">
+        <p class="color-black">Matriculas: </p>
+        <p class="h-number">{{calcLineChart('Matriculas') | currency}}</p>
+      </div>
+
+      <div class="group-name-number color-primary">
+        <p class="color-orange">Despesas: </p>
+        <p class="h-number color-orange">{{calcLineChart('Despesas') | currency}}</p>
+      </div>
+    </div>
+    <div class="charts">
+
+      <ngx-charts-line-chart
+        [view]="viewBar"
+        [scheme]="colorSchemeLine"
+        [results]="linesChart"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showYAxis"
+        legendTitle="Legenda"
+        [legendPosition]="legendPositionLine"
+        [showXAxisLabel]="showXAxisLabel"
+        [xAxisLabel]="xAxisLabelLine"
+        [showYAxisLabel]="showYAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [animations]="showYAxisLabel">
+      </ngx-charts-line-chart>
+    </div>
+  </div>
+
 </main>

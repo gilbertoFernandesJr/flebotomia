@@ -1,8 +1,8 @@
 import { API_CONFIG } from './../config/api.config';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Degree } from '../models/degree';
 import { Observable } from 'rxjs';
+import { LineChart } from '../dto/line-chart/line.chart';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class AnalyticService {
 
   findExpenseByYear() : Observable<any> {
     return this.http.get(`${API_CONFIG.baseUrl}/analytic/expense/year`);
+  }
+
+  findLineChart(): Observable<LineChart[]> {
+    return this.http.get<LineChart[]>(`${API_CONFIG.baseUrl}/analytic/chart/line`);
   }
 }

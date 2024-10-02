@@ -19,7 +19,7 @@ main {
       margin-bottom: 5px;
       display: flex;
       align-items: center;
-      width: 250px;
+      width: 300px;
       p {
         margin: 0;
         font-size: 1rem;
@@ -41,6 +41,22 @@ main {
     .color-black {
       color: black !important;
     }
+  }
+
+  .header-year-total {
+    box-shadow: 4px 2px 10px #00000057;
+  }
+
+  .color-black {
+    color: black !important;
+  }
+
+  .color-orange {
+    color: var(--warning-orange) !important;
+  }
+
+  .color-primary {
+    color: var(--primary-color) !important;
   }
 
   .content-chart {

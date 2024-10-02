@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AnalyticService } from 'src/app/services/analytic.service';
+import { LegendPosition } from '@swimlane/ngx-charts';
+import { LineChart } from 'src/app/dto/line-chart/line.chart';
 
 @Component({
   selector: 'app-analytical',
@@ -38,10 +40,18 @@ export class AnalyticalComponent {
     {name: 'Custos', value: '#ffc107'}, {name: 'Lucro Matrículas', value: '#5aa9f9'}
   ];
 
+  // Config for Line Chart
+  linesChart: LineChart[] = [];
+  colorSchemeLine: any = {
+    domain: ['#5AA454', '#CFC0BB', '#E44D25', '#a8385d', '#aae3f5']
+  };
+  legendPositionLine: LegendPosition = LegendPosition.Below;
+  xAxisLabelLine = 'Mês/Ano';
 
   constructor(private analyticService: AnalyticService) {
     this.requestMonthPayments();
     this.requestRegistrations();
+    this.requestLineChart();
     this.IsCellPhone();
   }
 
@@ -110,6 +120,20 @@ export class AnalyticalComponent {
 
   calcAvgYear(): number {
     return this.calcMoneyYear() / 12;
+  }
+
+  requestLineChart(): void {
+    this.analyticService.findLineChart().subscribe({
+      next: (res) => this.linesChart = res,
+      error: (error) => console.log(error)
+    });
+  }
+
+  calcLineChart(name: String): number {
+    let total: number = 0;
+    let line = this.linesChart.find((element) => element.name === name);
+    line?.series.forEach(s => total += s.value);
+    return total;
   }
 
   IsCellPhone(): void {
