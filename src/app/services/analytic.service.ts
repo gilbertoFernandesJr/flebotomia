@@ -23,7 +23,7 @@ export class AnalyticService {
     return this.http.get(`${API_CONFIG.baseUrl}/analytic/expense/year`);
   }
 
-  findLineChart(): Observable<LineChart[]> {
-    return this.http.get<LineChart[]>(`${API_CONFIG.baseUrl}/analytic/chart/line`);
+  findLineChart(dateStart: any, dateEnd: any): Observable<LineChart[]> {
+    return this.http.post<LineChart[]>(`${API_CONFIG.baseUrl}/analytic/chart/line`, {"dateStart": dateStart, "dateEnd": dateEnd});
   }
 }

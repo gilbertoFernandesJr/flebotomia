@@ -48,6 +48,10 @@ export class AnalyticalComponent {
   legendPositionLine: LegendPosition = LegendPosition.Below;
   xAxisLabelLine = 'Mês/Ano';
 
+  moment: any = require('moment');
+  dateStart: Date = this.getDateTodayMinusTwoYear();
+  dateEnd: Date = new Date;
+
   constructor(private analyticService: AnalyticService) {
     this.requestMonthPayments();
     this.requestRegistrations();
@@ -123,10 +127,14 @@ export class AnalyticalComponent {
   }
 
   requestLineChart(): void {
-    this.analyticService.findLineChart().subscribe({
-      next: (res) => this.linesChart = res,
-      error: (error) => console.log(error)
-    });
+    if (this.isDateEndMoreThanDateStart()) {
+      let start = this.formatDateYYYYMMDD(this.dateStart);
+      let end = this.formatDateYYYYMMDD(this.dateEnd);
+      this.analyticService.findLineChart(start, end).subscribe({
+        next: (res) => this.linesChart = res,
+        error: (error) => console.log(error)
+      });
+    }
   }
 
   calcLineChart(name: String): number {
@@ -134,6 +142,22 @@ export class AnalyticalComponent {
     let line = this.linesChart.find((element) => element.name === name);
     line?.series.forEach(s => total += s.value);
     return total;
+  }
+
+  private getDateTodayMinusTwoYear(): any {
+    const yearsBack = this.moment().subtract(2, 'years').format('YYYY-MM-DD') + 'T12:00:00Z';
+    return new Date(yearsBack);
+  }
+
+  isDateEndMoreThanDateStart(): boolean {
+    return this.dateEnd.getTime() > this.dateStart.getTime();
+  }
+
+  private formatDateYYYYMMDD(data: Date) {
+    const year = data.getFullYear();
+    const month = String(data.getMonth() + 1).padStart(2, '0'); // Adiciona zero à esquerda, se necessário
+    const day = String(data.getDate()).padStart(2, '0'); // Adiciona zero à esquerda, se necessário
+    return `${year}-${month}-${day}`;
   }
 
   IsCellPhone(): void {

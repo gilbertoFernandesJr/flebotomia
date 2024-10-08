@@ -82,10 +82,35 @@
 
   <div class="content-chart">
     <h3>Histórico completo</h3>
-      <div class="header-year header-year-total">
-        <div class="group-name-number color-primary">
-          <p>Mensalidades: </p>
-          <p class="h-number color-primary">{{calcLineChart('Mensalidades') | currency}}</p>
+
+    <div class="dates-chart-lines">
+      <mat-form-field appearance="outline" class="m-r">
+        <mat-label>Data Início</mat-label>
+        <input matInput [matDatepicker]="start" [(ngModel)]="dateStart" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="start"></mat-datepicker-toggle>
+        <mat-datepicker #start></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="m-r">
+        <mat-label>Data Final</mat-label>
+        <input matInput [matDatepicker]="end" [(ngModel)]="dateEnd" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="end"></mat-datepicker-toggle>
+        <mat-datepicker #end></mat-datepicker>
+      </mat-form-field>
+      <button
+        mat-flat-button color="primary"
+        (click)="requestLineChart()"
+        [disabled]="!isDateEndMoreThanDateStart()">Atualizar</button>
+    </div>
+    <div class="warning-date" *ngIf="!isDateEndMoreThanDateStart()">
+      <mat-icon aria-hidden="false" aria-label="Atenção" fontIcon="warning">
+      </mat-icon>
+      <p>Atenção data inicial maior que a data final, por favor inverta as datas</p>
+    </div>
+
+    <div class="header-year header-year-total">
+      <div class="group-name-number color-primary">
+        <p>Mensalidades: </p>
+        <p class="h-number color-primary">{{calcLineChart('Mensalidades') | currency}}</p>
       </div>
 
       <div class="group-name-number color-primary">
@@ -99,7 +124,6 @@
       </div>
     </div>
     <div class="charts">
-
       <ngx-charts-line-chart
         [view]="viewBar"
         [scheme]="colorSchemeLine"

@@ -43,7 +43,29 @@ main {
     }
   }
 
+  .m-r {
+    margin-right: 10px;
+  }
+
+  .warning-date {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid var(--error);
+    border-radius: 5px;
+    color: var(--error);
+    mat-icon {
+      margin-right: 5px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+
   .header-year-total {
+    margin-top: 10px;
     box-shadow: 4px 2px 10px #00000057;
   }
 
