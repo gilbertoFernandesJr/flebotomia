@@ -40,6 +40,7 @@ main{
     .logo-course {
       animation: float 6s ease-in-out infinite;
       img {
+        margin-right: 30px;
         max-width: 270px;
       }
     }
@@ -562,6 +563,15 @@ main{
     bottom: 0px;
     img {
       width: 100px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .logo-course {
+    img {
+      margin-right: 10px !important;
+      max-width: 170px !important;
     }
   }
 }
