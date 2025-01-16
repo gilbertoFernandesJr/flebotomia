@@ -18,7 +18,8 @@ main {
       box-shadow: 2px 2px 10px rgba(166, 206, 55, 0.3);
 
       img {
-        width: rem-calc(200);
+        width: rem-calc(150);
+        padding: rem-calc(15);
       }
 
       .form {
